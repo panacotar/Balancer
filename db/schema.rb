@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_153034) do
+ActiveRecord::Schema.define(version: 2020_06_30_173759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,33 +43,32 @@ ActiveRecord::Schema.define(version: 2020_06_30_153034) do
     t.text "pitch"
     t.string "target"
     t.boolean "status"
-    t.string "photo"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_projects_on_users_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
   create_table "shareholders", force: :cascade do |t|
     t.float "amount", default: 0.0
     t.integer "percentage"
     t.string "status"
-    t.bigint "users_id", null: false
-    t.bigint "campaigns_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "campaign_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["campaigns_id"], name: "index_shareholders_on_campaigns_id"
-    t.index ["users_id"], name: "index_shareholders_on_users_id"
+    t.index ["campaign_id"], name: "index_shareholders_on_campaign_id"
+    t.index ["user_id"], name: "index_shareholders_on_user_id"
   end
 
   create_table "transactions", force: :cascade do |t|
     t.string "category"
     t.integer "amount"
-    t.bigint "users_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "status", default: true
-    t.index ["users_id"], name: "index_transactions_on_users_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,10 +85,10 @@ ActiveRecord::Schema.define(version: 2020_06_30_153034) do
     t.datetime "date_of_birth"
     t.string "gender"
     t.string "phone_number"
-    t.boolean "status"
+    t.boolean "status", default: true
     t.float "balance", default: 0.0
     t.float "committed_balance", default: 0.0
-    t.boolean "admin"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -97,8 +96,8 @@ ActiveRecord::Schema.define(version: 2020_06_30_153034) do
   add_foreign_key "campaigns", "projects"
   add_foreign_key "messages", "users", column: "user_receiver_id"
   add_foreign_key "messages", "users", column: "user_sender_id"
-  add_foreign_key "projects", "users", column: "users_id"
-  add_foreign_key "shareholders", "campaigns", column: "campaigns_id"
-  add_foreign_key "shareholders", "users", column: "users_id"
-  add_foreign_key "transactions", "users", column: "users_id"
+  add_foreign_key "projects", "users"
+  add_foreign_key "shareholders", "campaigns"
+  add_foreign_key "shareholders", "users"
+  add_foreign_key "transactions", "users"
 end
