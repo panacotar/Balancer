@@ -1,8 +1,8 @@
 class CampaignsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[show index]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @campaigns = Campaign.all
+    @campaigns = policy_scope(Campaign)
   end
 
   def show
@@ -12,16 +12,24 @@ class CampaignsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @campaign = Campaign.new
+    @project.user = current_user
+    authorize @campaign
+
   end
 
   def create
     @campaign = Campaign.new(campaign_params)
-
+    authorize @campaign
     @project = Project.find(params[:project_id])
     @campaign.project = @project
-    @campaign.save
-    redirect_to project_path(@project)
+    if @campaign.save
+     redirect_to project_path(@project)
+    else
+      render :new
+    end
   end
+
+
 
   private
 
