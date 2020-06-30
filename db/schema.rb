@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_122346) do
+ActiveRecord::Schema.define(version: 2020_06_30_153034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,9 @@ ActiveRecord::Schema.define(version: 2020_06_30_122346) do
   end
 
   create_table "shareholders", force: :cascade do |t|
-    t.integer "amount"
-    t.float "percentage"
-    t.boolean "status"
+    t.float "amount", default: 0.0
+    t.integer "percentage"
+    t.string "status"
     t.bigint "users_id", null: false
     t.bigint "campaigns_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -87,14 +87,16 @@ ActiveRecord::Schema.define(version: 2020_06_30_122346) do
     t.string "gender"
     t.string "phone_number"
     t.boolean "status"
-    t.integer "balance"
-    t.integer "committed_balance"
+    t.float "balance", default: 0.0
+    t.float "committed_balance", default: 0.0
     t.boolean "admin"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "campaigns", "projects"
+  add_foreign_key "messages", "users", column: "user_receiver_id"
+  add_foreign_key "messages", "users", column: "user_sender_id"
   add_foreign_key "projects", "users", column: "users_id"
   add_foreign_key "shareholders", "campaigns", column: "campaigns_id"
   add_foreign_key "shareholders", "users", column: "users_id"
