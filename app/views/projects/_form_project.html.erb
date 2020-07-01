@@ -1,28 +1,31 @@
 
 <%= simple_form_for project do |f| %>
-  <%= f.input :project_name %>
+  <%= f.input :project_name, input_html: { value: "-" } %>
   <%= f.input :category, :collection => [
-    'Arts & crafts', 
-    'Beauty and fragrances', 
-    'Books and magazines', 
-    'Clothing, accessories', 
-    'Computers, accessories', 
-    'Education', 
-    'Entertainment and media', 
-    'Food retail and service', 
-    'Sports and outdoors', 
+    '-',
+    'Arts & crafts',
+    'Beauty and fragrances',
+    'Books and magazines',
+    'Clothing, accessories',
+    'Computers, accessories',
+    'Education',
+    'Entertainment and media',
+    'Food retail and service',
+    'Sports and outdoors',
     'Travel',
-    'Services', 
+    'Services',
     'Others'
-  ] %>
-  <%= f.input :vision %>
-  <%= f.input :pitch %>
-  <%= f.input :target %>
+  ], default: "Others" %>
+  <%= f.input :vision, input_html: { value: "-" } %>
+  <%= f.input :pitch, input_html: { value: "-" } %>
+  <%= f.input :target, input_html: { value: "-" } %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
   <%= f.button :submit, "Save Progress", id: "save" %>
 <% end %>
 
+
+<!-- input_html: {value: f.object.quantity || '1'} -->
 <!-- # t.string "project_name"
 #     t.string "category"
 #     t.text "vision"
