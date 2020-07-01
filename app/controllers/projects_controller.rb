@@ -22,7 +22,6 @@ class ProjectsController < ApplicationController
       redirect_to project_path(@project)
     else
       render :new
-      raise
     end
   end
 
