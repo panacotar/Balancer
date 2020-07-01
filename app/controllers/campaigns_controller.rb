@@ -12,15 +12,16 @@ class CampaignsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @campaign = Campaign.new
+    @campaign.project = @project
     authorize @campaign
 
   end
 
   def create
     @campaign = Campaign.new(campaign_params)
-    authorize @campaign
     @project = Project.find(params[:project_id])
     @campaign.project = @project
+    authorize @campaign
     if @campaign.save
      redirect_to project_path(@project)
     else

@@ -5,9 +5,8 @@ class CampaignPolicy < ApplicationPolicy
     end
   end
 
-
   def create?
-    if record.user == user # fix after table campaig
+    if record.project.user == user # fix after table campaig
       return true
     end
   end
