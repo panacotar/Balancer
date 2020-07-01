@@ -1,7 +1,8 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :campaigns
-
+  has_one_attached :photo
+  
   validates :project_name, presence: true
   validates :category, presence: true
   validates :vision, presence: true
