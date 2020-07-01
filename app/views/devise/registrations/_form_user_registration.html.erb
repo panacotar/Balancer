@@ -20,30 +20,9 @@
     <%= f.input :gender, collection: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender others] %>
     <%= f.input :phone_number %>
     <%= f.input :photo, as: :file  %>
-
-
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, "Sign up" %>
   </div>
 <% end %>
-
-
-<!-- t.string "email", default: "", null: false
-#     t.string "encrypted_password", default: "", null: false
-#     t.string "reset_password_token"
-#     t.datetime "reset_password_sent_at"
-#     t.datetime "remember_created_at"
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.string "first_name"
-#     t.string "last_name"
-#     t.string "address"
-#     t.datetime "date_of_birth"
-#     t.string "gender"
-#     t.string "phone_number"
-#     t.boolean "status"
-#     t.integer "balance"
-#     t.integer "committed_balance"
-#     t.boolean "admin" -->
