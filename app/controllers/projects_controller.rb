@@ -15,10 +15,14 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     authorize @project
+    params[:commit] == "Save Progress" ? @project[:status] = false : @project[:status] = true
+    @project[:user_id] = current_user.id
+
     if @project.save
-      direct_to project_show_path(@project)
+      redirect_to project_path(@project)
     else
       render :new
+      raise
     end
   end
 
@@ -44,8 +48,6 @@ class ProjectsController < ApplicationController
 
   def project_params
     p = params.require(:project).permit(:project_name, :category, :pitch, :target)
-    p[:user_id] = current_user.id; #table project should be user_id not users_id
-    p
   end
 
 end
