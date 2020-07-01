@@ -3,8 +3,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    authorize @project
     @campaign = Campaign.new
+    authorize @project
   end
 
   def new
@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     authorize @project
     if @project.save
-      redirect_to project_path(@project)
+      direct_to project_show_path(@project)
     else
       render :new
     end
@@ -24,11 +24,12 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def update
     @project = Project.find(params[:id])
-    @project.user = current_user
+    authorize @project
     @project.update(project_params)
     redirect_to project_path(@project)
   end
@@ -42,6 +43,9 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:project_name, :category, :pitch, :target)
+    p = params.require(:project).permit(:project_name, :category, :pitch, :target)
+    p[:users_id] = current_user.id; #table project should be user_id not users_id
+    p
   end
+
 end

@@ -12,7 +12,6 @@ class CampaignsController < ApplicationController
   def new
     @project = Project.find(params[:project_id])
     @campaign = Campaign.new
-    @project.user = current_user
     authorize @campaign
 
   end
@@ -35,5 +34,7 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :start_date, :end_date, :description)
+    #p[:project_id] = project.id; #table project should be user_id not users_id
+    #p
   end
 end

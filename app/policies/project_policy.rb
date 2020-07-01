@@ -10,7 +10,7 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user # only current_user can update project
+    record.users == user # only current_user can update project | should be user in the table not users
   end
 
   def destroy?
