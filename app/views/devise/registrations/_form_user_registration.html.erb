@@ -1,0 +1,49 @@
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "email" }%>
+    <%= f.input :password,
+                required: true,
+                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :password_confirmation,
+                required: true,
+                input_html: { autocomplete: "new-password" } %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :address %>
+    <%= f.input :date_of_birth, as: :string,  input_html: { class: "date-picker" } %>
+    <%= f.input :gender, collection: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender others] %>
+    <%= f.input :phone_number %>
+    <%= f.input :photo, as: :file  %>
+
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign up" %>
+  </div>
+<% end %>
+
+
+<!-- t.string "email", default: "", null: false
+#     t.string "encrypted_password", default: "", null: false
+#     t.string "reset_password_token"
+#     t.datetime "reset_password_sent_at"
+#     t.datetime "remember_created_at"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.string "first_name"
+#     t.string "last_name"
+#     t.string "address"
+#     t.datetime "date_of_birth"
+#     t.string "gender"
+#     t.string "phone_number"
+#     t.boolean "status"
+#     t.integer "balance"
+#     t.integer "committed_balance"
+#     t.boolean "admin" -->
