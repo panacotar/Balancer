@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
 
   def project_params
     p = params.require(:project).permit(:project_name, :category, :pitch, :target)
-    p[:users_id] = current_user.id; #table project should be user_id not users_id
+    p[:user_id] = current_user.id; #table project should be user_id not users_id
     p
   end
 
