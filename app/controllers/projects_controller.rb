@@ -1,24 +1,22 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
-  def index
-    @projects = Project.all
-  end
-
   def show
     @project = Project.find(params[:id])
     @campaign = Campaign.new
+    authorize @project
   end
 
   def new
     @project = Project.new
+    authorize @project
   end
 
   def create
     @project = Project.new(project_params)
-    @project.owner = current_user
+    authorize @project
     if @project.save
-      redirect_to project_path(@project)
+      direct_to project_show_path(@project)
     else
       render :new
     end
@@ -26,18 +24,28 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def update
     @project = Project.find(params[:id])
+    authorize @project
     @project.update(project_params)
-
     redirect_to project_path(@project)
   end
+
+  def destroy
+    authorize @project
+    @project.destroy
+  end
+
 
   private
 
   def project_params
-    params.require(:project).permit(:user_id, :project_name, :category, :pitch, :target, :photo)
+    p = params.require(:project).permit(:project_name, :category, :pitch, :target)
+    p[:user_id] = current_user.id; #table project should be user_id not users_id
+    p
   end
+
 end
