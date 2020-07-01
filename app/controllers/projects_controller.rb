@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
     authorize @project
     params[:commit] == "Save Progress" ? @project[:status] = false : @project[:status] = true
     @project[:user_id] = current_user.id
-  
+
     if @project.save
       redirect_to project_path(@project)
     else
@@ -42,11 +42,9 @@ class ProjectsController < ApplicationController
     @project.destroy
   end
 
-
   private
 
   def project_params
     params.require(:project).permit(:project_name, :category, :pitch, :vision, :target, :photo)
   end
-
 end

@@ -1,8 +1,7 @@
 
 <%= simple_form_for project do |f| %>
-  <%= f.input :project_name, input_html: { value: "-" } %>
+  <%= f.input :project_name %>
   <%= f.input :category, :collection => [
-    '-',
     'Arts & crafts',
     'Beauty and fragrances',
     'Books and magazines',
@@ -15,20 +14,11 @@
     'Travel',
     'Services',
     'Others'
-  ], default: "Others" %>
-  <%= f.input :vision, input_html: { value: "-" } %>
-  <%= f.input :pitch, input_html: { value: "-" } %>
-  <%= f.input :target, input_html: { value: "-" } %>
+  ] %>
+  <%= f.input :vision %>
+  <%= f.input :pitch %>
+  <%= f.input :target %>
   <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
   <%= f.button :submit, "Save Progress", id: "save" %>
 <% end %>
-
-
-<!-- input_html: {value: f.object.quantity || '1'} -->
-<!-- # t.string "project_name"
-#     t.string "category"
-#     t.text "vision"
-#     t.text "pitch"
-#     t.string "target"
-#     t.boolean "status" -->

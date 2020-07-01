@@ -2,19 +2,17 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :campaigns
   has_one_attached :photo
-  
+
   validates :project_name, presence: true
-  validates :category, presence: true
-  validates :vision, presence: true
-  validates :pitch, presence: true
-  validates :target, presence: true
 
+  with_options if: :active? do
+    validates :category, presence: true
+    validates :vision, presence: true
+    validates :pitch, presence: true
+    validates :target, presence: true
+  end
+
+  def active?
+    status
+  end
 end
-
-
-# t.string "project_name"
-#     t.string "category"
-#     t.text "vision"
-#     t.text "pitch"
-#     t.string "target"
-#     t.boolean "status"
