@@ -1,10 +1,55 @@
-.wraper-carousel-campaign {
-  background-size: cover;
-  background-position: center;
-  max-height: 500px;
+
+
+.carousel-container {
+  height: 65vh;
 }
 
-.wraper-campaign-card {
-  display: flex-inline;
-  background-position: center
+// title
+.container-campaign {
+  background-position: center;
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
+
+.title-campaign {
+  background-color: white;
+  color: #216869;
+  text-align: center;
+}
+  // card
+
+.wraper-campaign-card {
+  background-color: white;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 16px;
+  color: black;
+}
+
+.campaign-card {
+  color:black;
+}
+
+.card-title {
+  color: #216869;
+}
+
+.card-text {
+ color:black;
+ text-align: left;
+}
+
+h1 {
+  color: #216869;
+  margin-bottom: 5px;
+  margin-top: 15px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+

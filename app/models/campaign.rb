@@ -1,6 +1,7 @@
 class Campaign < ApplicationRecord
   belongs_to :project
   has_many :shareholders
+  has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
 
