@@ -1,12 +1,13 @@
 class CampaignPolicy < ApplicationPolicy
   class Scope < Scope
+
     def resolve
       scope.all
     end
   end
 
   def create?
-    if record.project.user == user # fix after table campaig
+    if record.project.user == user 
       return true
     end
   end

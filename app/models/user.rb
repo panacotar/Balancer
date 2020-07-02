@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :photo
   has_many :projects
   has_many :shareholders
   has_many :transactions
@@ -15,7 +16,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
   validates :address, presence: true
-  validates :gender, presence: true
   validates :phone_number, presence: true
 
   validates :first_name, length: { minimum: 2 }

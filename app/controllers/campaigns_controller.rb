@@ -14,7 +14,6 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.new
     @campaign.project = @project
     authorize @campaign
-
   end
 
   def create
@@ -23,18 +22,16 @@ class CampaignsController < ApplicationController
     @campaign.project = @project
     authorize @campaign
     if @campaign.save
-     redirect_to project_path(@project)
+    redirect_to project_path(@project)
     else
       render :new
     end
   end
 
-
-
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name, :start_date, :end_date, :description)
+    params.require(:campaign).permit(:name, :start_date, :end_date, :description, :amount, :percentage)
     #p[:project_id] = project.id; #table project should be user_id not users_id
     #p
   end

@@ -1,0 +1,11 @@
+  <%= simple_form_for [@project, @campaign] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :start_date %>
+    <%= f.input :end_date %>
+    <%= f.input :amount %>
+    <%= f.input :percentage %>
+    <%= f.submit %>
+  <% end %>
+

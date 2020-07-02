@@ -1,4 +1,5 @@
 <br>
+
 <div class="wrapper project-show-container">
 
   <div class="wrapper d-flex align-items-stretch">
@@ -88,3 +89,11 @@
 </div>    
 
   
+
+<%= @project.project_name %>
+
+<% if @project.photo.attached? %>
+  <%= cl_image_tag @project.photo.key,
+        width: 400, height: 300, crop: :fill  %>
+<% end %>
+
