@@ -33,16 +33,17 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
+
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
 
   flatpickr(".date-picker", {
-    altInput: true,
-    time_24hr: true,
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-    minDate: `${year}-${month}-${day + 1}`
+     altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d"
   });
+
+});
 

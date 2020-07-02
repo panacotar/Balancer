@@ -1,8 +1,24 @@
- 
+
 <%= simple_form_for project do |f| %>
   <%= f.input :project_name %>
-  <%= f.input :category %>
+  <%= f.input :category, :collection => [
+    'Arts & crafts',
+    'Beauty and fragrances',
+    'Books and magazines',
+    'Clothing, accessories',
+    'Computers, accessories',
+    'Education',
+    'Entertainment and media',
+    'Food retail and service',
+    'Sports and outdoors',
+    'Travel',
+    'Services',
+    'Others'
+  ] %>
+  <%= f.input :vision %>
   <%= f.input :pitch %>
   <%= f.input :target %>
+  <%= f.input :photo, as: :file %>
   <%= f.button :submit %>
+  <%= f.button :submit, "Save Progress", id: "save" %>
 <% end %>
