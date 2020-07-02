@@ -36,6 +36,7 @@ document.addEventListener('turbolinks:load', () => {
 
   initUpdateNavbarOnScroll();
 
+
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;

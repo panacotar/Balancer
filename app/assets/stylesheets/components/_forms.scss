@@ -1,3 +1,72 @@
-.form-inputs {
-  width: 500px;
+.form-background{
+  background-image: linear-gradient(to top, rgba(248,213,58, 0.1), rgba(255, 111, 89, 0.2));
+  width: 100%;
+  background-size: cover;
+
+}
+
+
+#form-container {
+  flex: 1;
+  margin-top: 100px;
+  margin-bottom: 100px;
+
+  a {
+    font-size: 12px;
+    text-decoration: none;
+    color: #0F2E2F;
+    &:hover{
+      color: $bgreen;
+    }
+  }
+}
+
+
+.login-form, .sign-up-form {
+  background: $bwhite;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 20px 40px;
+  margin-right: 0px;
+  border-radius: 4px;
+
+  h2 {
+    font-size: 25px;
+    margin-bottom: 30px;
+    text-align: center;
+    color:$bgreen;
+  }
+
+  h3, p {
+    font-size: 15px;
+    color:$bgreen;
+  }
+
+
+
+  .form-btn {
+
+    font-size: 15px;
+    font-weight: light-bold;
+    background-color: $bgreen;
+    border-radius: 8px;
+    padding: 10px 30px;
+    color: $bwhite;
+    border-style: none;
+    width: 100%;
+    margin-bottom: 20px;
+
+      &:hover{
+    background-color: $bwhite;
+    color: $bgreen;
+    }
+  }
+}
+
+.form-actions {
+  text-decoration: none;
+  padding-top: 10px;
+}
+
+.sign-up-form {
+  width: 450px;
 }
