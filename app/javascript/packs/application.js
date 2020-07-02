@@ -48,6 +48,13 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d"
   });
 
+  flatpickr(".campaign-date-picker", {
+    altInput: true,
+    time_24hr: true,
+    dateFormat: "Y-m-d H:i",
+    minDate: `${year}-${month}-${day + 1}`
+  });
+
 });
 
 (function($) {

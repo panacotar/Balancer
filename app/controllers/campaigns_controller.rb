@@ -31,7 +31,7 @@ class CampaignsController < ApplicationController
   private
 
   def campaign_params
-    params.require(:campaign).permit(:name, :start_date, :end_date, :description, :amount, :percentage)
+    params.require(:campaign).permit(:name, :start_date, :end_date, :description, :amount, :percentage, :photo)
     #p[:project_id] = project.id; #table project should be user_id not users_id
     #p
   end

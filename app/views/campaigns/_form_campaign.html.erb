@@ -2,8 +2,8 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
-    <%= f.input :start_date %>
-    <%= f.input :end_date %>
+    <%= f.input :start_date, as: :string, input_html: { class: "campaign-date-picker" } %>
+    <%= f.input :end_date, as: :string, input_html: { class: "campaign-date-picker" } %>
     <%= f.input :amount %>
     <%= f.input :percentage %>
     <%= f.submit %>
