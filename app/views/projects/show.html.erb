@@ -1,8 +1,99 @@
-<h1>PROJECT SHOW PAGE</h1>
 <br>
+
+<div class="wrapper project-show-container">
+
+  <div class="wrapper d-flex align-items-stretch">
+        <nav id="sidebar">
+          <div class="p-4 pt-5" style="padding-top: 3rem !important;">
+            <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<%= image_path 'Blogo.png' %>');"></a>
+            <ul class="list-unstyled components mb-5">
+              <li class="active">
+                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
+                <ul class="collapse list-unstyled" id="homeSubmenu">
+                  <li>
+                      <%= link_to "Your Profile", dashboard_path %>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                  <%= link_to "Guidelines", about_path %>
+              </li>
+              <li>
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Project</a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                  <li>
+                      <%= link_to "Add Project", new_project_path %>
+                  </li>
+                  <li>
+                    <% if policy(Project).create? %>
+                      <%= link_to "Edit Your Project", edit_project_path %>
+                    <% end %>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <%= link_to "Campaign", campaigns_path %>
+              </li>
+              <li>
+                <a href="#">Get in Touch</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+          <!-- Page Content  -->
+        <div id="content" class="p-4 p-md-5">
+        <div id="project-name">
+            <h1 class="mb-4" style="text-align:center;margin-top:-40px;"> <%= @project.project_name %> </h1>
+          </div>
+        <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+              <button type="button" id="sidebarCollapse" class="btn btn-primary">
+                <i class="fa fa-bars"></i>
+                <span class="sr-only">Toggle Menu</span>
+              </button>
+              <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="fa fa-bars"></i>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="#category">Category</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#vision">Vision</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#pitch">Pitch</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="#target">Target</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <img src="https://images.unsplash.com/photo-1519735777090-ec97162dc266?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2015&q=80" alt="Italian Trulli" style="height:500px;width:1100px;">
+          <h3><a id="category">Category</a></h3>
+          <p><%= @project.category %></p>
+          <h3><a id="vision">Vision</a></h3>
+          <p><%= @project.vision %></p>
+          <h3><a id="pitch">Pitch</a></h3>
+          <p><%= @project.pitch %></p>
+          <h3><a id="target">Target</a></h3>
+          <p><%= @project.target %></p>
+        </div>
+      </div>
+</div>    
+
+  
+
 <%= @project.project_name %>
 
 <% if @project.photo.attached? %>
   <%= cl_image_tag @project.photo.key,
         width: 400, height: 300, crop: :fill  %>
 <% end %>
+
