@@ -1,12 +1,44 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
+  transition: 0.5s background-color ease;
+}
+
+.navbar-lewagon-yellow {
+  background-color: #0F2E2F;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+  text-align: left;
+  color: #FAFFFE;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #FAFFFE;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+}
+
+.navbar-nav {
+  float: left;
+}
+
+.btn-nav .nav-item li {
+
+  background-color: $bwhite;
+  border-radius: 5px;
+  padding: 0;
+  color: $bgreen;
+  border-style: none;
+
+  &:hover{
+    background-color: $bgreen;
+    color: $bwhite;
+  }
+
 }
