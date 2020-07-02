@@ -1,18 +1,21 @@
 
-  <!-- caroussel -->
-  <div class="container" style="">
     <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://source.unsplash.com/featured/?{company},{startup}" class="d-block w-100" alt="...">
+        <div class="carousel-item active" style="height: 65vh">
+          <!-- <div class="slide-style"> -->
+            <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="First slide">
+          <!-- </div> -->
         </div>
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/featured/?{company},{startup}" class="d-block w-100" alt="...">
+        <div class="carousel-item" style="height: 65vh">
+          <!-- <div class="slide-style"> -->
+          <img src="https://images.unsplash.com/photo-1570078356630-8805f28164b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="Second slide">
+         <!-- </div> -->
         </div>
-        <div class="carousel-item">
-          <img src="https://source.unsplash.com/featured/?{company},{startup}" class="d-block w-100" alt="...">
+        <div class="carousel-item" style="height: 65vh">
+        <!-- <div class="slide-style"> -->
+          <img src="https://images.unsplash.com/photo-1550684848-86a5d8727436?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="Third slide">
+        <!-- </div> -->
         </div>
-      </div>
       <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -25,38 +28,48 @@
   </div>
 
 
-  <!-- cards -->
+  <!-- Title -->
 
-  <div class="container-fluid mt-5 mb-5">
-    <h1 class="row justify-content-center">Investment Opportunities</h1>
+  <div class="container-campaing">
+   <h1 class="title-campaign justify-content-center">Make a difference</h1>
+   <h2>choose impact investments</h2>
   </div>
 
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-xs-12 col-sm-6 col-lg-10">
-        <div class='row-campaign'>
-          <% @campaigns.each do |campaign| %>
-            <div class='container'>
-              <div class="card">
-                <div class="photo">
-                <!-- <img src="assets/logo.png" alt=""> -->
-                <%#= cl_image_tag project.photo.key %>
-                </div>
-                  <h2 class="row justify-content-center"><%= campaign.name %></h2>
-                  <p><strong><%= campaign.description %></strong></p>
-                  <p>Start:<strong><%= campaign.start_date %></strong></p>
-                  <p>End:<strong><%= campaign.end_date %></strong></p>
-                  <p>Equity:<strong><%= campaign.percentage %></strong></p>
-                  <p>Investment goal:<strong><%= campaign.amount %></strong></p>
-                </div>
-                <!--  <a href="#" class="btn btn-flat">Edit</a> -->
-                 <%#= link_to "", edit_office_booking_path(booking.office.id, booking) %>
-                 </div>
-              </div>
-            </div>
-        <% end %>
+  <!-- cards -->
+
+  <div class="wraper-campaign-card">
+    <% @campaigns.each do |campaign| %>
+    <div class="campaign-card">
+      <div class="card" style="width: 18rem;">
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+          <div class="card-body">
+            <% if campaign.photo.attached? %>
+            <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+            <% end %>
+            <h5 class="card-title"><%=campaign.name %></h5>
+            <p class="card-text"><%= campaign.description %></p>
+            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+            <p class="card-text">Equity  <strong><%= campaign.percentage %>%</strong></p>
+            <a href="/projects/<%= campaign.project.id %>" class="btn btn-primary">Project</a>
+          </div>
+        </div>
       </div>
-    </div>
+    <% end %>
+  </div>
+
+
+
+
+
+
+
+
+    <!-- <div class="row justify-content">
+      <div class="col-xs-12 col-sm-6 col-lg-10">
+        <div class='row-campaign'> -->
+
+
 
 
 
