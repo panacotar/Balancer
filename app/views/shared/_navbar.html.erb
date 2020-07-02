@@ -11,25 +11,20 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <li class="nav-item">
+        <li class="nav-item active">
           <%= link_to "Projects", campaigns_path, class: "nav-link" %>
         </li>
-        <li id="nav-btn" class="nav-item">
+        <li id="nav-btn" class="nav-item active">
           <%= link_to "Start now", about_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
-
-          <%= image_tag "avatar_balancer.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "avatar_balancer.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
-            <% unless current_user.photo.attached? %>
-             <%= image_tag image_path "avatar_balancer.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-           <% else %>
-             <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-           <% end %>
-
-            <%= link_to "[user.name]'s Profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to " #{current_user.first_name.capitalize}'s Profile", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Add Project", new_project_path, class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
