@@ -10,6 +10,7 @@
 </div>
 
 <br>
+<h2 class="cards-header">Amazing campaigns</h2>
 <div id="home-cards-container" class="container">
   <div class="cards">
     <% @campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
