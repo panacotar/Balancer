@@ -18,24 +18,30 @@
 
 #campaign-card-info p{
 	display: flex;
-	color: #ff6f59;
+	color: black;
+	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
 	margin-left: 120px;
 	margin-bottom: 10px;
 	font-size: 18px;
+	margin-right: 320px;
 	
 }
 
+
+
 #campaign-card-info span {
 	margin-left: 120px;
-	color: #ff6f59;
+	color: black;
+	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+	margin-top: 10px;
 	margin-bottom: 20px;
 }
 
 #campaign-card-money-info p{
 	display: block;
-	color: #ff6f59;
-
-	margin-left: 200px;
+	color: black;
+	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
+	margin-left: -300px;
 	margin-bottom: 10px;
 	font-size: 17px;
 	
@@ -44,7 +50,7 @@
 #campaign-card-money-info h6 {
 	display: block;
 	color: $bwhite;
-	margin-left: 200px;
+	margin-left: -300px;
 	margin-bottom: 10px;
 	height: 20px;
 	justify-content: center;
@@ -109,7 +115,7 @@
 		    &:hover{
 					color: rgba(255,255,255,.8);
 					font-weight: bold;
-					font-size: 20px;
+					font-size: 18px;
 					transition: 0.3s;
 		    }
     	}
@@ -187,6 +193,14 @@ a[data-toggle="collapse"] {
 }
 
 #wraper-project h3 {
+	color: #ff6f59;
+	font-weight: 600;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
+}
+
+#wraper-project h2{
 	color: #ff6f59;
 	font-weight: 600;
 	margin-top: 30px;
