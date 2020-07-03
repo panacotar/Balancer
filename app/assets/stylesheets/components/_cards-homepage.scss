@@ -1,3 +1,4 @@
+
 .cards {
   display: flex;
   justify-content: space-between;
@@ -50,4 +51,8 @@
     color: $bgreen;
     text-decoration: none;
   }
+}
+
+.carousel-control-prev .sr-only {
+  color: $bgreen;
 }
