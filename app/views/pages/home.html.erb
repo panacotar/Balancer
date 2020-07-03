@@ -12,22 +12,22 @@
 <br>
 <div id="home-cards-container" class="container">
   <div class="cards">
-    <div class="card">
-      <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
-      <h4>Project 1</h4>
-      <p>Category</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/Y3LGWCsrgmg/1600x900" alt="">
-      <h4>Project 2</h4>
-      <p>Category</p>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/eBmyH7oO5wY/1600x900" alt="">
-      <h4>Project 3</h4>
-      <p>Category</p>
-    </div>
-  </div>
+    <% @campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
+      <div class="card" style="width: 18rem;">
+        <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
+          <div class="card-body">
+            <% if campaign.photo.attached? %>
+            <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+            <% end %>
+            <h5 class="card-title"><%=campaign.name %></h5>
+            <p class="card-text"><%= campaign.description %></p>
+            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+            <a href="/projects/<%= campaign.project.id %>" class="card-btn"> See Campaign </a>
+          </div>
+        </div>
+        <% end %>
+      </div>
 </div>
 <br>
 <div class="jumbotron jumbotron-fluid">
