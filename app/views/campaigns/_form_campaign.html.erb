@@ -1,11 +1,11 @@
-  <%= simple_form_for [@project, @campaign] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :photo, as: :file %>
-    <%= f.input :start_date, as: :string, input_html: { class: "campaign-date-picker" } %>
-    <%= f.input :end_date, as: :string, input_html: { class: "campaign-date-picker" } %>
-    <%= f.input :amount %>
-    <%= f.input :percentage %>
-    <%= f.submit %>
-  <% end %>
 
+<%= simple_form_for [@project, @campaign] do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :start_date, as: :string, input_html: { class: "campaign-date-picker" } %>
+  <%= f.input :end_date, as: :string, input_html: { class: "campaign-date-picker" } %>
+  <%= f.input :amount %>
+  <%= f.input :percentage %>
+  <%= f.button :submit, class: "form-btn" %>
+<% end %>
