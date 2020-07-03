@@ -1,5 +1,4 @@
 
-
 .carousel-container {
   height: 65vh;
 }
@@ -25,10 +24,84 @@
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-gap: 8px;
   color: black;
+  margin-bottom: 50px;
+}
+//
+.campaign-card {
+  color: black;
+  height: 100%;
 }
 
-.campaign-card {
-  color:black;
+//
+.card-body {
+  padding: 0;
+}
+
+//
+.campaign-info {
+  border: 1px solid lightgray;
+  padding: 10px;
+}
+
+//
+
+
+//
+.project-title {
+  margin-top: 15px;
+}
+
+//
+.description {
+  margin-bottom: 10px;
+}
+
+//
+.campaign-end-date {
+  margin: 20px 0;
+  border: 1px solid lightgray;
+  padding: 21px;
+}
+
+//
+.end-date-text {
+  text-align: center;
+}
+
+//
+.investment-info {
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+//
+.campaign-equity {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid lightgray;
+}
+
+//
+.campaign-btn {
+  border: 1px solid lightgray;
+}
+
+//
+.campaign-investment {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+//
+.card {
+  height: 100%;
 }
 
 .card-title {
@@ -38,6 +111,10 @@
 .card-text {
  color:black;
  text-align: left;
+}
+
+.card-img-top{
+  height: 25vh;
 }
 
 h1 {

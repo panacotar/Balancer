@@ -38,41 +38,39 @@
   </div>
 
   <!-- cards -->
-
   <div class="wraper-campaign-card">
     <% @campaigns.each do |campaign| %>
+
     <div class="campaign-card">
-      <div class="card" style="width: 18rem;">
-        <!-- <img src="..." class="card-img-top" alt="..."> -->
-          <div class="card-body">
-            <% if campaign.photo.attached? %>
-            <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
-            <% end %>
-            <h5 class="card-title"><%=campaign.name %></h5>
-            <p class="card-text"><%= campaign.description %></p>
-            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
-            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
-            <p class="card-text">Equity  <strong><%= campaign.percentage %>%</strong></p>
-            <a href="/projects/<%= campaign.project.id %>" class="btn btn-primary">Project</a>
-          </div>
-        </div>
+    <div class="card" style="width: 18rem;">
+
+      <div class="card-img">
+        <% if campaign.project.photo.attached? %>
+          <%=cl_image_tag campaign.project.photo.key, class: 'card-img-top', crop: :scale, :radius => 10 %>
+        <% end %>
       </div>
+      <div class="card-body">
+        <div class="campaign-info">
+          <h5 class="project-title"><%=campaign.name %></h5>
+          <p class="description card-text"> <%= campaign.description %> </p>
+        </div>
+        <div class="campaign-end-date">
+          <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
+        </div>
+        <div class="investment-info">
+          <div class="campaign-equity">
+            <p class="card-text"><b>Equity</b></p>
+            <p class="card-text"><%= campaign.percentage %>%</p>
+          </div>
+          <div class="campaign-investment">
+            <p class="card-text"><b>Investment</b></p>
+            <p class="card-text"><%= campaign.amount %>€</p>
+          </div>
+
+        </div>
+        <a href="/projects/<%= campaign.project.id %>" class="btn btn-primary campaign-btn">Project</a>
+      </div>
+    </div>
+  </div>
     <% end %>
   </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-    <!-- <div class="row justify-content">
-      <div class="col-xs-12 col-sm-6 col-lg-10">
-        <div class='row-campaign'> -->
-
-
-
-
-
