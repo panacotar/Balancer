@@ -7,7 +7,7 @@
 #campaign-main-card{
 	/*border: 5px solid black;*/
 	height: 250px;
-	width: 1200px;
+	width: 1000px;
 	margin-left: 10px;
 }
 
@@ -20,17 +20,17 @@
 	display: flex;
 	color: black;
 	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-left: 120px;
+	margin-left: 200px;
 	margin-bottom: 10px;
 	font-size: 18px;
-	margin-right: 320px;
+	margin-right: 200px;
 	
 }
 
 
 
 #campaign-card-info span {
-	margin-left: 120px;
+	margin-left: 200px;
 	color: black;
 	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
 	margin-top: 10px;
@@ -41,7 +41,7 @@
 	display: block;
 	color: black;
 	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-left: -300px;
+	margin-left: 0px;
 	margin-bottom: 10px;
 	font-size: 17px;
 	
@@ -50,7 +50,7 @@
 #campaign-card-money-info h6 {
 	display: block;
 	color: $bwhite;
-	margin-left: -300px;
+	margin-left: 0px;
 	margin-bottom: 10px;
 	height: 20px;
 	justify-content: center;
