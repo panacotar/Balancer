@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: transparent;
   transition: 0.5s background-color ease;
+  padding: 15px;
 }
 
 .navbar-lewagon-yellow {
@@ -19,26 +20,37 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
+  font-size: 18px;
+  padding: 10px;
+  margin-right: 30px;
   color: #FAFFFE;
   text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
   text-shadow: horizontal-offset vertical-offset blur color;
+    &:hover{
+      color: #FBEFB1;
+    }
 }
 
 .navbar-nav {
   float: left;
 }
 
-#nav-btn {
-
+.nav-btn {
+  color: $bblack;
   background-color: $bwhite;
-  border-radius: 5px;
-  padding: 0px;
-  color: $bgreen;
+  border-radius: 2px;
+  padding: 15px;
   border-style: none;
+  margin-right: 30px;
 
   &:hover{
-    background-color: $bgreen;
-    color: $bwhite;
+    background-color:rgba(251, 252, 251, 0.9);
+    text-decoration: none;
+    color: #FF6347;
   }
-
 }
+
+#nav-btn-box {
+  margin-top: 10px;
+}
+
