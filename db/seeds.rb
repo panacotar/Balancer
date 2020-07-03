@@ -82,7 +82,10 @@ projects_arr.each do |project|
                   start_date: Faker::Date.backward(days: 2),
                   end_date: Faker::Date.forward(days: 28),
                   description: Faker::Lorem.paragraph(sentence_count: 2),
-                  project: project)
+                  project: project,
+                  percentage: Faker::Number.between(from: 1, to: 10),
+                  amount: Faker::Number.number(digits: 6))
+
   puts "Creating campaign: #{campaign.name}"
   campaign.save
 end
