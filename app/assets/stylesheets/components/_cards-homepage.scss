@@ -25,12 +25,29 @@
   height: 150px;
 }
 
-.card h4{
+.card h4,h5{
   font-size: 16px;
-  margin: 21px 0;
 }
 
 .card p {
   opacity: .6;
   font-size: 12px;
+}
+
+.card .card-btn {
+  font-size: 8px;
+  font-weight: light-bold;
+  background-color: $bgreen;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: $bwhite;
+  border-style: none;
+  width: 100%;
+  margin-bottom: 20px;
+
+    &:hover{
+    background-color: $bwhite;
+    color: $bgreen;
+    text-decoration: none;
+  }
 }
