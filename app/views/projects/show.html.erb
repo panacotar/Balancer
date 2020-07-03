@@ -11,7 +11,9 @@
                 <div id="campaign-main-card">
                   <div class="container d-flex">
                     <div id="campaign-photo">
-                      <%= cl_image_tag @project.photo.key, width: 200, height: 200, crop: :fill, :radius => 20  %> <!-- Change to campaign photo-->
+                      <% if @project.campaigns != [] %>
+                      <%= cl_image_tag @project.campaigns.last.photo.key, width: 200, height: 200, crop: :fill, :radius => 20  %> <!-- Change to campaign photo-->
+                    <% end %>
                     </div>
                     <div id="campaign-card-info">
                       <p><strong>Profile</strong></p> <!-- Change to campaign name-->
@@ -30,15 +32,15 @@
                       <p>22/11/2020</p>
                       <h6><%= link_to "Start Investing", new_project_path %></h6>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
-        </div>  
-      </div>    
-    </div>      
-  </div>        
+        </div>
+      </div>
+    </div>
+  </div>
   <div id="wraper-side-bar">
     <nav id="sidebar">
       <div class="p-4 pt-5">
@@ -75,7 +77,7 @@
             </li>
         </ul>
       </div>
-    </nav> 
+    </nav>
     <div id="content" class="p-4 p-md-5">
     <!--<div id="project-name">
       <h1 class="mb-4" style="text-align:center;margin-top:-40px;"> <%= @project.project_name %> </h1>
@@ -121,9 +123,9 @@
             <% end %>
             <h3><a id="target">Target</a></h3>
             <p><%= @project.target %></p>
-          </div> 
-       </div>     
+          </div>
+       </div>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
