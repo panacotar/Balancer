@@ -4,8 +4,8 @@
         <div class="col-lg-12 md-6 sm-3">
           <% if @campaign != nil %>
           <div id="banner-campaign-content">
-            <div id="project-name">
-              <h1 class="mb-4" style="margin-top:-40px;"> <%= @campaign.name %> </h1>
+            <div id="campaign-name">
+              <h1> <%= @campaign.name.capitalize %> </h1>
             </div>
             <div class="row">
               <div class="col-lg-12 md-6 sm-3">
@@ -23,6 +23,7 @@
                       </div>
                      <p><strong>Website</strong></p>
                      <span>www.balancer.online</span>
+                     <p><strong>Funding</strong></p>
                     </div>
                     <div id="campaign-card-money-info" style= "margin-left: 45px;">
                       <p><strong>Investment goal</strong></p>
@@ -39,11 +40,12 @@
             </div>
           </div>
           <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+        </div>  
+      </div>    
+    </div>       
+  </div> 
   <!--Project Content-->
+ 
   <div id="wraper-side-bar">
     <nav id="sidebar">
       <div class="p-4 pt-5">
@@ -94,7 +96,7 @@
         <h1 class="mb-4" style="text-align:center;margin-top:-40px;"> <%= @project.project_name %> </h1>
       </div>
       <nav id="nav" class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid" style="width: 1000px">
+        <div class="container-fluid">
           <button type="button" id="sidebarCollapse" class="btn">
             <i class="fa fa-bars"></i>
               <span class="sr-only">Toggle Menu</span>

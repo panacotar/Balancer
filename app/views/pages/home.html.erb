@@ -10,24 +10,102 @@
 </div>
 
 <br>
+<h2 class="cards-header">Amazing campaigns</h2>
 <div id="home-cards-container" class="container">
-  <div class="cards">
-    <% @campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 65vh">
+          <div class="slide-style">
+          <div class="cards">
+           <% @campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
+              <div class="card" style="width: 18rem;">
+                <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
+                 <div class="card-body">
+                  <% if campaign.photo.attached? %>
+                   <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+                  <% end %>
+                  <h5 class="card-title"><%=campaign.name %></h5>
+                  <p class="card-text"><%= campaign.description %></p>
+                  <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+                  <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+                  <a href="/projects/<%= campaign.project.id %>" class="card-btn"> See Campaign </a>
+                </div>
+            </div>
+        <% end %>
+          </div>
+        </div>
+      </div>
+        <div class="carousel-item" style="height: 65vh">
+          <div class="slide-style">
+             <div class="cards">
+                <%@campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
+                  <div class="card" style="width: 18rem;">
+                  <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
+                    <div class="card-body">
+                      <% if campaign.photo.attached? %>
+                      <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+                      <% end %>
+                      <h5 class="card-title"><%=campaign.name %></h5>
+                      <p class="card-text"><%= campaign.description %></p>
+                      <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+                      <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+                      <a href="/projects/<%= campaign.project.id %>" class="card-btn"> See Campaign </a>
+                    </div>
+                  </div>
+              <% end %>
+          </div>
+         </div>
+        </div>
+        <div class="carousel-item" style="height: 65vh">
+        <div class="slide-style">
+          <div class="slide-style">
+             <div class="cards">
+                <%@campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
+                  <div class="card" style="width: 18rem;">
+                  <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
+                    <div class="card-body">
+                      <% if campaign.photo.attached? %>
+                      <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+                      <% end %>
+                      <h5 class="card-title"><%=campaign.name %></h5>
+                      <p class="card-text"><%= campaign.description %></p>
+                      <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+                      <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+                      <a href="/projects/<%= campaign.project.id %>" class="card-btn"> See Campaign </a>
+                    </div>
+                  </div>
+              <% end %>
+          </div>
+         </div>
+        </div>
+        </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+  <!-- <div class="cards">
+    <#% @campaigns.offset(rand(Campaign.count)).first(3).each do |campaign| %>
       <div class="card" style="width: 18rem;">
         <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
           <div class="card-body">
-            <% if campaign.photo.attached? %>
-            <%=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
-            <% end %>
-            <h5 class="card-title"><%=campaign.name %></h5>
-            <p class="card-text"><%= campaign.description %></p>
-            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
-            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
-            <a href="/projects/<%= campaign.project.id %>" class="card-btn"> See Campaign </a>
+            <#% if campaign.photo.attached? %>
+            <%#=cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+            <#% end %>
+            <h5 class="card-title"><%#=campaign.name %></h5>
+            <p class="card-text"><%#= campaign.description %></p>
+            <p class="card-text">End Date <strong><%#= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+            <p class="card-text">Investment Goal  <strong><%#= campaign.amount %>€</strong></p>
+            <a href="/projects/<%#= campaign.project.id %>" class="card-btn"> See Campaign </a>
           </div>
         </div>
-        <% end %>
-      </div>
+        <#% end %>
+      </div> -->
 </div>
 <br>
 <div class="jumbotron jumbotron-fluid">
