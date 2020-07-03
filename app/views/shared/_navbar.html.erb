@@ -14,6 +14,9 @@
         </li>
 
       <% if user_signed_in? %>
+        <li id="nav-btn-box" class="nav-item">
+        <%= link_to "Start Now", about_path, class: "nav-btn" %>
+        </li>
         <li class="nav-item dropdown">
               <% if current_user.photo.attached? %>
                 <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -30,10 +33,10 @@
         <li class="nav-item login">
           <%= link_to "Login", new_user_session_path, class: "nav-link" %>
         </li>
-      <% end %>
         <li id="nav-btn-box" class="nav-item">
         <%= link_to "Start Now", about_path, class: "nav-btn" %>
         </li>
+      <% end %>
       </ul>
     </div>
 </div>
