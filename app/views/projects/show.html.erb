@@ -2,7 +2,7 @@
   <div id="wraper-campaign-content">
       <div class="row">
         <div class="col-lg-12 md-6 sm-3">
-          <% if @campaign != nil %>  
+          <% if @campaign != nil %>
           <div id="banner-campaign-content">
             <div id="project-name">
               <h1 class="mb-4" style="margin-top:-40px;"> <%= @campaign.name %> </h1>
@@ -12,38 +12,38 @@
                 <div id="campaign-main-card">
                   <div class="container d-flex">
                     <div id="campaign-photo">
-                      <% if @project.photo.attached? %>            
+                      <% if @project.photo.attached? %>
                       <%= cl_image_tag @project.photo.key, width: 180, height: 180, crop: :fill, :radius => 10  %>
                       <% end %>
                     </div>
                     <div id="campaign-card-info">
-                      <div id="campaign-description"> 
+                      <div id="campaign-description">
                         <p><strong>Profile</strong></p>
                         <p><%= @campaign.description %></p>
-                      </div> 
+                      </div>
                      <p><strong>Website</strong></p>
                      <span>www.balancer.online</span>
                     </div>
-                    <div id="campaign-card-money-info" style= "margin-left: 45px;"> 
-                      <p><strong>Prentended Investment</strong></p>
+                    <div id="campaign-card-money-info" style= "margin-left: 45px;">
+                      <p><strong>Investment goal</strong></p>
                       <p>€ <%= @campaign.amount %></p>
-                      <p><strong>Equity offered</strong></p>
+                      <p><strong>Equity</strong></p>
                       <p><%= @campaign.percentage %>%</p>
-                      <p><strong>Campaign Ends:</strong></p> 
+                      <p><strong>Campaign Ends:</strong></p>
                       <p><%= @campaign.end_date.strftime("%F") %></p>
-                      <h6><%= link_to "Start Investing", new_project_path %></h6> 
+                      <h6><%= link_to "Start Investing", new_project_path %></h6>
                     </div>
-                  </div>  
+                  </div>
                 </div>
               </div>
-            </div>  
+            </div>
           </div>
           <% end %>
-        </div>  
-      </div>    
-    </div>       
-  </div> 
-  <!--Project Content-->    
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Project Content-->
   <div id="wraper-side-bar">
     <nav id="sidebar">
       <div class="p-4 pt-5">
@@ -86,9 +86,9 @@
             </ul>
           <li>
             <a href="#">Get in Touch</a>
-          </li>  
+          </li>
       </div>
-    </nav> 
+    </nav>
     <div id="content" class="p-4 p-md-5">
       <div id="project-name">
         <h1 class="mb-4" style="text-align:center;margin-top:-40px;"> <%= @project.project_name %> </h1>
@@ -118,7 +118,7 @@
               </li>
             </ul>
           </div>
-        </div>  
+        </div>
       </nav>
       <div id="wraper-project">
         <div class="container">
@@ -135,10 +135,10 @@
               <% end %>
               <h3><a id="target">Target</a></h3>
               <p><%= @project.target %></p>
-            </div> 
-         </div>     
+            </div>
+         </div>
         </div>
       </div>
-    </div>  
-  </div> 
+    </div>
+  </div>
 </div>
