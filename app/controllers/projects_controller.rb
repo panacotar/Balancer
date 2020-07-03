@@ -3,8 +3,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @campaign = Campaign.new
     authorize @project
+
+    @campaign = nil
+    if !@project.campaigns.empty?
+      @campaign = @project.campaigns.first
+    end
   end
 
   def new
