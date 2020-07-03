@@ -5,6 +5,15 @@
   min-height: 640px;
 }
 
+#banner-guidelines-content {
+  width: 100%;
+}
+
+#banner-guidelines-content h1, h3 {
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.2);
+  text-shadow: horizontal-offset vertical-offset blur color;
+}
+
 #banner-guidelines-content h1 {
   color: white;
 }
@@ -12,6 +21,12 @@
 #banner-guidelines-content h3 {
   color: white;
   font-weight: lighter;
+  margin-top: 20px;
+}
+
+#banner-guidelines-content .btn {
+  margin-top: 30px;
+  font-size: 20px;
 }
 
 #wraper-guidelines-subhead h5 {
@@ -38,4 +53,9 @@
 
 #wraper-guidelines-content h6 {
   text-align: justify;
+}
+
+.wraper-guidelines {
+  margin-bottom: 50px;
+  width: 100%;
 }
