@@ -39,35 +39,18 @@
 }
 
 //
-.campaign-info {
-  border: 1px solid lightgray;
-  padding: 10px;
-}
+
 
 //
 
 
 //
-.project-title {
-  margin-top: 15px;
-}
 
 //
-.description {
-  margin-bottom: 10px;
-}
+
 
 //
-.campaign-end-date {
-  margin: 20px 0;
-  border: 1px solid lightgray;
-  padding: 21px;
-}
 
-//
-.end-date-text {
-  text-align: center;
-}
 
 //
 .investment-info {
@@ -148,4 +131,32 @@ h2 {
 
 .container-campaing {
   margin-bottom: 40px;
+}
+
+
+.campaign-info {
+  padding: 10px 0;
+}
+
+.project-title {
+  margin-top: 15px;
+  font-size: 1.8rem;
+}
+
+.description {
+  margin: 25px 0 10px 0;
+}
+
+.campaign-end-date {
+  margin: 20px 0;
+}
+
+//
+.campaign-end-date .end-date-text {
+  font-size: 1rem;
+}
+
+.investment-info .card-text {
+  font-size: 0.9rem;
+  margin-top: 10px;
 }
