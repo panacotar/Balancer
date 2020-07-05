@@ -12,12 +12,11 @@
 
 .tracker-progress {
   height: 25px;
-  background: red;
+  background: $byellow;
   position: relative;
   margin-left: 0;
 }
 
 .tracker-progress-green {
-
-  background-color: green;
+  background-color: $bgreen;
 }
