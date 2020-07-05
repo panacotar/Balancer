@@ -1,226 +1,240 @@
-#banner-campaign-content{
-	height: 400px;
-	padding: 20px;
-	width: 90%;
-	body {
-		background-color: white !important;
-	}
+#wraper-main-showpage {
+	width: 100%;
+	min-height: 100vh; 
+}
+
+#wraper-campaign-content {
+	border-bottom: 1px solid #08836F;
+	height: fit-content;
+	padding: 80px;
+}
+
+#campaign-photo {
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+}
+
+#campaign-all-info {
+	margin-left: 50%; 
+	height: fit-content;
+}
+
+#campaign-all-info p {
+color: #08836F;
+margin-left: 15px;
+font-size: 18px;
+font-weight: 600;
+margin-bottom: -5px;
+}
+
+#campaign-name p {
+	font-size: 48px;
+	color: #201E1F;
+}
+
+#campaign-description p {
+	margin-top: -15px;
+	font-size: 24px;
+	color: #201E1F;
+	margin-bottom: 20px;
+}
+
+#campaign-icon {
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+	margin-left: 15px;
+}
+
+#campaign-icon span {
+	color: gray;
+}
+
+.fa-tags {
+	font-size: 25px;
+	color: #08836F;
+}
+
+#campaign-country {
+	margin-left: 50%; 
+	height: fit-content;
+}
+
+#campaign-country span {
+	color: gray;
+	font-weight: 600;
+}
+
+#campaign-start-date {
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+	margin-left: 0;
+	margin-top: 15px;
+}
+
+#campaign-start-date p {
+ margin-left: 15px;
+}
+
+#campaign-start-date span {
+	margin-left: 15px;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+#campaign-end-date {
+	margin-left: 50%; 
+	height: fit-content;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+#campaign-end-date p {
+	margin-left: 15px;
+}
+
+#campaign-end-date span {
+	font-size: 16px;
+	font-weight: 800;
+}
+
+#campaign-amout-pretend {
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+	margin-left: 0;
+	margin-top: 0px;
+}
+
+#campaign-amout-pretend p {
+	margin-top: 15px;
+	margin-left: 15px;
+	color: #201E1F;
+}
+
+#campaign-amout-pretend span {
+	font-size: 20px;
+	font-weight: 800;
+	margin-left: 15px;
+	margin-top: -20px;
+}
+
+#campaign-equity-offered {
+	margin-left: 50%; 
+	height: fit-content;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+#campaign-equity-offered p {
+	margin-top: 15px;
+	margin-left: 15px;
+	color: #201E1F;
+}
+
+#campaign-equity-offered span {
+	font-size: 20px;
+	font-weight: 800;
+	margin-left: 0px;
+	margin-top: -20px;
+}
+
+#button-investement {
+	width: 25%; 
+	height: fit-content; 
+	float: left;
+	margin-top: 15px;
+}
+#button-investement p {
+	border: 1px dashed #ff6f59;
+	border-radius: 5px;
+	background-color: #ff6f59;
+	color: #fafffe;
+	text-align: center;
+	padding: 10px;
+}
+
+#social-media-icons {
+	margin-left: 70%; 
+	height: fit-content;
+	margin-top: 30px;
+	margin-left: 15px;
+}
+
+#social-media-icons p {
+	margin-top: 15px;
+	margin-left: 50%;
+	color: #201E1F;
+	letter-spacing: 2px;
+}.fa-twitter-square{
+	font-size: 20px;
+	color: #08836F;
+}.fa-facebook-square {
+	font-size: 20px;
+	color: #08836F;
+}.fa-instagram-square {
+	font-size: 20px;
+	color: #08836F;
+}:hover {
+	color: #201E1F;
+}
+
+#wraper-product-main-content {
+	height: fit-content;
+	//border: 1px dashed gray
 	
 }
 
-#campaign-name h1 {
-	margin-left: 30px;
-	color: #ff6f59;
+.list-inline-item:not(:last-child) {
+	margin-right: 0.7rem;
 }
 
-#campaign-main-card{
+#tab-product-action {
+	margin-top: 50px;
 	border: 1px solid rgba(252, 252, 252, 0.4);
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
-	height: 280px;
-	width: 1000px;
-	margin-left: 10px;
-}
-
-#campaign-photo{
-	margin-top: 10px;
-	display: flex;
-}
-
-#campaign-card-info p{
-	display: flex;
-	color: black;
-	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-left: 200px;
-	margin-bottom: 10px;
-	font-size: 18px;
-	margin-right: 200px;
-	
+	width: 70%; 
+	height: fit-content; 
+	float: left;
 }
 
 
-
-#campaign-card-info span {
-	margin-left: 200px;
-	color: black;
-	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-top: 10px;
-	margin-bottom: 30px;
-}
-
-#campaign-card-money-info p{
-	display: block;
-	color: black;
-	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.1);
-	margin-left: -100px;
-	margin-bottom: 10px;
-	font-size: 17px;
-	
-}
-
-#campaign-card-money-info button{
-	border-radius: 10px;
-	background-color: white;
-	text-shadow: none
-}
-
-#campaign-card-money-info h6{
-	display: block;
-	color: #ff6f59;
-	margin-left: -100px;
-	justify-content: center;
-	padding: 3px;
+#tab-product-action a{
+	list-style: none;
 	text-decoration: none;
-
+	color: #201E1F;
+	font-size: 20px;
+	font-weight: 600;
+	
+}
+#tab-product-action a:hover{
+	color: #08836F;
+	border-bottom: 1px solid #08836F;
+	transition: ease-in, 0.2s;
 }
 
-#wraper-show-page {
-	width: 95%;
-	padding-top: 100px
-}
-
-#wraper-side-bar {
-	margin-left: 10px;
-	display: flex;
-}
-
-
-#sidebar {
+#wraper-product-info-categories-item h3{
+	margin-left: 38px;
 	margin-bottom: 30px;
-  min-width: 300px;
-	max-width: 300px;
-	margin-top: 20px;
-  margin-bottom: 30px;
-  background: #ff6f59;
-  color: #fff;
-  transition: all 0.3s;
-  border-radius: 10px;
-  &.active{
-  	margin-left: -300px;
-  }.img{
-		background-size: cover;
-		background-repeat: no-repeat;
-		background-position: center center;
-	}
-  .logo{
-  	display: block;
-  	width: 120px;
-  	height: 120px;
-  	margin: 0 auto;
-  	span{
-  		display: block;
-  	}
-  }
-  ul.components{
-  	padding: 0;
-  }
-  ul{
-    li{
-    	font-size: 16px;
-    	>ul{
-    		margin-left: 10px;
-    		li{
-					font-size: 16px;
-					text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
-    		}
-    	}
-    	a{
-    		padding: 10px 0;
-		    display: block;
-				color: rgba(255,255,255,.8);
-				text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
-		    border-bottom: 1px solid rgba(255,255,255,.5);
-		    &:hover{
-					color: rgba(255,255,255,.8);
-					font-weight: bold;
-					font-size: 18px;
-					transition: 0.3s;
-		    }
-    	}
-    	&.active{
-    		> a{
-    			background: transparent;
-    			color:  rgba(255,255,255,.8);
-    		}
-    	}
-    }
-  }
-  @include media-breakpoint-down(md){
-    margin-left: -300px;
-    &.active {
-        margin-left: 0;
-    }
-  }
+	margin-top: 30px;
+	color: #ff6f59;
 }
 
-
-a[data-toggle="collapse"] {
-    position: relative;
-}
-
-.dropdown-toggle::after {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translateY(-50%);
-}
-
-#sidebarCollapse{
-	span{
-		@include media-breakpoint-down(md){
-	    display: none;
-		}
-	}
-}
-
-#nav {
-  padding: 15px 10px;
-	background-color: #ff6f59 !important;
-	color: #fff !important;
-  border: none;
-  border-radius: 5px;
-  margin-bottom: 40px;
-	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-#nav a{
-	color: #fff;
-	font-size: 16px;
-}
-
-#nav .active a{
-	color: #fff;
-}
-
-.navbar-btn {
-  box-shadow: none;
-  outline: none !important;
-  border: none;
-}
-
-#wraper-project p{
-	color: black;
+#wraper-product-info-categories-item h6{
+	margin-left: 38px;
 	text-align: justify;
+	
+
 }
 
-#project-name h1{
-	color: #ff6f59;
-	font-weight: 800;
-	margin-bottom: 50px;
+#wraper-product-info-categories {
+	width: 70%; 
+	height: fit-content; 
+	float: left;
 }
 
-#wraper-project h3 {
-	color: #ff6f59;
-	font-weight: 600;
+#project-photo {
 	margin-top: 30px;
-	margin-bottom: 20px;
-	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
-}
-
-#wraper-project h2{
-	color: #ff6f59;
-	font-weight: 600;
-	margin-top: 30px;
-	margin-bottom: 20px;
-	text-shadow: 1px 3px 3px rgba(0, 0, 0, 0.3);
 }

@@ -42,8 +42,7 @@ projects_categories = [
   ]
 
 projects_photos_url = [
-  'https://images.unsplash.com/photo-1588119498215-e70577775a31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80',
-  'https://images.unsplash.com/photo-1561503152-fda6a4423b86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+  'https://images.unsplash.com/photo-1562157646-4303261af91e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'  'https://images.unsplash.com/photo-1561503152-fda6a4423b86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
   'https://images.unsplash.com/photo-1571063769135-f7b6b742db4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=354&q=80',
   'https://images.unsplash.com/photo-1552256028-2c58c3cbfa7a?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80',
   'https://images.unsplash.com/photo-1553921895-a1b5b2500a17?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80',

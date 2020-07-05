@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 md-6 sm-3">
+      <div id="wraper-product-main-content">
+        <div id="tab-product-action">
+          <ul id="product-action class=list-inline">
+            <li class="list-inline-item">
+              <% if @project.user == current_user %>
+              <p><%= link_to " Edit Your Project", edit_project_path %></p>
+              <% else %>
+              <p><%= link_to "Add Project", new_project_path %></p>
+            </li>
+              <% end %>
+            <li class="list-inline-item">
+              <% if @project.user == current_user %>
+              <p><%= link_to "Create a campaign", new_project_campaign_path(@project) %></p>
+              <% else %>
+              <p><%= link_to "Guidelines", about_path %></p>
+            </li>
+              <% end %>
+            <li class="list-inline-item">
+              <p><%= link_to " All Campaigns", campaigns_path %></p>
+            </li>
+            <li class="list-inline-item">
+              <% if @project.user == current_user %>
+              <p><%= link_to " Your Dashboard", dashboard_path %></p>
+              <% else %>
+              <p><%= link_to "FQA", root_path %></p>
+            </li>
+              <% end %>
+          </ul>
+        </div>
+        <div id="wraper-product-info">
+          <div id="wraper-product-info-categories">
+            <div id="wraper-product-info-categories-item">
+              <h3>PROJECT VISION</h3>
+              <h6><%= @project.vision %><h6>
+              <div id="project-photo"> 
+              <%= cl_image_tag @project.photo.key, width: 740, height: 420, crop: :fill, radius: 5  %>
+              </div>
+              <h3>PITCH</h3>
+              <h6><%= @project.pitch %><h6>
+              <h3>TARGET</h3>
+              <h6><%= @project.target %><h6>
+            </div>
+          </div>
+        </div>
+      </div>   
+    </div>   
+  </div>     
+</div>
+<div>
