@@ -1,15 +1,14 @@
 <div class="container">
   <div class="row">
-    <br><br><br>
+    <br><br><br><br>
   </div>
   <div class="row">
-    <div id="campaign-photo" class="col-lg-6 col-xl-7 col-xs-12">
+    <div id="campaign-photo" class="col-lg-6 col-xl-5 col-xs-4">
       <% if @project.photo.attached? %>
-        <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "w-100"%>
+        <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "img-thumbnail"%>
       <% end %>
     </div>
-   
-    <div id="campaign-all-info" class="col-lg-6 col-xl-5 col-xs-12">
+    <div id="campaign-all-info" class="col-lg-6 col-xl-6 col-xs-12">
       <p>Now Funding<p>
         <div id="campaign-name">
           <p><%= @campaign.name.capitalize %><p>
