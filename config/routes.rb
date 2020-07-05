@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
-  get 'about', to: 'pages#about'
+  get :about, to: 'pages#about'
   get :dashboard, to: "users#dashboard"
+  get :successfulpledge, to: 'pages#successfulpledge'
   devise_for :users
   
   resources :projects, only: %i[show new create edit update] do

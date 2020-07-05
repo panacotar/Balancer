@@ -36,6 +36,6 @@ class ShareholdersController < ApplicationController
 
     pledge.save!
 
-    redirect_to dashboard_path
+    redirect_to successfulpledge_path
   end
 end
