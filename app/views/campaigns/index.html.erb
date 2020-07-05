@@ -54,6 +54,9 @@
                 <p class="card-text"><%= campaign.amount %>€</p>
               </div>
             </div>
+            <div class="progress" data-campaigns="<%= campaign.name %>">
+              <%= render 'progress_bar' %>
+            </div>
           </div>
         <% end %>
       </div>
