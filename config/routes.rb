@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :projects, only: %i[show new create edit update] do
+    
     resources :campaigns, only: %i[new create]
+    resources :shareholders, only: %i[new create]
   end
 
   resources :campaigns, only: %i[index]
-  resources :shareholders, only: %i[create update]
   resources :transactions, only: %i[index create updated] 
 end

@@ -32,14 +32,16 @@
         </div>
         <div id="campaign-amout-pretend">
           <p>Investment Goal</p>
-          <span>€ <%= @campaign.amount %></span>
+          <span>€ <%= @campaign.amount %> (€ <%= @pledged_before %>)</span>
         </div>
         <div id="campaign-equity-offered">
           <p>Equity Offered</p>
           <span><%= @campaign.percentage %>%</span>
         </div>
         <div id="button-investement">
-          <p>BACK IT</p>
+          <button <% if !@allow_pledges %>disabled<% end %> type="button" class="btn btn-primary" data-toggle="modal" data-target="#project-pledge-modal">
+            <% if @allow_pledges %>Pledge!<% else %>Funded!<% end %>
+          </button>
         </div>
         <div id="social-media-icons">
           <p><i class="fab fa-twitter-square"></i></i>  <i class="fab fa-facebook-square"></i>  <i class="fab fa-instagram-square"></i><p>
@@ -47,3 +49,5 @@
     </div>
   </div>
 </div>
+
+<%= render "pledge_modal", project: @project, campaign: @campaign %>
