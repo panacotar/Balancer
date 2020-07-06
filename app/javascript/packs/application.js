@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("slick-carousel")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -25,16 +27,25 @@ require("channels")
 // External imports
 import "bootstrap";
 import flatpickr from "flatpickr";
+import "slick-carousel/slick/slick.scss";
+import "slick-carousel/slick/slick-theme.scss";
+import "../styles/application.scss";
+
+
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { initSlick } from '../components/carousel';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initUpdateNavbarOnScroll();
+
+  initSlick();
 
 
   const currentDate = new Date();
@@ -54,25 +65,25 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     minDate: `${year}-${month}-${day + 1}`
   });
-  
+
   (function($) {
 
     "use strict";
-  
+
     var fullHeight = function() {
-  
+
       $('.js-fullheight').css('height', $(window).height());
       $(window).resize(function(){
         $('.js-fullheight').css('height', $(window).height());
       });
-  
+
     };
     fullHeight();
-  
+
     $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
     });
-  
+
   })(jQuery);
 
 });
