@@ -55,7 +55,8 @@ document.addEventListener('turbolinks:load', () => {
   flatpickr(".date-picker", {
      altInput: true,
     altFormat: "F j, Y",
-    dateFormat: "Y-m-d"
+    dateFormat: "Y-m-d",
+    maxDate: `${year - 15}-${month}-${day + 1}`
   });
 
   flatpickr(".campaign-date-picker", {
