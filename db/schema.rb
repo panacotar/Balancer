@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_160227) do
+ActiveRecord::Schema.define(version: 2020_07_06_135912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_160227) do
     t.bigint "project_id"
     t.float "amount"
     t.integer "percentage"
+    t.integer "price_cents", default: 0, null: false
     t.index ["project_id"], name: "index_campaigns_on_project_id"
   end
 
@@ -57,6 +58,19 @@ ActiveRecord::Schema.define(version: 2020_07_01_160227) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_sender_id"
     t.integer "user_receiver_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.string "campaign_sku"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "checkout_session_id"
+    t.bigint "user_id", null: false
+    t.bigint "campaign_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["campaign_id"], name: "index_orders_on_campaign_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -120,6 +134,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_160227) do
   add_foreign_key "campaigns", "projects"
   add_foreign_key "messages", "users", column: "user_receiver_id"
   add_foreign_key "messages", "users", column: "user_sender_id"
+  add_foreign_key "orders", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "shareholders", "campaigns"
   add_foreign_key "shareholders", "users"
