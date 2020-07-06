@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <br><br><br><br>
+  </div>
+  <div class="row">
+    <div id="campaign-photo" class="col-lg-6 col-xl-5 col-xs-4">
+      <% if @project.photo.attached? %>
+        <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "img-thumbnail"%>
+      <% end %>
+    </div>
+    <div id="campaign-all-info" class="col-lg-6 col-xl-6 col-xs-12">
+      <p>Now Funding<p>
+        <div id="campaign-name">
+          <p><%= @campaign.name.capitalize %><p>
+        </div>
+        <div id="campaign-description">
+          <p><%= @campaign.description %><p>
+        </div>
+        <div id="campaign-icon">
+          <span><i class="fas fa-tags"></i> <%= @project.category %></span>
+        </div>
+        <div id="campaign-country">
+          <span><%= image_tag "PT.png", alt: "Portugal", width: 30 %></i> Lisbon-Portugal</span>
+        </div>
+        <div id="campaign-start-date">
+          <p>Campaign Start:</p>
+          <span><%= @campaign.start_date.strftime("%F") %></span>
+        </div>
+        <div id="campaign-end-date">
+          <p>Campaign Ends:</p>
+          <span><%= @campaign.end_date.strftime("%F") %></span>
+        </div>
+        <div id="campaign-amout-pretend">
+          <p>Investment Goal</p>
+          <span>€ <%= @campaign.amount %></span>
+        </div>
+        <div id="campaign-equity-offered">
+          <p>Equity Offered</p>
+          <span><%= @campaign.percentage %>%</span>
+        </div>
+        <div id="campaign-amout-funded">
+          <p>Already Funded</p>
+          <span>€ <%= @pledged_before %></span>
+        </div>
+        <div id="button-investement">
+          <button <% if !@allow_pledges %>disabled<% end %> type="button" class="btn" data-toggle="modal" data-target="#project-pledge-modal">
+            <% if @allow_pledges %>Pledge!<% else %>Funded!<% end %>
+          </button>
+        </div>
+        <div id="social-media-icons">
+          <p><i class="fab fa-twitter-square"></i></i>  <i class="fab fa-facebook-square"></i>  <i class="fab fa-instagram-square"></i><p>
+        </div>
+    </div>
+  </div>
+</div>
+
+<%= render "pledge_modal", project: @project, campaign: @campaign %>

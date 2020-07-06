@@ -5,10 +5,6 @@ class CampaignsController < ApplicationController
     @campaigns = policy_scope(Campaign)
   end
 
-  def show
-    @campaign = Campaign.find(params[:id])
-  end
-
   def new
     @project = Project.find(params[:project_id])
     @campaign = Campaign.new
