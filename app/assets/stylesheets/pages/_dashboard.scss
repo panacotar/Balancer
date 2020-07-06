@@ -1,19 +1,29 @@
 #wraper-main-dashboard {
   min-height: 100vh;
+  margin-top: 10px;
+  background-color: white;
 }
 
 #dashboard-show-info {
-  border: 1px dashed gray;
+  //border: 1px dashed gray;
 }
 
 #dashboard-show-user-info {
   border-radius: 5px;
-  background-color: #201e1f;
+  background-color: white;
   padding: 30px;
+  min-height: 110vh;
+}
+
+#info-first-name-last-name h3{
+  font-weight: 600;
+  color: #08836F
 }
 
 #dashboard-show-user-info h5{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
   text-shadow: 1px 2px 2px rgba(0,0,0,0.2);
   font-weight: 600;
   font-size: 20px;
@@ -28,6 +38,8 @@
 
 #first-name-last-name p{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
 }
 
 #first-name-last-name h6{
@@ -36,10 +48,15 @@
   font-size: 18px;
   margin-bottom: 25px;
   margin-top: 20px;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
 }
 
 #date-of-birth p{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+  
   
 }
 
@@ -47,20 +64,30 @@
   color: #fafffe;
   font-weight: 600;
   font-size: 18px;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+  margin-top: 30px;
 }
 
 #user-address p{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
 }
 
 #user-address h6{
   color: #fafffe;
   font-weight: 600;
   font-size: 18px;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+  margin-top: 30px;
 }
 
 #user-gender p{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
   
 }
 
@@ -68,16 +95,24 @@
   color: #fafffe;
   font-weight: 600;
   font-size: 18px;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+  margin-top: 30px;
 }
 
 #user-phone-number p{
   color: #fafffe;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
 }
 
 #user-phone-number h6 {
   color: #fafffe;
   font-weight: 600;
   font-size: 18px;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+  margin-top: 30px;
 }
 
 .fa-birthday-cake {
@@ -94,4 +129,13 @@
 
 .fa-phone-square-alt{
   color: #ff6f59;
+}
+
+
+#project-iteration h4{
+  font-size: 36px;
+  text-align: center;
+  margin-top: 24px;
+  font-weight: 600;
+  color: #08836F;
 }

@@ -6,8 +6,8 @@ class UsersController < ApplicationController
     authorize User
     @transactions = current_user.transactions
     @shareholders = current_user.shareholders
-    current_user.projects
     @user = current_user
+    @projects = current_user.projects
   end
 
   def show
