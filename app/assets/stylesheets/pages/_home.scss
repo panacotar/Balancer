@@ -5,14 +5,6 @@ body {
   flex-direction: column;
 }
 
-h1 {
-  color: #FAFFFE;
-
-}
-
-p {
-  color: #FAFFFE;
-}
 
 #home-banner {
   background-image: linear-gradient(to top, rgba(248,213,58, 0.2), rgba(255, 111, 89, 0.6)), asset-url('bg_buswoman.jpg');
@@ -23,6 +15,7 @@ p {
 }
 
 .catch-phrase {
+  color: #FAFFFE;
   display: block;
   margin: 200px 40px;
   width: 600px;
@@ -75,7 +68,6 @@ p {
 
 .cards {
   margin-bottom: 50px;
-  margin-top: 50px;
 
   a{
     text-decoration: none;

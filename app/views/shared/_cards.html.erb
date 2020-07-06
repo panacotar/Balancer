@@ -2,13 +2,13 @@
   <div class="cards">
     <% @campaigns.offset(rand(Campaign.count)).first(1).each do |campaign| %>
         <%= link_to project_path(campaign.project), class: "card-link" do %>
-          <div class="card">
+          <div class="card" style="width: 18rem;">
             <% if campaign.project.photo.attached? %>
-            <%=cl_image_tag campaign.project.photo.key, class: "card-img-top", :width => 250, :height => 150, crop: :fill, :gravity => "auto", :radius => 10 %>
+            <%=cl_image_tag campaign.project.photo.key, class: "card-img-top" %>
             <% end %>
            <div class="card-body">
             <div class="campaign-info">
-              <h5 class="project-title"><%=campaign.name %></h5>
+              <h5 class="card-title"><%=campaign.name %></h5>
               <p class="description card-text"> <%= campaign.description %> </p>
             </div>
             <div class="campaign-end-date">
