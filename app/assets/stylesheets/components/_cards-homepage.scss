@@ -1,58 +1,37 @@
 
 .cards {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+
+  a{
+    text-decoration: none;
+  }
 }
 
 .card {
-  width: 300px;
-  height: 400px;
-  margin-left: 40px;
   border-radius: 2px;
   box-shadow: 0 0 5px rgb(230,230,230);
   background-color: white;
   text-align: center;
-  padding: 20px;
+  padding: 30px 10px;
   border: 1px solid #ddd;
+
+  img {
+    height: 150px;
+  }
+
+  h4,h5 {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+
+  p {
+    opacity: 0.6;
+    font-size: 12px;
+ }
 
   &:hover {
     transform: scale(1.08);
     transition: 0.3s;
   }
-}
-
-.card img {
-  height: 150px;
-}
-
-.card h4,h5{
-  font-size: 16px;
-}
-
-.card p {
-  opacity: .6;
-  font-size: 12px;
-}
-
-.card .card-btn {
-  font-size: 8px;
-  font-weight: light-bold;
-  background-color: $bgreen;
-  border-radius: 8px;
-  padding: 7px 10px;
-  color: $bwhite;
-  border-style: none;
-  width: 100%;
-  margin-bottom: 20px;
-
-    &:hover{
-    background-color: $bwhite;
-    color: $bgreen;
-    text-decoration: none;
-  }
-}
-
-.carousel-control-prev .sr-only {
-  color: $bgreen;
 }
