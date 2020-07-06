@@ -8,16 +8,13 @@
             <% end %>
            <div class="card-body">
             <div class="campaign-info">
-              <h5 class="card-title"><%=campaign.name %></h5>
+              <h5 class="card-title"><%=campaign.name.capitalize %></h5>
               <p class="description card-text"> <%= campaign.description %> </p>
             </div>
             <div class="campaign-end-date">
               <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
             </div>
-              <div class="campaign-investment">
-                <p class="card-text"><b>Investment</b></p>
-                <p class="card-text"><%= campaign.amount %>€</p>
-              </div>
+              <p class="card-text"><b>Investment goal: </b> <%= campaign.amount %>€ </p>
           </div>
         <% end %>
       </div>

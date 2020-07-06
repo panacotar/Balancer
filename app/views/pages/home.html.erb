@@ -1,36 +1,25 @@
-
 <div id="home-banner">
   <div class="catch-phrase">
-    <h1>Ready to start a business?</h1>
-    <p>Balancer is funding
-    and giving voice to underrepresented
-    entrepreneurs</p>
-    <%= link_to "Start Now", about_path, class: "btn" %>
-  </div>
+    <div class="row">
+        <h1>Ready to start a business?</h1>
+        <p>Balancer is listening to the voice of underrepresented
+          entrepreneurs</p>
+        <%= link_to "Start Now", about_path, class: "btn" %>
+      </div>
+    </div>
 </div>
 
 <br>
 <h2 class="cards-header">Amazing campaigns</h2>
+<hr class="separator">
  <%= render 'shared/campaigns_carousel' %>
 
-<br>
-<div class="jumbotron jumbotron-fluid">
-  <div class="container text">
-    <h1 class="display-4 text-center">About Balancer</h1>
-      <div class="container jumbo">
-        <div class="item">
-          <p class="line-content"><i class="fas fa-arrows-alt"></i> We are <strong>a platform completely focused on giving voice to social impact projects and underrepresented entrepreneurs.</strong> </p>
-        </div>
-        <div class="item">
-          <p class="line-content"><i class="fas fa-briefcase"></i> We enable underrepresented entrepreneurs to <strong>find investors to their social impact project.</strong></p>
-        </div>
-        <div class="item">
-        <p class="line-content"><i class="far fa-building"></i> Our network includes almost <strong>3000 business centres, spanning almost 900 cities across 120 countries.</strong></p>
-        </div>
-        <div class="item">
-        <p class="line-content"><i class="fas fa-globe"></i> We were founded in Portugal and Romenia in 2020. Birou is based in Lisbon and Romenia and listed on the Bananas Stock Exchange.</p>
-        </div>
-      </div>
+<div id="about-wrapper">
+    <%= image_tag "passion.jpeg" %>
+
+  <div class="about-text">
+    <h1>About Balancer</h1>
+    <p class="line-content"><i class="far fa-building"></i> Our network includes almost <strong>3000 business centres, spanning almost 900 cities across 120 countries.</strong></p>
   </div>
 </div>
 

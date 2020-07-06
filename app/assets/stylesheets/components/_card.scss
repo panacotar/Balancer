@@ -1,6 +1,9 @@
 
 .card {
 
+  display: flex;
+  flex-direction: column;
+
   &:hover {
     transform: scale(1.03);
     transition: 0.2s;
@@ -25,9 +28,10 @@
 
 }
 
-.project-title {
+.card-title {
   display: flex;
   flex-direction: column;
+  color: $bblack;
 }
 
 .campaign-info {
@@ -42,7 +46,8 @@
 .description {
   display: flex;
   flex-direction: column;
-  margin: 25px 0 10px 0;
+  justify-content: space-evenly;
+  margin: 15px 0 10px 0;
 }
 
 .campaign-end-date {

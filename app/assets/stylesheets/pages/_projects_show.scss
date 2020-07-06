@@ -172,18 +172,17 @@ margin-bottom: -5px;
 	margin-top: 15px;
 	margin-left: 50%;
 	color: #201E1F;
-	letter-spacing: 2px;
-}.fa-twitter-square{
+  letter-spacing: 2px;
+
+  .fa-twitter-square, .fa-facebook-square, .fa-instagram-square {
 	font-size: 20px;
 	color: #08836F;
-}.fa-facebook-square {
-	font-size: 20px;
-	color: #08836F;
-}.fa-instagram-square {
-	font-size: 20px;
-	color: #08836F;
-}:hover {
-	color: #201E1F;
+
+    &:hover {
+    color: #201E1F;
+    }
+}
+
 }
 
 #wraper-product-main-content {
