@@ -18,7 +18,7 @@ class OrdersController < ApplicationController
     authorize order
 
     order.update(checkout_session_id: session.id)
-    redirect_to new_order_payment_path(order)
+    redirect_to successfulpledge_path
   end
 
   def show
