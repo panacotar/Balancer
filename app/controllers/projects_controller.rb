@@ -4,10 +4,20 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     authorize @project
+    @pledged_before = 0
+    @allow_pledges = false
 
     @campaign = nil
     if !@project.campaigns.empty?
       @campaign = @project.campaigns.first
+
+      @campaign.shareholders.each do |sh|
+        @pledged_before += sh.amount
+      end
+
+      if @pledged_before < @campaign.amount
+        @allow_pledges = true
+      end
     end
   end
 

@@ -1,3 +1,4 @@
+
   <%= simple_form_for [@project, @campaign] do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
@@ -8,4 +9,3 @@
     <%= f.input :percentage %>
     <%=  f.button :submit, "Submit", class: "form-btn"  %>
   <% end %>
-

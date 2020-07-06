@@ -1,0 +1,36 @@
+#wraper-successfulpledge{
+  min-height: 100vh ;
+  margin-top: 10px;
+  background-image:linear-gradient(to top, rgba(248,213,58, 0.2), rgba(255, 111, 89, 0.6)), asset-url('photo-1.jpg');
+  background-size: cover;
+}
+
+#thank-you-photo{
+  padding: 80px 200px 80px 200px;
+}
+
+#thank-you-photo h1{
+  margin-top: 150px;
+  font-size: 48px;
+  color: #FAFFFE;
+  font-weight: 600;
+  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+  text-shadow: horizontal-offset vertical-offset blur color;
+}
+
+#option-to-go a{
+  color: #216869;
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: none;
+}
+#option-to-go a:hover{
+  font-size: 24px;
+  transition: ease-in 0.3s;
+}
+.alignleft {
+	float: left;
+}
+.alignright {
+	float: right;
+}
