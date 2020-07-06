@@ -12,13 +12,13 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1
       }],
-      success_url: order_url(order),
+      success_url: successfulpledge_url,
       cancel_url: order_url(order)
     )
     authorize order
 
     order.update(checkout_session_id: session.id)
-    redirect_to successfulpledge_path
+    redirect_to new_order_payment_path(order)
   end
 
   def show
