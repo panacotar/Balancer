@@ -1,21 +1,26 @@
 <div id="home-cards-container" class="container">
-<div class="cards">
+  <div class="cards">
     <% @campaigns.offset(rand(Campaign.count)).first(1).each do |campaign| %>
-      <%= link_to project_path(campaign.project.id) do %>
-      <div class="card">
-        <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
-          <div class="card-body">
-            <% if campaign.photo.attached? %>
-            <%= cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+        <%= link_to project_path(campaign.project), class: "card-link" do %>
+          <div class="card">
+            <% if campaign.project.photo.attached? %>
+            <%=cl_image_tag campaign.project.photo.key, class: "card-img-top", :width => 250, :height => 150, crop: :fill, :gravity => "auto", :radius => 10 %>
             <% end %>
-            <h5><%=campaign.name.capitalize %></h5>
-            <p class="card-text"><%= campaign.description %></p>
-            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
-            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
-            <p class="card-text"><strong>Invest now </strong></p>
+           <div class="card-body">
+            <div class="campaign-info">
+              <h5 class="project-title"><%=campaign.name %></h5>
+              <p class="description card-text"> <%= campaign.description %> </p>
+            </div>
+            <div class="campaign-end-date">
+              <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
+            </div>
+              <div class="campaign-investment">
+                <p class="card-text"><b>Investment</b></p>
+                <p class="card-text"><%= campaign.amount %>€</p>
+              </div>
           </div>
-        </div>
         <% end %>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
