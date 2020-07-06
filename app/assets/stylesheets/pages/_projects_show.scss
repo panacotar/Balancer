@@ -130,26 +130,41 @@ margin-bottom: -5px;
 	margin-top: -20px;
 }
 
-#button-investement {
-	width: 25%; 
+
+#campaign-amout-funded{
+	width: 50%; 
 	height: fit-content; 
 	float: left;
-	margin-top: 15px;
+	margin-left: 0;
+	margin-top: 0px;
 }
-#button-investement p {
-	border: 1px dashed #ff6f59;
-	border-radius: 5px;
-	background-color: #ff6f59;
-	color: #fafffe;
-	text-align: center;
-	padding: 10px;
+
+#campaign-amout-funded p{
+	margin-top: 15px;
+	margin-left: 15px;
+	color: #201E1F;
+}
+
+#campaign-amout-funded span {
+	font-size: 20px;
+	font-weight: 800;
+	margin-left: 15px;
+	margin-top: -20px;
+}
+
+#button-investement {
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+	margin-top: 20px;
 }
 
 #social-media-icons {
-	margin-left: 70%; 
-	height: fit-content;
-	margin-top: 30px;
-	margin-left: 15px;
+	width: 50%; 
+	height: fit-content; 
+	float: left;
+	margin-top: 15px;
+	margin-left: -120px;
 }
 
 #social-media-icons p {
