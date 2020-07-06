@@ -1,29 +1,38 @@
 
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="height: 65vh">
-      <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="First slide">
+    <div class="carousel-inner">
+        <div class="carousel-item active" style="height: 65vh">
+            <%=cl_image_tag @campaigns.first.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.5", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"First slide"%>
+          <div class="carousel-content">
+            <div class="featured">
+              <p>Featured</p>
+            </div>
+            <h2><%=@campaigns.first.name %></h2>
+          </div>
+
+        </div>
+      <div class="carousel-item" style="height: 65vh">
+        <%=cl_image_tag @campaigns.sample.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Second slide"%>
+      </div>
+      <div class="carousel-item" style="height: 65vh">
+        <%=cl_image_tag @campaigns.sample.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Third slide"%>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-    <div class="carousel-item" style="height: 65vh">
-      <img src="https://images.unsplash.com/photo-1570078356630-8805f28164b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="Second slide">
-    </div>
-    <div class="carousel-item" style="height: 65vh">
-      <img src="https://images.unsplash.com/photo-1550684848-86a5d8727436?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" class="d-block w-100" alt="Third slide">
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
 </div>
 
       <!-- Title -->
-<h1>Make a difference</h1>
-<h2>choose impact investments</h2>
+<div class="index-title">
+  <h1>Make a difference</h1>
+  <h2>choose impact investments</h2>
+</div>
 
       <!-- Cards -->
 <div class="content-wrapper">
