@@ -1,24 +1,28 @@
-.checkout_wrap {
+.order_wrap {
   margin: auto;
 }
 
-.checkout-img {
+.order-img {
   border: 1px solid #dee2e6;
   border-radius: 2px;
 }
 
-.checkout-title {
+.order-title {
   color: $bgreen;
   margin-bottom: 20px;
 }
 
 @media (max-width: 767px){
-  .checkout-title {
+  .order-title {
     margin-top: 30px;
   }
 }
 
-.checkout-text {
+.order-text {
   color: black;
   margin-bottom: 10px;
+}
+
+.order-button {
+  padding: 10px 15px;
 }
