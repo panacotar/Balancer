@@ -4,6 +4,7 @@ class Campaign < ApplicationRecord
   has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
+  validates :description, length: { maximum: 80 }
 
   with_options if: :active? do
     validates :start_date, presence: true

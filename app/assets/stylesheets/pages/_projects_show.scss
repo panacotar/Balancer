@@ -1,6 +1,6 @@
 #wraper-main-showpage {
 	width: 100%;
-	min-height: 100vh; 
+	min-height: 100vh;
 }
 
 #wraper-campaign-content {
@@ -27,11 +27,12 @@ margin-bottom: -5px;
 	font-size: 24px;
 	color: #201E1F;
 	margin-bottom: 20px;
+  overflow-wrap: break-word;
 }
 
 #campaign-icon {
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-left: 15px;
 }
@@ -46,7 +47,7 @@ margin-bottom: -5px;
 }
 
 #campaign-country {
-	margin-left: 50%; 
+	margin-left: 50%;
 	height: fit-content;
 }
 
@@ -56,8 +57,8 @@ margin-bottom: -5px;
 }
 
 #campaign-start-date {
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-left: 0;
 	margin-top: 15px;
@@ -74,7 +75,7 @@ margin-bottom: -5px;
 }
 
 #campaign-end-date {
-	margin-left: 50%; 
+	margin-left: 50%;
 	height: fit-content;
 	margin-top: 15px;
 	margin-left: 15px;
@@ -90,8 +91,8 @@ margin-bottom: -5px;
 }
 
 #campaign-amout-pretend {
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-left: 0;
 	margin-top: 0px;
@@ -111,7 +112,7 @@ margin-bottom: -5px;
 }
 
 #campaign-equity-offered {
-	margin-left: 50%; 
+	margin-left: 50%;
 	height: fit-content;
 	margin-top: 15px;
 	margin-left: 15px;
@@ -132,8 +133,8 @@ margin-bottom: -5px;
 
 
 #campaign-amout-funded{
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-left: 0;
 	margin-top: 0px;
@@ -153,15 +154,15 @@ margin-bottom: -5px;
 }
 
 #button-investement {
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-top: 20px;
 }
 
 #social-media-icons {
-	width: 50%; 
-	height: fit-content; 
+	width: 50%;
+	height: fit-content;
 	float: left;
 	margin-top: 15px;
 	margin-left: -120px;
@@ -188,7 +189,7 @@ margin-bottom: -5px;
 #wraper-product-main-content {
 	height: fit-content;
 	//border: 1px dashed gray
-	
+
 }
 
 .list-inline-item:not(:last-child) {
@@ -199,8 +200,8 @@ margin-bottom: -5px;
 	margin-top: 50px;
 	border: 1px solid rgba(252, 252, 252, 0.4);
 	box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
-	width: 70%; 
-	height: fit-content; 
+	width: 70%;
+	height: fit-content;
 	float: left;
 }
 
@@ -211,7 +212,7 @@ margin-bottom: -5px;
 	color: #201E1F;
 	font-size: 20px;
 	font-weight: 600;
-	
+
 }
 #tab-product-action a:hover{
 	color: #08836F;
@@ -229,13 +230,13 @@ margin-bottom: -5px;
 #wraper-product-info-categories-item h6{
 	margin-left: 38px;
 	text-align: justify;
-	
+
 
 }
 
 #wraper-product-info-categories {
-	width: 70%; 
-	height: fit-content; 
+	width: 70%;
+	height: fit-content;
 	float: left;
 }
 
