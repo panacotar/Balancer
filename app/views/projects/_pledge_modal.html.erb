@@ -7,12 +7,12 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-
-      <%= form_with local:true, url: project_shareholders_path(@project) do %>
+      <%= form_tag orders_path do %>
         <div class="modal-body">
             <div class="form-group">
               <label for="pledge-amount">Amount to Pledge:</label>
               <input type="number" name="pledge_amount" min="1" max="<%= @pledge_remaining %>"  value="<%= @pledge_remaining %>" class="form-control" id="pledge-amount" placeholder="Enter amount">
+              <%= hidden_field_tag 'campaign_id', @campaign.id %>
               <small id="amount-help" class="form-text text-muted">Maximum amount available to pledge is EUR <%= @pledge_remaining %>.</small>
             </div>
         </div>

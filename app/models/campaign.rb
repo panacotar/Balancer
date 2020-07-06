@@ -15,6 +15,8 @@ class Campaign < ApplicationRecord
     validates :photo, presence: { message: "must be given please" }
   end
 
+  monetize :price_cents
+
   def active?
     status
   end

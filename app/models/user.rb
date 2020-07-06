@@ -11,7 +11,7 @@ class User < ApplicationRecord
   has_many :campaigns, through: :projects
   has_many :user_senders, class_name: 'User', foreign_key: :user_sender_id
   has_many :user_receivers, class_name: 'User', foreign_key: :user_receiver_id
-
+  has_many :orders
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
