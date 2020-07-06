@@ -22,15 +22,16 @@
 </div>
 
       <!-- Title -->
-<h1 class="title-campaign">Make a difference</h1>
+<h1>Make a difference</h1>
 <h2>choose impact investments</h2>
 
       <!-- Cards -->
-<div class="contain">
-  <div class="row row-cards">
+<div class="content-wrapper">
+  <div id="cards-campaign" class="row">
     <% @campaigns.each do |campaign| %>
-      <div class="card col-lg-3 col-md-5 col-sm-5 col-10">
-        <%= link_to project_path(campaign.project), class: "card-link" do %>
+      <div class="col-lg-3 col-md-5 col-sm-5 col-10">
+        <div class="card">
+          <%= link_to project_path(campaign.project), class: "card-link" do %>
 
           <% if campaign.project.photo.attached? %>
           <%=cl_image_tag campaign.project.photo.key, class: "card-img-top", :width => 250, :height => 150, crop: :fill, :gravity => "auto", :radius => 10 %>
@@ -59,6 +60,7 @@
             </div>
           </div>
         <% end %>
+       </div>
       </div>
     <% end %>
   </div>
