@@ -36,17 +36,16 @@ import "../styles/application.scss";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { showProgress } from '../components/progress_bar'
 import { initSlick } from '../components/carousel';
-
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 
   initUpdateNavbarOnScroll();
-
+  showProgress();
   initSlick();
-
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -65,26 +64,6 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     minDate: `${year}-${month}-${day + 1}`
   });
-
-  (function($) {
-
-    "use strict";
-
-    var fullHeight = function() {
-
-      $('.js-fullheight').css('height', $(window).height());
-      $(window).resize(function(){
-        $('.js-fullheight').css('height', $(window).height());
-      });
-
-    };
-    fullHeight();
-
-    $('#sidebarCollapse').on('click', function () {
-        $('#sidebar').toggleClass('active');
-    });
-
-  })(jQuery);
 
 });
 

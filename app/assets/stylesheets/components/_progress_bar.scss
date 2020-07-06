@@ -1,0 +1,22 @@
+.progress {
+  background-color: white;
+}
+
+.tracker-total {
+    // margin: 25px auto;
+  height: 25px;
+  width: 100%;
+  background-color: lightgray;
+  margin: auto;
+}
+
+.tracker-progress {
+  height: 25px;
+  background: $byellow;
+  position: relative;
+  margin-left: 0;
+}
+
+.tracker-progress-green {
+  background-color: $bgreen;
+}

@@ -1,110 +1,53 @@
-
 .carousel-container {
   height: 65vh;
 }
 
 // title
-.container-campaign {
-  background-position: center;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
 .title-campaign {
   background-color: white;
   color: #216869;
+  margin-top: 40px;
   text-align: center;
 }
-  // card
 
-.wraper-campaign-card {
-  background-color: white;
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 8px;
-  color: black;
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+// card
+
+.card-link:hover {
+  color: inherit;
+}
+
+.row-cards {
   margin-bottom: 50px;
-}
-//
-.campaign-card {
-  color: black;
-  height: 100%;
+  justify-content: center;
+  width: 100vw;
 }
 
-//
+.card {
+  margin-bottom: 40px;
+  height: 40%;
+}
+
 .card-body {
   padding: 0;
 }
 
-//
+
+.container-campaing {
+  margin-bottom: 40px;
+}
+
 .campaign-info {
-  // border: 1px solid lightgray;
-  // padding: 10px;
+  padding: 10px 0;
 }
 
-//
-
-
-//
 .project-title {
-  margin-top: 15px;
-}
-
-//
-.description {
-  margin-bottom: 10px;
-}
-
-//
-.campaign-end-date {
-  margin: 20px 0;
-  border: 1px solid lightgray;
-  padding: 21px;
-}
-
-//
-.end-date-text {
-  text-align: center;
-}
-
-//
-.investment-info {
-  border: 1px solid lightgray;
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 10px;
-}
-
-//
-.campaign-equity {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-right: 1px solid lightgray;
-}
-
-//
-.campaign-btn {
-  border: 1px solid lightgray;
-}
-
-//
-.campaign-investment {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-//
-.card {
-  height: 100%;
-}
-
-.card-title {
+  margin-top: 10px;
+  font-size: 1.8rem;
   color: #216869;
 }
 
@@ -113,19 +56,68 @@
  text-align: left;
 }
 
-.card-img-top{
-  height: 25vh;
+.description {
+  margin: 25px 0 10px 0;
 }
 
-h1 {
-  color: #216869;
-  margin-bottom: 5px;
-  margin-top: 15px;
+.campaign-end-date {
+  margin: 20px 0;
 }
 
-h2 {
-  text-align: center;
+.campaign-end-date .end-date-text {
+  font-size: 1rem;
+}
+
+.investment-info .card-text {
+  font-size: 0.9rem;
+}
+
+.campaign-equity{
+  :nth-child(1){
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  :nth-child(2) {
+    margin-bottom: 5px;
+  }
+}
+
+.campaign-investment{
+  :nth-child(1){
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  :nth-child(2) {
+    margin-bottom: 5px;
+  }
+}
+
+.investment-info {
+  border: 1px solid lightgray;
+  display: flex;
+  justify-content: space-around;
   margin-bottom: 10px;
-  margin-top: 5px;
+  padding: 10px 0;
 }
 
+.campaign-equity {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid lightgray;
+  padding: 0 15px;
+}
+
+.campaign-investment {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.campaign-btn {
+  border: 1px solid lightgray;
+}

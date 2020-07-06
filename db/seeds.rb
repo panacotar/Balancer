@@ -6,21 +6,21 @@ require 'open-uri'
   #projects
   #shareholders
 Campaign.destroy_all
-Project.destroy_all
-User.destroy_all
+# Project.destroy_all
+# User.destroy_all
 
-puts 'Creating Users'
+# puts 'Creating Users'
 
-10.times do
-  User.create(first_name: Faker::Name.first_name,
-             last_name: Faker::Name.last_name,
-             email: Faker::Internet.email,
-             password: '123123',
-             address: Faker::Address.city,
-             date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 75),
-             gender: Faker::Gender.binary_type.downcase,
-             phone_number: Faker::PhoneNumber.cell_phone)
-end
+# 10.times do
+#   User.create(first_name: Faker::Name.first_name,
+#              last_name: Faker::Name.last_name,
+#              email: Faker::Internet.email,
+#              password: '123123',
+#              address: Faker::Address.city,
+#              date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 75),
+#              gender: Faker::Gender.binary_type.downcase,
+#              phone_number: Faker::PhoneNumber.cell_phone)
+# end
 
 puts "Users: #{User.all.count}"
 
@@ -55,21 +55,21 @@ projects_photos_url = [
   'https://images.unsplash.com/photo-1571115355423-1d318bd95e22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'
   ]
 
-puts 'Creating projects'
-projects_photos_url.each do |url|
-  pr = Project.new(project_name: Faker::Company.name,
-                 category: projects_categories.sample,
-                 vision: Faker::Lorem.paragraph,
-                 pitch: Faker::Lorem.paragraph,
-                 target: Faker::Team.name,
-                 user: User.all.sample)
+# puts 'Creating projects'
+# projects_photos_url.each do |url|
+#   pr = Project.new(project_name: Faker::Company.name,
+#                  category: projects_categories.sample,
+#                  vision: Faker::Lorem.paragraph,
+#                  pitch: Faker::Lorem.paragraph,
+#                  target: Faker::Team.name,
+#                  user: User.all.sample)
 
-  file = URI.open(url)
-  pr.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+#   file = URI.open(url)
+#   pr.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 
-  puts "Creating #{pr.project_name}"
-  pr.save
-end
+#   puts "Creating #{pr.project_name}"
+#   pr.save
+# end
 
 puts "Projects: #{Project.all.count}"
 
@@ -80,7 +80,7 @@ projects_arr.each do |project|
   campaign = Campaign.new(name: Faker::Marketing.buzzwords,
                   start_date: Faker::Date.backward(days: 2),
                   end_date: Faker::Date.forward(days: 28),
-                  description: Faker::Lorem.paragraph(sentence_count: 2),
+                  description: Faker::Lorem.sentence(word_count: 8),
                   project: project,
                   percentage: Faker::Number.between(from: 1, to: 10),
                   amount: Faker::Number.number(digits: 6))
