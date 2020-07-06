@@ -1,0 +1,39 @@
+<br><br><br><br>
+<div id="wraper-main-dashboard">
+  <div class="container-fluid p-0">
+    <div class="row">
+      <div id="dashboard-show-info" class="col-lg-9 col-md-9 col-xs-3">
+        
+      </div>
+      <div id="dashboard-show-user-info" class="col-lg-3 col-md-3 col-xs-3">
+        <div id="user-details">
+          <h5>Personal Details  <i class="fas fa-user-cog"></i></h5>
+          <div>
+            <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, crop: :fill, radius: 5, class: "img-thumbnail"%>
+            <% end %>
+          </div> 
+          <div id="first-name-last-name">
+            <h6>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h6>
+          </div>
+          <div id="date-of-birth">
+            <h6><i class="fas fa-birthday-cake"></i> Date of Birth</h6>
+            <p><%= @user.date_of_birth%></p>
+          </div>
+          <div id="user-address">
+            <h6><i class="fas fa-map-marker-alt"></i> Address</h6>
+            <p><%= @user.address%></p>
+          </div>
+          <div id="user-gender">
+            <h6><i class="fas fa-genderless"></i> Gender</h6>
+            <p><%= @user.gender%></p>
+          </div>
+          <div id="user-phone-number">
+            <h6><i class="fas fa-phone-square-alt"></i> Phone Number</h6>
+            <p><%= @user.phone_number%></p>
+          </div>      
+        </div>
+      </div> 
+    </div>    
+  </div>            
+</div>

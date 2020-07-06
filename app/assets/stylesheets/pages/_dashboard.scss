@@ -1,0 +1,97 @@
+#wraper-main-dashboard {
+  min-height: 100vh;
+}
+
+#dashboard-show-info {
+  border: 1px dashed gray;
+}
+
+#dashboard-show-user-info {
+  border-radius: 5px;
+  background-color: #201e1f;
+  padding: 30px;
+}
+
+#dashboard-show-user-info h5{
+  color: #fafffe;
+  text-shadow: 1px 2px 2px rgba(0,0,0,0.2);
+  font-weight: 600;
+  font-size: 20px;
+}
+
+#dashboard-show-user-info a{
+  text-decoration: none;
+  font-size: small;
+  color: #fafffe;
+  justify-items: left;
+}
+
+#first-name-last-name p{
+  color: #fafffe;
+}
+
+#first-name-last-name h6{
+  color: #fafffe;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 25px;
+  margin-top: 20px;
+}
+
+#date-of-birth p{
+  color: #fafffe;
+  
+}
+
+#date-of-birth h6{
+  color: #fafffe;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#user-address p{
+  color: #fafffe;
+}
+
+#user-address h6{
+  color: #fafffe;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#user-gender p{
+  color: #fafffe;
+  
+}
+
+#user-gender h6{
+  color: #fafffe;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+#user-phone-number p{
+  color: #fafffe;
+}
+
+#user-phone-number h6 {
+  color: #fafffe;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.fa-birthday-cake {
+  color: #ff6f59;
+}
+
+.fa-map-marker-alt {
+  color: #ff6f59;
+}
+
+.fa-genderless {
+  color: #ff6f59;
+}
+
+.fa-phone-square-alt{
+  color: #ff6f59;
+}
