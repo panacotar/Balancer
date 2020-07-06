@@ -5,12 +5,11 @@ class ShareholdersController < ApplicationController
     project = Project.find(params[:project_id])
     authorize Shareholder
 
-    pledge_percent = params[:pledge_percent].to_i
-    if pledge_percent < 1 || pledge_percent > 100
+    pledge_amount = params[:pledge_amount].to_i
+    campaign = project.campaigns.first
+    if campaign.nil?
       return redirect_to project_path(project)
     end
-
-    campaign = project.campaigns.first
 
     # calculate the amount that was pledged before ...
     pledged_before = 0
@@ -19,17 +18,17 @@ class ShareholdersController < ApplicationController
     end
     pledge_avail = campaign.amount - pledged_before
 
-    # amount pledged now
-    pledged_now = (campaign.amount / 100) * pledge_percent
-
-    if (pledged_now > pledge_avail)
+    if (pledge_amount > pledge_avail)
       return redirect_to project_path(project)
     end
 
+    # calculate percent
+    proj_percent = (campaign.percentage * pledge_amount) / campaign.amount
+
     # create the shareholder 
     pledge = Shareholder.new
-    pledge.amount = pledged_now
-    pledge.percentage = (campaign.percentage / 100) * pledge_percent
+    pledge.amount = pledge_amount
+    pledge.percentage = proj_percent
     pledge.status = "Active"
     pledge.user = current_user
     pledge.campaign = campaign
