@@ -8,7 +8,7 @@
             <% if campaign.photo.attached? %>
             <%= cl_image_tag campaign.photo.key, class: 'card-img-top' %>
             <% end %>
-            <h5 class="card-title"><%=campaign.name.capitalize %></h5>
+            <h5><%=campaign.name.capitalize %></h5>
             <p class="card-text"><%= campaign.description %></p>
             <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
             <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
