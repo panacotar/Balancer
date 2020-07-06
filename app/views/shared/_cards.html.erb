@@ -1,0 +1,21 @@
+<div id="home-cards-container" class="container">
+<div class="cards">
+    <% @campaigns.offset(rand(Campaign.count)).first(1).each do |campaign| %>
+      <%= link_to project_path(campaign.project.id) do %>
+      <div class="card">
+        <img src="https://source.unsplash.com/JKUTrJ4vK00/1600x900" alt="">
+          <div class="card-body">
+            <% if campaign.photo.attached? %>
+            <%= cl_image_tag campaign.photo.key, class: 'card-img-top' %>
+            <% end %>
+            <h5 class="card-title"><%=campaign.name.capitalize %></h5>
+            <p class="card-text"><%= campaign.description %></p>
+            <p class="card-text">End Date <strong><%= campaign.end_date.strftime("%B %d, %Y") %></strong></p>
+            <p class="card-text">Investment Goal  <strong><%= campaign.amount %>€</strong></p>
+            <p class="card-text"><strong>Invest now </strong></p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
+</div>

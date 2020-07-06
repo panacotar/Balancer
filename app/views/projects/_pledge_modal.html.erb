@@ -1,0 +1,26 @@
+<div class="modal fade" id="project-pledge-modal" tabindex="-1" role="dialog" aria-labelledby="Pledge for Project" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Become a Shareholder</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <%= form_with local:true, url: project_shareholders_path(@project) do %>
+        <div class="modal-body">
+            <div class="form-group">
+              <label for="pledge-percent">Percent to Plege:</label>
+              <input type="number" name="pledge_percent" value="100" class="form-control" id="pledge-percent" placeholder="Enter percent">
+              <small id="percent-help" class="form-text text-muted">Percent of the maximum EUR <%= @campaign.amount - @pledged_before %>.</small>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Pledge</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
