@@ -10,6 +10,7 @@ class Project < ApplicationRecord
     validates :vision, presence: true
     validates :pitch, presence: true
     validates :target, presence: true
+    validates :photo, presence: { message: "must be given please" }
   end
 
   def active?

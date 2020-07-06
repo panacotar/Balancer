@@ -12,6 +12,7 @@ class Campaign < ApplicationRecord
     validates :description, presence: true
     validates :amount, presence: true
     validates :percentage, presence: true
+    validates :photo, presence: { message: "must be given please" }
   end
 
   def active?

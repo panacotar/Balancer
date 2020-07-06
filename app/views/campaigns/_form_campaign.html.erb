@@ -1,7 +1,9 @@
 
   <%= simple_form_for [@project, @campaign] do |f| %>
     <%= f.input :name %>
-    <%= f.input :description %>
+    <%= f.input :description, required: true,
+                hint: ("80 characters maximum")
+      %>
     <%= f.input :photo, as: :file %>
     <%= f.input :start_date, as: :string, input_html: { class: "campaign-date-picker" } %>
     <%= f.input :end_date, as: :string, input_html: { class: "campaign-date-picker" } %>
@@ -9,3 +11,4 @@
     <%= f.input :percentage %>
     <%=  f.button :submit, "Submit", class: "form-btn"  %>
   <% end %>
+
