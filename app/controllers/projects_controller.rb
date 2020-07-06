@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
     authorize @project
     @pledged_before = 0
     @allow_pledges = false
+    @pledge_remaining = 0
 
     @campaign = nil
     if !@project.campaigns.empty?
@@ -18,6 +19,8 @@ class ProjectsController < ApplicationController
       if @pledged_before < @campaign.amount
         @allow_pledges = true
       end
+
+      @pledge_remaining = @campaign.amount - @pledged_before
     end
   end
 
