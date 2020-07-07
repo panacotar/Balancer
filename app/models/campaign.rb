@@ -1,6 +1,6 @@
 class Campaign < ApplicationRecord
   belongs_to :project
-  has_many :shareholders
+  has_many :shareholders, dependent: :destroy
   has_one_attached :photo
 
   validates :name, presence: true, uniqueness: true
