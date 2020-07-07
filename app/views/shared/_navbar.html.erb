@@ -24,7 +24,7 @@
                 <%= image_tag "avatar_balancer.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
               <% end %>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <%= link_to " #{current_user.first_name.capitalize }'s Profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to " #{current_user.first_name.capitalize }'s Profile", dashboard_path, class: "dropdown-item" %>
               <%= link_to "Add project", new_project_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>

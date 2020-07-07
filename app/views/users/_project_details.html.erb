@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-12">    
           <div id="dashboard-project-photo" class="flex-gap"> 
-            <%= cl_image_tag project.photo.key, crop: :fill, height: 150, width: 150, radius: 5 %>
+            <%= cl_image_tag project.photo.key, crop: :fill, height: 180, width: 180, radius: 5 %>
             <div id="dashboard-project-details">
               <h4><%= link_to project.project_name, project_path(project) %></h4>
               <h6><i class="fas fa-tags"></i><%= project.category %></h6>
@@ -14,4 +14,5 @@
      </div>
     </div>  
   </div> 
-</div>   
+</div>
+
