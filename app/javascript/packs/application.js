@@ -38,24 +38,19 @@ import "../styles/application.scss";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { showProgress } from '../components/progress_bar'
 import { initSlick } from '../components/carousel';
-import { initImage } from '../components/show-on-scroll';
+// import { showOnScroll } from '../components/show-on-scroll';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-
-  initUpdateNavbarOnScroll();
-  showProgress();
-  initSlick();
-  showOnScroll();
-
   const currentDate = new Date();
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
 
   flatpickr(".date-picker", {
-     altInput: true,
+    altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
     maxDate: `${year - 15}-${month}-${day + 1}`
@@ -67,6 +62,12 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     minDate: `${year}-${month}-${day + 1}`
   });
+
+  initUpdateNavbarOnScroll();
+  showProgress();
+  initSlick();
+  // showOnScroll();
+
 
 });
 
