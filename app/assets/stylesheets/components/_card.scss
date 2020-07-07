@@ -1,6 +1,9 @@
 
 .card {
 
+  display: flex;
+  flex-direction: column;
+
   &:hover {
     transform: scale(1.03);
     transition: 0.2s;
@@ -10,13 +13,8 @@
   box-shadow: 0 0 5px rgb(230,230,230);
   background-color: white;
   text-align: center;
-  padding: 30px 20px;
   border: 1px solid #ddd;
   margin-bottom: 40px;
-
-  img {
-    height: 150px;
-  }
 
   h4,h5 {
     font-size: 15px;
@@ -30,9 +28,10 @@
 
 }
 
-.project-title {
+.card-title {
   display: flex;
   flex-direction: column;
+  color: $bblack;
 }
 
 .campaign-info {
@@ -47,7 +46,8 @@
 .description {
   display: flex;
   flex-direction: column;
-  margin: 25px 0 10px 0;
+  justify-content: space-evenly;
+  margin: 15px 0 10px 0;
 }
 
 .campaign-end-date {

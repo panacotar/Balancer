@@ -38,6 +38,7 @@ import "../styles/application.scss";
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { showProgress } from '../components/progress_bar'
 import { initSlick } from '../components/carousel';
+import { initImage } from '../components/show-on-scroll';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -46,6 +47,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   showProgress();
   initSlick();
+  showOnScroll();
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();

@@ -5,27 +5,23 @@ body {
   flex-direction: column;
 }
 
-h1 {
-  color: #FAFFFE;
-
-}
-
-p {
-  color: #FAFFFE;
-}
 
 #home-banner {
   background-image: linear-gradient(to top, rgba(248,213,58, 0.2), rgba(255, 111, 89, 0.6)), asset-url('bg_buswoman.jpg');
   width: 100%;
   height: 100vh;
   background-size: cover;
+  display: flex;
 
 }
 
 .catch-phrase {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: #FAFFFE;
+  width: 45%;
   margin: 200px 40px;
-  width: 600px;
 }
 
 .catch-phrase h1 {
@@ -64,21 +60,28 @@ p {
 #home-cards-container {
   display: flex;
   justify-content: space-evenly;
-  padding: 50px 0px 50px 0px;
+  padding: 50px 0px;
 }
 
 .cards-header {
+  display: flex;
   margin-top: 30px;
+  justify-content: left;
+  margin-left: 40px;
+  margin-bottom: 0px;
   color: $bgreen;
+
 }
 
 
 .cards {
   margin-bottom: 50px;
-  margin-top: 50px;
 
-  a{
-    text-decoration: none;
-  }
+}
+
+.separator {
+  width: 95%;
+  border: 1px solid lightgray;
+  margin-bottom: 0px;
 }
 
