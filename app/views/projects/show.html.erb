@@ -4,6 +4,8 @@
   <!--CAMPAIGN CONTENT-->
   <% if @campaign != nil %>
     <% content_for :meta_title, "#{@campaign.name} | #{DEFAULT_META["meta_product_name"]}" %>
+    <!-- facebook Open Graph  -->
+    <meta property="og:title" content="<%= @campaign.name %> | <%= meta_title %>" />
     <%= render "campaign_banner", campaign: @campaign %>
   <% end %>
   <!--CLOSE ALL CAMPAIGN CONTENT-->
