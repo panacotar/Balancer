@@ -1,0 +1,46 @@
+#wraper-dashboard-project-border{
+  width: 600px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+}
+
+#wraper-dashboard-project-border:hover{
+  
+}
+
+#wraper-dashboard-project .flex-gap {
+  display: inline-flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+#dashboard-project-details{
+  margin-left: 15px;
+  margin-top: -10px;
+}
+
+#dashboard-project-details h4 a{
+  margin-left: 40px;
+  text-decoration: none;
+  color: #08836F;
+}
+
+#dashboard-project-details h4 a:hover{
+  transition: ease-in-out, 0.3s;
+  font-size: bold;
+  border-bottom: 2px solid #08836F;
+}
+
+#dashboard-project-details h6{
+  margin-left: 40px;
+  font-weight: 500;
+}
+
+.fa-bullseye{
+  font-size: 25px;
+	color: #08836F;
+}

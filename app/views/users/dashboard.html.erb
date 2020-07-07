@@ -1,39 +1,41 @@
 <br><br><br><br>
-<div id="wraper-main-dashboard">
-  <div class="container-fluid p-0">
+<div id="wraper-main-dashboard" style="background-image:linear-gradient(to top, rgba(248,213,58, 0.2), rgba(255, 111, 89, 0.6)), asset-url('photo-1.jpg');">
+  <div class="container-fluid p-3">
     <div class="row">
-      <div id="dashboard-show-info" class="col-lg-9 col-md-9 col-xs-3">
-        
-      </div>
-      <div id="dashboard-show-user-info" class="col-lg-3 col-md-3 col-xs-3">
-        <div id="user-details">
-          <h5>Personal Details  <i class="fas fa-user-cog"></i></h5>
-          <div>
-            <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, crop: :fill, radius: 5, class: "img-thumbnail"%>
-            <% end %>
-          </div> 
-          <div id="first-name-last-name">
-            <h6>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h6>
+      <div id="dashboard-show-info" class="col-lg-12 col-md-9 col-xs-3">
+        <div id="info-first-name-last-name">
+          <h3>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h3>
+          <div id="navegation-bar">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">PROJECTS</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">YOUR CONTRIBUTIONS</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REFERALS</a>
+              </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+              <div id="project-iteration">
+                <h4>Projects I'm On</h4>
+                <% if !@projects.empty? %>
+                  <% @projects.each do |project|%>
+                    <%= render "project_details", project: project %>
+                  <% end %>
+                  <% else %>
+                    <h6>No campaigns under your belt yet, but you have great ideas and so do the people you know. You could start a campaign today or team up with friends to make your ideas come to life!</h6>
+                <% end %>
+              </div>  
+            </div> 
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">You have no recent referral activity.</div>
           </div>
-          <div id="date-of-birth">
-            <h6><i class="fas fa-birthday-cake"></i> Date of Birth</h6>
-            <p><%= @user.date_of_birth%></p>
-          </div>
-          <div id="user-address">
-            <h6><i class="fas fa-map-marker-alt"></i> Address</h6>
-            <p><%= @user.address%></p>
-          </div>
-          <div id="user-gender">
-            <h6><i class="fas fa-genderless"></i> Gender</h6>
-            <p><%= @user.gender%></p>
-          </div>
-          <div id="user-phone-number">
-            <h6><i class="fas fa-phone-square-alt"></i> Phone Number</h6>
-            <p><%= @user.phone_number%></p>
-          </div>      
+        </div>
         </div>
       </div> 
-    </div>    
+    </div>   
   </div>            
 </div>
