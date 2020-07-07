@@ -17,7 +17,7 @@
 
 #info-first-name-last-name h3{
   font-weight: 600;
-  color: #08836F
+  color: black;
 }
 
 #dashboard-show-user-info h5{
@@ -137,5 +137,33 @@
   text-align: center;
   margin-top: 24px;
   font-weight: 600;
-  color: #08836F;
+  color: black;
+}
+
+#profile-tab{
+  color: black;
+  font-weight: 600;
+}
+
+#contact-tab{
+  color: black;
+  font-weight: 600;
+}
+
+#home-tab{
+  color: black;
+  font-weight: 600;
+}
+
+#navegation-bar{
+  margin-top: 20px;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid #08836F;
+}
+
+.nav-tabs .nav-link {
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
