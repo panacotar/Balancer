@@ -54,3 +54,10 @@ h2 {
       flex-direction: row;
     }
   }
+
+.card-link {
+  color: black;
+  &:hover {
+      color:black;
+  }
+}

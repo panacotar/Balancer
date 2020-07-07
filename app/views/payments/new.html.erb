@@ -1,9 +1,14 @@
-<div class="container">
+<div class="container checkout_wrap">
   <div class="row py-4">
-    <div class="col-md-3"><%= cl_image_tag @order.campaign.project.photo.key, width: '100%' %></div>
+    <div class="col-md-4">
+      <% if @order.campaign.project.photo.attached? %>
+        <%= cl_image_tag @order.campaign.project.photo.key, width: '100%', class: "checkout-img" %>
+      <% end %>
+    </div>
     <div class="col">
-      <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @order.campaign.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
+      <h1 class="checkout-title">Checkout summary</h1>
+      <p class="checkout-text">Thank you for supporting this project!</p>
+      <p class="checkout-text">Invest <strong><%= humanized_money_with_symbol @order.amount %></strong> into <strong><%= @order.campaign.name %></strong> </p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
@@ -12,6 +17,11 @@
           const stripe = Stripe('<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>');
           stripe.redirectToCheckout({
             sessionId: '<%= @order.checkout_session_id %>'
+          })
+          .then(function(result) {
+            // If `redirectToCheckout` fails due to a browser or network
+            // error, display the localized error message to your customer
+            // using `result.error.message`.
           });
         });
       </script>
