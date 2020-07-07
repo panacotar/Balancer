@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @shareholders = current_user.shareholders
     @user = current_user
     @projects = current_user.projects
+    @order = current_user.orders
+    @campaigns = current_user.campaigns
   end
 
   def show

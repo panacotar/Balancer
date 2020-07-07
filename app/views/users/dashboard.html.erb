@@ -4,7 +4,7 @@
     <div class="row">
       <div id="dashboard-show-info" class="col-lg-12 col-md-9 col-xs-3">
         <div id="info-first-name-last-name">
-          <h3>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h3>
+          <h2>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h2>
           <div id="navegation-bar">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item" role="presentation">
@@ -14,7 +14,7 @@
                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">YOUR CONTRIBUTIONS</a>
               </li>
               <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">REFERALS</a>
+                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY DETAILS</a>
               </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -30,8 +30,50 @@
                 <% end %>
               </div>  
             </div> 
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">You have no recent referral activity.</div>
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+              <% if !@orders.nil? %>
+                  <% @orders.each do |order|%>
+                    <%= render "campaign_details", campaign: order %>
+                  <% end %>
+                  <% else %>
+                    <h6>No contribuition under your belt at the moment.</h6>
+                <% end %>
+            </div>
+            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+              <div id="dashboard-show-user-info">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div id="user-details" class="col-lg-6 col-md-6 col-xs-3">
+                      <h5>About Me</h5>
+                      <div>
+                        <% if @user.photo.attached? %>
+                        <%= cl_image_tag @user.photo.key, crop: :fill, height: 400, width: 550, radius: 5, class: "img-round"%>
+                        <% end %>
+                      </div>  
+                    </div>  
+                    <div id="user-tags-personal" class="col-lg-6 col-md-6 col-xs-3"> 
+                      <div id="date-of-birth">
+                        <h6><i class="fas fa-birthday-cake"></i> Date of Birth</h6>
+                        <p><%= @user.date_of_birth%></p>
+                      </div>
+                      <div id="user-address">
+                        <h6><i class="fas fa-map-marker-alt"></i> Address</h6>
+                        <p><%= @user.address%></p>
+                      </div>
+                      <div id="user-gender">
+                        <h6><i class="fas fa-genderless"></i> Gender</h6>
+                        <p><%= @user.gender.capitalize%></p>
+                      </div>
+                      <div id="user-phone-number">
+                        <h6><i class="fas fa-phone-square-alt"></i> Phone Number</h6>
+                        <p><%= @user.phone_number%></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>          
+              </div> 
+            </div>    
+            </div>
           </div>
         </div>
         </div>

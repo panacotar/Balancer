@@ -7,7 +7,6 @@
             <%= cl_image_tag project.photo.key, crop: :fill, height: 150, width: 150, radius: 5 %>
             <div id="dashboard-project-details">
               <h4><%= link_to project.project_name, project_path(project) %></h4>
-              <h6><i class="fas fa-bullseye"></i><%= project.target %></h6>
               <h6><i class="fas fa-tags"></i><%= project.category %></h6>
             </div>
           </div>   
