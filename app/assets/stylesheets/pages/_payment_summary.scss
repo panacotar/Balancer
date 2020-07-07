@@ -1,0 +1,24 @@
+.checkout_wrap {
+  margin: auto;
+}
+
+.checkout-img {
+  border: 1px solid #dee2e6;
+  border-radius: 2px;
+}
+
+.checkout-title {
+  color: $bgreen;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px){
+  .checkout-title {
+    margin-top: 30px;
+  }
+}
+
+.checkout-text {
+  color: black;
+  margin-bottom: 10px;
+}
