@@ -21,7 +21,7 @@ export const showProgress = () => {
     progressWidth = progressDiv.dataset.campaigns.length + 25
 
     // different colors for progress!!
-    if(progressWidth >= 50){
+    if(progressWidth >= 80){
         progress.classList.add("tracker-progress-green");
     } else {
         progress.classList.remove("tracker-progress-green");
