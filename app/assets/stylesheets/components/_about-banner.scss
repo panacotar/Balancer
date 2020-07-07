@@ -10,26 +10,34 @@
   padding: 50px;
 
   img {
-    max-width: 40%;
+    max-width: 65%;
     height: auto;
     border: 6px solid $bwhite;
     border-radius: 0px 50px 50px 50px;
     box-shadow: 0 0 3px #ccc;
   }
 
-.about-text {
-  padding: 50px;
-  width: 40%;
-  margin-bottom: 40px;
-  color: #201E1F;
-  justify-content: right;
-  text-align: right;
+  .show-on-scroll {
+    display:flex;
+    justify-content: center;
+
+  }
+
+
+
+  .about-text {
+    padding: 50px;
+    width: 40%;
+    margin-bottom: 40px;
+    color: #201E1F;
+    justify-content: right;
+    text-align: right;
 
   h1 {
     margin-bottom: 20px;
-    font-size: 30px;
+    font-size: 60px;
+    font-weight: lighter;
   }
  }
-
 }
 

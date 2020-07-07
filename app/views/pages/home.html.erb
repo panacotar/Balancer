@@ -1,7 +1,7 @@
 <div id="home-banner">
   <div class="catch-phrase">
     <div class="row">
-        <h1>Ready to start a business?</h1>
+        <h1 class="home-header">Ready to start a business?</h1>
         <p>Balancer is listening to the voice of underrepresented
           entrepreneurs</p>
         <%= link_to "Start Now", about_path, class: "btn" %>
@@ -15,11 +15,12 @@
  <%= render 'shared/campaigns_carousel' %>
 
 <div id="about-wrapper">
+  <div class="show-on-scroll">
     <%= image_tag "passion.jpeg" %>
-
+  </div>
   <div class="about-text">
     <h1>About Balancer</h1>
-    <p class="line-content"><i class="far fa-building"></i> Our network includes almost <strong>3000 business centres, spanning almost 900 cities across 120 countries.</strong></p>
+    <p class="line-content"> Our platform  <strong>is connecting</strong> investors to Social Impact Projects</p>
   </div>
 </div>
 
