@@ -3,6 +3,16 @@ class CampaignsController < ApplicationController
 
   def index
     @campaigns = policy_scope(Campaign)
+
+    if params[:query].present?
+      sql_query = " \
+        campaings.name @@ :query \
+        OR campaings.description @@ :query \
+      "
+      @campaings = Campaign.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @campaings = Campaign.all
+    end
   end
 
   def new
