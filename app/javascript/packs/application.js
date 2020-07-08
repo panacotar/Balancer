@@ -38,7 +38,6 @@ import "../styles/application.scss";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { showProgress } from '../components/progress_bar';
 import { initSlick } from '../components/carousel';
 
 document.addEventListener('turbolinks:load', () => {
@@ -46,7 +45,6 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   initUpdateNavbarOnScroll();
-  showProgress();
   initSlick();
   AOS.init();
 
@@ -69,9 +67,6 @@ document.addEventListener('turbolinks:load', () => {
     minDate: `${year}-${month}-${day + 1}`
   });
 
-  initUpdateNavbarOnScroll();
-  showProgress();
-  initSlick();
 });
 
 

@@ -20,4 +20,12 @@ class Campaign < ApplicationRecord
   def active?
     status
   end
+
+  def percent
+    pledged_total = 0
+    shareholders.each do |sh|
+      pledged_total += sh.amount
+    end
+    ((pledged_total / amount) * 100).to_i
+  end
 end
