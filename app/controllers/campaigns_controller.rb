@@ -17,8 +17,9 @@ class CampaignsController < ApplicationController
     @project = Project.find(params[:project_id])
     @campaign.project = @project
     authorize @campaign
+
     if @campaign.save
-    redirect_to project_path(@project)
+      redirect_to project_path(@project)
     else
       render :new
     end
@@ -28,7 +29,5 @@ class CampaignsController < ApplicationController
 
   def campaign_params
     params.require(:campaign).permit(:name, :start_date, :end_date, :description, :amount, :percentage, :photo)
-    #p[:project_id] = project.id; #table project should be user_id not users_id
-    #p
   end
 end

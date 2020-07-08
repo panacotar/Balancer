@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   def create
     campaign = Campaign.find(params[:campaign_id])
 
@@ -12,13 +13,13 @@ class OrdersController < ApplicationController
         currency: 'eur',
         quantity: 1
       }],
-      success_url: successfulpledge_url,
+      success_url: new_project_shareholder_url(campaign.project.id),
       cancel_url: order_url(order)
     )
     authorize order
 
-    order.update(checkout_session_id: session.id)
     redirect_to new_order_payment_path(order)
+    order.update(checkout_session_id: session.id)
   end
 
   def show
