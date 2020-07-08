@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_135912) do
+ActiveRecord::Schema.define(version: 2020_07_08_133809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 2020_07_06_135912) do
 
   create_table "shareholders", force: :cascade do |t|
     t.float "amount", default: 0.0
-    t.integer "percentage"
+    t.float "percentage"
     t.string "status"
     t.bigint "user_id", null: false
     t.bigint "campaign_id", null: false
