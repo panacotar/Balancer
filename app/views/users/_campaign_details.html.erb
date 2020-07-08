@@ -1,0 +1,23 @@
+<div id="wraper-dashboard-campaign-border">
+  <div id=wraper-dashboard-project>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">    
+          <div id="dashboard-project-photo" class="flex-gap"> 
+            <%= cl_image_tag order.campaign.project.photo.key, crop: :fill, height: 180, width: 180, radius: 5 %>
+            <div id="dashboard-campaign-details">
+              <h1 class="order-title">Pledge #<%= order.id %></h1>
+              <ul class="list-unstyled">
+                <li><strong>ISSUED ON:  </strong> <%= order.created_at.to_date %></li>
+                <li><strong>CAMPAIGN:  </strong> <%= order.campaign.name.capitalize %></li>
+                <li><strong>INVESTED:  </strong> <%= humanized_money_with_symbol order.amount %></li>
+                </li>
+              </ul>
+              <p class="order-text"><!-- some text we want to add --></p>
+            </div>
+          </div>   
+        </div>     
+     </div>
+    </div>  
+  </div> 
+</div>  

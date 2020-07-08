@@ -1,7 +1,7 @@
 <div id="home-banner">
-  <div class="catch-phrase">
+  <div class="catch-phrase" data-aos="fade-right" data-aos-duration="3000">
     <div class="row">
-        <h1 class="home-header">Ready to start<br>a business?</h1>
+        <h1 class="home-header" >Ready to start a business?</h1>
         <p>Balancer is listening to the voice of underrepresented
           entrepreneurs</p>
         <%= link_to "Start Now", about_path, class: "btn" %>
@@ -15,12 +15,13 @@
  <%= render 'shared/campaigns_carousel' %>
 
 <div id="about-wrapper">
-  <div class="show-on-scroll">
+  <div class="show-on-scroll" data-aos="fade-right" data-aos-duration="1200">
     <%= image_tag "passion.png" %>
   </div>
-  <div class="about-text">
+  <div class="about-text" data-aos="fade-left" data-aos-duration="1200">
     <h1>About Balancer</h1>
-    <p class="line-content"> Our platform  <strong>is connecting</strong> investors to Social Impact Projects</p>
+    <p> Our platform  <strong>is connecting</strong> investors to Social Impact Projects</p>
+    <p> Find your investors  <strong>today</strong> </p>
   </div>
 </div>
 
