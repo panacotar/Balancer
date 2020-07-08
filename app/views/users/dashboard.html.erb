@@ -1,82 +1,84 @@
-<br><br><br><br>
-<div id="wraper-main-dashboard">
-  <div class="container-fluid p-3">
-    <div class="row">
-      <div id="dashboard-show-info" class="col-lg-12 col-md-9 col-xs-3">
-        <div id="info-first-name-last-name">
-          <h2>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h2>
-          <div id="navegation-bar">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">PROJECTS</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">YOUR CONTRIBUTIONS</a>
-              </li>
-              <li class="nav-item" role="presentation">
-                <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY DETAILS</a>
-              </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-              <div id="project-iteration">
-                <h4>Projects I'm On</h4>
-                <% if !@projects.empty? %>
-                  <% @projects.each do |project|%>
-                    <%= render "project_details", project: project %>
+<div class="form-background">
+  <br><br><br><br>
+  <div id="wraper-main-dashboard">
+    <div class="container-fluid p-3">
+      <div class="row">
+        <div id="dashboard-show-info" class="col-lg-12 col-md-9 col-xs-3">
+          <div id="info-first-name-last-name">
+            <h2>Hello <%= @user.first_name.capitalize%> <%= @user.last_name.capitalize%></h2>
+            <div id="navegation-bar">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">PROJECTS</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">YOUR CONTRIBUTIONS</a>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY DETAILS</a>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+              <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div id="project-iteration">
+                  <h4>Projects I'm On</h4>
+                  <% if !@projects.empty? %>
+                    <% @projects.each do |project|%>
+                      <%= render "project_details", project: project %>
+                    <% end %>
+                  <% else %>
+                  <div id="user-without-project">
+                    <h5>No <strong>projects</strong> under your belt yet, but you have great ideas and so do the people you know.
+                    <br>You could start a <strong>project</strong> today or team up with friends to make your ideas come to life!</h4>
+                  </div>  
+                  <% end %>
+                </div>  
+              </div> 
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <% if !@orders.nil? %>
+                  <% @orders.each do |order|%>
+                    <%= render "campaign_details", order: order %>
                   <% end %>
                 <% else %>
-                <div id="user-without-project">
-                  <h5>No <strong>projects</strong> under your belt yet, but you have great ideas and so do the people you know.
-                  <br>You could start a <strong>project</strong> today or team up with friends to make your ideas come to life!</h4>
-                </div>  
-                <% end %>
-              </div>  
-            </div> 
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-              <% if !@orders.nil? %>
-                <% @orders.each do |order|%>
-                  <%= render "campaign_details", order: order %>
-                <% end %>
-              <% else %>
-                <h6>No contribuition under your belt at the moment.</h6>
-                  <% end %>
-            </div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-              <div id="dashboard-show-user-info">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div id="user-details" class="col-lg-6 col-md-6 col-xs-3">
-                      <h5>About Me</h5>
-                      <div>
-                        <% if @user.photo.attached? %>
-                        <%= cl_image_tag @user.photo.key, crop: :fill, height: 400, width: 400, radius: 5, class: "img-round"%>
-                        <% end %>
+                  <h6>No contribuition under your belt at the moment.</h6>
+                    <% end %>
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <div id="dashboard-show-user-info">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div id="user-details" class="col-lg-6 col-md-6 col-xs-3">
+                        <h5>About Me</h5>
+                        <div>
+                          <% if @user.photo.attached? %>
+                          <%= cl_image_tag @user.photo.key, crop: :fill, height: 400, width: 400, radius: 5, class: "img-round"%>
+                          <% end %>
+                        </div>  
                       </div>  
-                    </div>  
-                    <div id="user-tags-personal" class="col-lg-6 col-md-6 col-xs-3"> 
-                      <div id="user-address">
-                        <h6>Address</h6>
-                        <p><strong><%= @user.address%></strong></p>
-                      </div>
-                      <div id="user-gender">
-                        <h6>Gender</h6>
-                        <p><strong><%= @user.gender.capitalize%></strong></p>
-                      </div>
-                      <div id="user-phone-number">
-                        <h6>Phone Number</h6>
-                        <p><strong><%= @user.phone_number%></strong></p>
+                      <div id="user-tags-personal" class="col-lg-6 col-md-6 col-xs-3"> 
+                        <div id="user-address">
+                          <h6>Address</h6>
+                          <p><strong><%= @user.address%></strong></p>
+                        </div>
+                        <div id="user-gender">
+                          <h6>Gender</h6>
+                          <p><strong><%= @user.gender.capitalize%></strong></p>
+                        </div>
+                        <div id="user-phone-number">
+                          <h6>Phone Number</h6>
+                          <p><strong><%= @user.phone_number%></strong></p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>          
-              </div> 
-            </div>    
+                  </div>          
+                </div> 
+              </div>    
+              </div>
             </div>
           </div>
-        </div>
-        </div>
-      </div> 
-    </div>   
-  </div>            
+          </div>
+        </div> 
+      </div>   
+    </div>            
+  </div>
 </div>
