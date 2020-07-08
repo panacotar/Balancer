@@ -1,14 +1,21 @@
-<div class="wraper-guidelines">
-  <div class="banner-guidelines" style="background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1529160638848-c6c71fee1cb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1651&q=80);">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-          <div id="banner-guidelines-content">
-          <h1>The Essential Guide to Your Project</h1>
-          <h3>We worked with our Campaign Strategists to compile all the tips, tricks and best practices to achieve your goals.</h3>
-          <h3>With every chapter, you’ll be one step closer to bringing your idea to life.</h3>
-          <%= link_to "Get Started", new_project_path, class: "btn" %>
+
+  <div class="ring-about">
+    Properly Balanced
+    <span class="ring-span"></span>
+  </div>
+  <div class="wraper-guidelines">
+    <div class="banner-guidelines" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://images.unsplash.com/photo-1550684848-fac1c5b4e853?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); height: 55vh">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 md-6 sm-3">
+            <div id="banner-guidelines-content">
+            <h1>The Essential Guide to Your Project</h1>
+            <h3>We worked with our Campaign Strategists to compile all the tips, <br> tricks and best practices to achieve your goals. </h3>
+            </div>
           </div>
+        </div>
+        <div class="btn-about">
+          <%= link_to "Get Started", new_project_path, class: "btn" %>
         </div>
       </div>
     </div>
@@ -17,7 +24,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 md-6 sm-3">
-          <h5>A thoughtful, well-timed plan will give your campaign its best shot at success. To help you build your roadmap, we’ll review all the elements of an effective pre-campaign plan.</h5>
+          <h5>A well-timed plan will give your campaign its best shot at success </h5>
         </div>
       </div>
     </div>
@@ -27,13 +34,6 @@
       <div class="row">
         <div class="col-lg-12 md-6 sm-3">
           <br>
-          <ul>
-            <li><strong> 1. The Roadmap</strong></li>
-            <li><strong> 2. The First 30%</strong></li>
-            <li><strong> 3. Goals</strong></li>
-            <li><strong> 4. Email Strategy</strong></li>
-            <li><strong> 5. Team & Timing</strong></li>
-          </ul>
         </div>
       </div>
     </div>
@@ -41,14 +41,18 @@
   <div id="wraper-guidelines-content">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-        <p>STEP ONE: THE ROADMAP</p>
-        <h4>Prep for success with research and a clear plan</h4>
-        <h6>If you look at the crowdfunding pages for some of Balancer's most successful campaigns, you’ll see entrepreneurs who met and exceeded their funding goals, products that have been adopted into national retail chains and films that have taken the festival circuit by storm.
-            Behind every campaign is a thoughtful plan for every stage of the project.
-            A great idea is just the start—the most successful
-            Balancer entrepreneurs are typically deliberate with every aspect of their timing.
-            We’ve assembled some of the most important tips here to help you launch strong and finish even stronger.</h6>
+        <div class="col-lg-8 md-8 sm-3">
+          <%= image_tag "roadmap.svg", class: "img-fluid-left" %>
+        </div>
+        <div class="col-lg-4 md-4 sm-3">
+          <p> 1: ROADMAP</p>
+          <h4>Do your research. <br>
+          Design a clear plan</h4>
+          <h6>Balancer's most successful campaigns are from entrepreneurs who met and exceeded their funding goals. </h6>
+           <h6> Their products  have been adopted into national retail chains and films that have taken the festival circuit by storm. </h6>
+            <h6>Behind every campaign is a thoughtful plan for every stage of the project. </h6>
+            <h6>Balancer entrepreneurs are typically deliberate with every aspect of their timing.</h6>
+            <h6>We’ve assembled some of the most important tips here to help you launch strong and finish even stronger.</h6>
         </div>
       </div>
     </div>
@@ -56,13 +60,17 @@
   <div id="wraper-guidelines-content">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-        <p>STEP TWO: THE FIRST 30%</p>
-        <h4>Launch with your first 30% already in place</h4>
-        <h6>After helping thousands of entrepreneurs and crowdfunding campaigns, we’ve found that 30% is an important number to remember.
-            Campaigns that reach 30% of their goal in the first two days are much more likely to exceed their ultimate crowdfunding goal.
-            By racing quickly to 30%, you build important early momentum and give prospective backers confidence that your campaign is on track for success.
-            (Stay tuned—in chapter 3 we’ll cover valuable tips for growing your audience and reaching 30%.)</h6>
+        <div class="col-lg-4 md-4 sm-3">
+        <p>2: AIM 30</p>
+        <h4>Get 30% fast. <br>
+        Backers will follow success</h4>
+        <h6>After helping thousands of entrepreneurs and crowdfunding campaigns, we’ve found that 30% is an important number to remember. </h6>
+        <h6>Campaigns that reach 30% of their goal in the first two days are much more likely to exceed their ultimate crowdfunding goal. </h6>
+        <h6>By racing quickly to 30%, you build important early momentum and give prospective backers confidence that your campaign is on track for success. </h6>
+        <h6>(Stay tuned—in chapter 3 we’ll cover valuable tips for growing your audience and reaching 30%.)</h6>
+        </div>
+        <div class="col-lg-8 md-8 sm-3">
+          <%= image_tag "30pc.svg", class: "img-fluid-right" %>
         </div>
       </div>
     </div>
@@ -70,49 +78,52 @@
   <div id="wraper-guidelines-content">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-        <p>STEP THREE: GOALS</p>
-        <h4>Set attainable goals and think in stages</h4>
-        <h6>Setting your goal can be the hardest part of starting a campaign, and there are a variety of strategies to evaluate, including funding your project in stages.
-            Most campaigners that raise millions of dollars start by launching a smaller campaign, and grow their audience from there. For example,
-            the TrackR team ran multiple crowdfunding campaigns on their way to launching the TrackR Bravo, a coin-sized device for tracking
-            lost valuables that attracted more than $1.7 million in funding on Balancer.
-            Other entrepreneurs have found success by setting a low goal, which can help build confidence with backers early in the campaign.
-            If you want to raise $25,000, for example, consider instead aiming for $20,000 and making $25,000 your stretch goal.
-            Many entrepreneurs use a combination of these strategies to reach their ultimate goal.</h6>
-        </div>
+        <div class="col-lg-8 col-md-8 col-sm-3">
+          <%= image_tag "goals.svg", class: "img-fluid-left" %>
       </div>
+        <div class="col-lg-4 col-md-4 col-sm-3">
+          <p>3: GOALS</p>
+          <h4>Small is beautiful. <br>
+           Millions will come</h4>
+          <h6>Most campaigners that raise millions of dollars start by launching a smaller campaign. </h6>
+          <h6>The TrackR team, for example, ran multiple crowdfunding campaigns on their way to launching the TrackR Bravo, a coin-sized device for tracking lost valuables that attracted more than $1.7 million in funding on Balancer.</h6>
+          <h6>If you want to raise $25,000, for example, consider instead aiming for $20,000 and making $25,000 your stretch goal. </h6>
+          <h6>Many entrepreneurs use a combination of these strategies to reach their ultimate goal.</h6>
+        </div>
     </div>
   </div>
-  <div id="wraper-guidelines-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-        <p>STEP FOUR: EMAIL STRATEGY</p>
-        <h4>Use email outreach early and often</h4>
-        <h6>Never underestimate the power of email to excite and rally your fans. Our research indicates that the average conversion rate from email is 34% higher than other forms of outreach, making it an ideal method for engaging supporters.
-            Compared with social media posts or public relations efforts, email allows you to quantify how many potential supporters were reached with your message and how many responded, letting you know exactly if your engagement efforts have succeeded.
-            There are a number of free email tools like MailChimp and Gmail that you can use to start your email outreach.
-            </h6>
-        </div>
+</div>
+<div id="wraper-guidelines-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-sm-3">
+        <p> 4: OUTREACH STRATEGY</p>
+        <h4>Email early & often</h4>
+        <h6>Never underestimate the power of email. The average conversion rate from email is 34% higher than other forms of outreach.</h6>
+        <h6>Compared with social media posts or public relations efforts, email allows you to quantify how many potential supporters were reached with your message and how many responded, letting you know exactly if your engagement efforts have succeeded.</h6>
+        <h6>There are a number of free email tools like MailChimp and Gmail that you can use to start your email campaign.</h6>
       </div>
-    </div>
-  </div>
-  <div id="wraper-guidelines-content">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 md-6 sm-3">
-        <p>STEP FIVE: TEAM & TIMING</p>
-        <h4>Build a team to divide and conquer on tasks</h4>
-        <h6>Make no mistake: crowdfunding can require a lot of ongoing work, perhaps even on par with a full-time job, so make sure you have enough people-power available to make the most of the experience.
-            Whether you’re working with business partners or simply family and friends, a well-organized team can help amplify your message by posting to social media, responding to inquiries or updating your campaign page.
-            Additionally, work closely with your team to set aside ample time in the planning stages. As a general rule, reserve at least 60 days to plan the campaign and 30 days to manage the campaign after launch.
-            With a campaign team on board, you’ll be able to achieve and manage more in those 90 days than you could alone.</h6>
-        </div>
+      <div class="col-lg-8 col-md-8 col-sm-3">
+        <%= image_tag "email.svg", class: "img-fluid-right" %>
       </div>
     </div>
   </div>
 </div>
-
-
-
+<div id="wraper-guidelines-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 md-8 sm-3">
+        <%= image_tag "team2.svg", class: "img-fluid-left" %>
+      </div>
+      <div class="col-lg-4 md-4 sm-3">
+        <p>5: TEAM & TIMING</p>
+        <h4>Build a team. <br>
+        Conquer tasks</h4>
+        <h6>Make no mistake: crowdfunding can require a lot of ongoing work on par with a full-time job, so make sure you have enough people-power available to make the most of the experience. </h6>
+        <h6>A well-organized team can help amplify your message by posting to social media, responding to inquiries or updating your campaign page. </h6>
+        <h6>Work closely with your team to set aside ample time in the planning stages. As a general rule, reserve at least 60 days to plan the campaign and 30 days to manage the campaign after launch. </h6>
+        <h6>With a campaign team on board, you’ll be able to achieve and manage ma lot in those 90 days.</h6>
+      </div>
+    </div>
+  </div>
+</div>
