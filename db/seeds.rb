@@ -1,14 +1,17 @@
 require 'faker'
 require 'open-uri'
+require 'pry-byebug'
   #Users
   #campaingn
   #transactions
   #projects
   #shareholders
+
 Campaign.destroy_all
 Project.destroy_all
 Order.destroy_all
 User.destroy_all
+Shareholder.destroy_all
 
 
 puts 'Creating Users'
@@ -85,12 +88,35 @@ projects_arr.each do |project|
                   description: Faker::Lorem.sentence(word_count: 8),
                   project: project,
                   percentage: Faker::Number.between(from: 1, to: 10),
-                  amount: Faker::Number.number(digits: 6))
+                  amount: Faker::Number.number(digits: 5))
 
   puts "Creating campaign: #{campaign.name}"
   campaign.save
 end
-
 puts "Campaigns: #{Campaign.all.count}"
 
 
+puts 'Creating Shareholder'
+30.times do
+
+  campaign = Campaign.all.sample
+  amount_pledged = rand(1..campaign.amount).floor
+  #might need to remove .floor later!
+
+  percent = ( amount_pledged / campaign.amount ) * 100
+
+  #change campaign amount from float to integer
+  new_shareholder = Shareholder.new(
+                    amount: amount_pledged,
+                    percentage: percent,
+                    status: "Active",
+                    # user: User.all.sample,
+                    user_id: 11,
+                    campaign: campaign)
+  puts "New pledge: #{new_shareholder.amount} € on #{new_shareholder.campaign.name}"
+  new_shareholder.save
+end
+
+puts "Shareholder: #{Shareholder.all.count}"
+
+puts "Finished"
