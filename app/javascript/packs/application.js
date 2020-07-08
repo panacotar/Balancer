@@ -27,6 +27,8 @@ require("slick-carousel")
 // External imports
 import "bootstrap";
 import flatpickr from "flatpickr";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import "slick-carousel/slick/slick.scss";
 import "slick-carousel/slick/slick-theme.scss";
 import "../styles/application.scss";
@@ -36,9 +38,8 @@ import "../styles/application.scss";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { showProgress } from '../components/progress_bar'
+import { showProgress } from '../components/progress_bar';
 import { initSlick } from '../components/carousel';
-import { initImage } from '../components/show-on-scroll';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -47,7 +48,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   showProgress();
   initSlick();
-  showOnScroll();
+  AOS.init();
 
   const currentDate = new Date();
   const year = currentDate.getFullYear();
@@ -55,7 +56,7 @@ document.addEventListener('turbolinks:load', () => {
   const day = currentDate.getDate();
 
   flatpickr(".date-picker", {
-     altInput: true,
+    altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
     maxDate: `${year - 15}-${month}-${day + 1}`
@@ -68,6 +69,9 @@ document.addEventListener('turbolinks:load', () => {
     minDate: `${year}-${month}-${day + 1}`
   });
 
+  initUpdateNavbarOnScroll();
+  showProgress();
+  initSlick();
 });
 
 

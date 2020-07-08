@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :campaigns
+  has_many :campaigns, dependent: :destroy
   has_one_attached :photo
 
   validates :project_name, presence: true

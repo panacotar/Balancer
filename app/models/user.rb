@@ -5,13 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :photo
-  has_many :projects
-  has_many :shareholders
-  has_many :transactions
+  has_many :projects, dependent: :destroy
+  has_many :shareholders, dependent: :destroy
+  has_many :transactions, dependent: :destroy
   has_many :campaigns, through: :projects
   has_many :user_senders, class_name: 'User', foreign_key: :user_sender_id
   has_many :user_receivers, class_name: 'User', foreign_key: :user_receiver_id
-  has_many :orders
+  has_many :orders, dependent: :destroy
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :date_of_birth, presence: true
