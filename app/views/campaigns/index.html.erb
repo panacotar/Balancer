@@ -55,25 +55,20 @@
           class: "form-control",
           placeholder: "Find a campaign"
         %>
-       <%= submit_tag "Search", class: "btn btn-primary" %>
+        <%= button_tag(type: "submit", class: "search-btn") do %>
+         <i class="fas fa-search"></i>
+        <% end %>
        <% end %>
-        <%#= simple_form_for :search, url: campaigns_path, method: :get do |f| %>
-         <!--  <div class="search-form" data-campaigns="<%= @campaigns.to_json %>" id="search-data">
-            <input class="form-control string required" type="text" name="search" id="search_string" />
-            <button type="submit" id="search-btn" class="btn">
-              <i class="fas fa-search"></i> Search
-            </button>
-            </div> -->
-          <%# end %>
+       <hr>
       </div>
     </div>
   </div>
 </div>
 
       <!-- Cards -->
-<div class="content-wrapper">
+<div class="container">
   <div id="cards-campaign" class="row">
-    <% @campaigns.each do |campaign| %>
+    <% @campaigns.first(9).each do |campaign| %>
       <div class="col-lg-3 col-md-5 col-sm-5 col-10">
         <div class="card">
           <%= link_to project_path(campaign.project), class: "card-link" do %>
