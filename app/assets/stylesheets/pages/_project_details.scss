@@ -44,4 +44,29 @@
 
 #user-without-project h5{
   margin-top: 50px;
+  margin-left: 35px;
+}
+
+#real-time-impact {
+margin-top: 50px;
+float: left;
+}
+
+#real-time-impact h1{
+  color: #ff6f59;
+  font-weight: 300;
+}
+
+#real-time-impact h3{
+  color: black;
+  text-shadow: none;
+  margin-top: 30px;
+  font-weight: 300;
+}
+
+#chartdiv {
+  width: 60%;
+  height: 500px;
+  float: right;
+  margin-top: 0px;
 }
