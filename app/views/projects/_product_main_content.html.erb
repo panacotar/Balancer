@@ -8,25 +8,26 @@
             <li class="list-inline-item">
               <% if @project.user == current_user %>
               <p><%= link_to " Edit Your Project", edit_project_path %></p>
-              <% else %>
-              <p><%= link_to "Add Project", new_project_path %></p>
             </li>
               <% end %>
+            <% if @project.user != current_user%>
+            <li class="list-inline-item">
+            <h6><i class="fas fa-envelope"></i><strong> Contact Founders</strong></h6>
+            </li>
+            <% end %>
             <li class="list-inline-item">
               <% if @project.user == current_user %>
               <p><%= link_to "Create a campaign", new_project_campaign_path(@project) %></p>
-              <% else %>
-              <p><%= link_to "Guidelines", about_path %></p>
             </li>
               <% end %>
             <li class="list-inline-item">
+              <% if @project.user == current_user %> 
               <p><%= link_to " All Campaigns", campaigns_path %></p>
             </li>
+              <% end %>
             <li class="list-inline-item">
               <% if @project.user == current_user %>
               <p><%= link_to " Your Dashboard", dashboard_path %></p>
-              <% else %>
-              <p><%= link_to "FQA", root_path %></p>
             </li>
               <% end %>
           </ul>
