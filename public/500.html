@@ -3,64 +3,78 @@
 <head>
   <title>We're sorry, but something went wrong (500)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
+
+    #thank-you-photo{
+      min-height: 100vh;
+      background-image: linear-gradient(to top, rgba(248,213,58, 0.2), rgba(255, 111, 89, 0.6)), url(error.jpg);
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    #thank-you-photo h1{
+      font-family: "Montserrat", sans-serif;
+      margin-top: 150px;
+      font-size: 48px;
+      color: #FAFFFE;
+      font-weight: 600;
+      text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
+      text-shadow: horizontal-offset vertical-offset blur color;
+    }
+
+    .text {
+      margin-top: 20vh;
+      display: flex;
+      width: 80%;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      justify-content: space-between;
+
+    }
+
+
+    #option-to-go a {
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 16px;
+      font-weight: light-bold;
+      background-color: #FAFFFE;
+      border-radius: 8px;
+      padding: 15px 40px;
+      color: #ff6f59;
+      border-style: none;
+      text-decoration: none;
   }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+  #option-to-go a:hover {
+    opacity: 0.6;
+    transition: ease-in 0.3s;
   }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
   </style>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <div>
-      <h1>We're sorry, but something went wrong.</h1>
+<body>
+  <!-- This file lives in public/404.html -->
+<div class="row">
+    <div class="col-xs-3 col-lg-12">
+      <div id="thank-you-photo">
+        <div class="text">
+          <h1>Ups! Something went wrong :(</h1>
+            <div id="option-to-go">
+              <a href="/" class="btn">Home</a>
+            </div>
+         </div>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+</div>
+
+
+</body>
+
 </body>
 </html>
