@@ -27,7 +27,6 @@ class ShareholdersController < ApplicationController
   end
 
   def create
-
     project = Project.find(params[:project_id])
     authorize Shareholder
 
