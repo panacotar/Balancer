@@ -12,7 +12,7 @@ class Campaign < ApplicationRecord
     validates :description, presence: true
     validates :amount, presence: true
     validates :percentage, presence: true
-    validates :photo, presence: { message: "must be given please" }
+    validates :photo, presence: { message: "a photo must be uploaded, please" }
   end
 
   monetize :price_cents
