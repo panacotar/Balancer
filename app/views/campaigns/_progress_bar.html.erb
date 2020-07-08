@@ -3,13 +3,9 @@
  <% campaign.shareholders.each do |sh| %>
  <% pledged_total += sh.amount %>
  <% end %>
-<% percent = (pledged_total / campaign.amount) * 100 %>
+<% percent = (pledged_total / campaign.investment_goal) * 100 %>
 
 <div class="progress">
   <progress max="100" value="<%= percent %>"></progress>
 </div>
 
-<!-- <div class="js-progress-container tracker-total">
-    <div class="js-progress tracker-progress" style="width: 0%"></div>
-</div>
- -->

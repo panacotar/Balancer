@@ -16,11 +16,11 @@ class ProjectsController < ApplicationController
         @pledged_before += sh.amount
       end
 
-      if @pledged_before < @campaign.amount
+      if @pledged_before < @campaign.investment_goal
         @allow_pledges = true
       end
 
-      @pledge_remaining = @campaign.amount - @pledged_before
+      @pledge_remaining = @campaign.investment_goal - @pledged_before
     end
   end
 

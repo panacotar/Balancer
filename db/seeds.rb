@@ -86,8 +86,8 @@ projects_arr.each do |project|
                   end_date: Faker::Date.forward(days: 28),
                   description: Faker::Lorem.sentence(word_count: 8),
                   project: project,
-                  percentage: Faker::Number.between(from: 1, to: 10),
-                  amount: Faker::Number.number(digits: 5))
+                  equity: Faker::Number.between(from: 1, to: 15),
+                  investment_goal: Faker::Number.number(digits: 5))
 
   puts "Creating campaign: #{campaign.name}"
   campaign.save
@@ -99,10 +99,10 @@ puts 'Creating Shareholder'
 30.times do
 
   campaign = Campaign.all.sample
-  amount_pledged = rand(1..campaign.amount).floor
+  amount_pledged = rand(1..campaign.investment_goal)
   #might need to remove .floor later!
 
-  percent = ( amount_pledged / campaign.amount ) * 100
+  percent = ( amount_pledged / campaign.investment_goal ) * 100
 
   #change campaign amount from float to integer
   new_shareholder = Shareholder.new(
