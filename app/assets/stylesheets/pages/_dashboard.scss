@@ -4,9 +4,6 @@
   background-color: white;
 }
 
-#dashboard-show-info {
-  //border: 1px dashed gray;
-}
 
 #dashboard-show-user-info {
   border-radius: 5px;
@@ -15,18 +12,18 @@
   min-height: 110vh;
 }
 
-#info-first-name-last-name h3{
-  font-weight: 600;
-  color: black;
+
+#info-first-name-last-name h2{
+  font-weight: 300;
+  color: #ff6f59;
+  text-shadow: none;
+  text-align: right;
 }
 
 #dashboard-show-user-info h5{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-  text-shadow: 1px 2px 2px rgba(0,0,0,0.2);
-  font-weight: 600;
-  font-size: 20px;
+  color: #143D3E;
+  font-weight: 300;
+  font-size: 38px;
 }
 
 #dashboard-show-user-info a{
@@ -34,136 +31,101 @@
   font-size: small;
   color: #fafffe;
   justify-items: left;
-}
-
-#first-name-last-name p{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-}
-
-#first-name-last-name h6{
-  color: #fafffe;
-  font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 25px;
-  margin-top: 20px;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-}
-
-#date-of-birth p{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-  
-  
-}
-
-#date-of-birth h6{
-  color: #fafffe;
-  font-weight: 600;
-  font-size: 18px;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-  margin-top: 30px;
+  margin-left: -10px;
 }
 
 #user-address p{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
+  font-size: 18px;
+  color: #201E1F;
 }
 
 #user-address h6{
-  color: #fafffe;
-  font-weight: 600;
-  font-size: 18px;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
+  color: #143D3E;
+  font-weight: 300;
+  font-size: 30px;
   margin-top: 30px;
 }
 
 #user-gender p{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-  
+  font-size: 18px;
+  color: #201E1F;
 }
 
 #user-gender h6{
-  color: #fafffe;
-  font-weight: 600;
-  font-size: 18px;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
-  margin-top: 30px;
+  color: #143D3E;
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
 }
 
 #user-phone-number p{
-  color: #fafffe;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
+  color: #201E1F;
+  font-size: 18px;
 }
 
 #user-phone-number h6 {
-  color: #fafffe;
-  font-weight: 600;
-  font-size: 18px;
-  text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
-  text-shadow: horizontal-offset vertical-offset blur color;
+  color: #143D3E;
+  font-weight: 300;
+  font-size: 30px;
+  margin-top: 25px;
+}
+
+#project-iteration{
   margin-top: 30px;
 }
 
-.fa-birthday-cake {
-  color: #ff6f59;
-}
-
-.fa-map-marker-alt {
-  color: #ff6f59;
-}
-
-.fa-genderless {
-  color: #ff6f59;
-}
-
-.fa-phone-square-alt{
-  color: #ff6f59;
-}
-
-
 #project-iteration h4{
   font-size: 36px;
-  text-align: center;
+  text-align: left;
   margin-top: 24px;
-  font-weight: 600;
-  color: black;
+  font-weight: 300;
+  color:#ff6f59;
+  margin-left: 35px;
 }
 
 #profile-tab{
   color: black;
   font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
 
 #contact-tab{
   color: black;
   font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
 
 #home-tab{
   color: black;
   font-weight: 600;
+  font-family: "Montserrat", sans-serif;
 }
 
 #navegation-bar{
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .nav-tabs {
-  border-bottom: 2px solid #08836F;
+  border-bottom: 2px solid #ff6f59;
 }
 
 .nav-tabs .nav-link {
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#user-tags-personal{
+  margin-top: 45px;
+  margin-left: -30px;
+}
+
+.nav-tabs .nav-link.active {
+  background-color: #ff6f59;
+  color: white !important
+}
+
+.img-round{
+  border: 6px solid $bwhite;
+  border-radius: 0px 50px 50px 50px;
+  box-shadow: 0 0 3px #ccc;
 }
