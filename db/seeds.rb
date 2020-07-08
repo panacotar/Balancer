@@ -110,11 +110,20 @@ puts 'Creating Shareholder'
                     amount: amount_pledged,
                     percentage: percent,
                     status: "Active",
-                    # user: User.all.sample,
-                    user_id: 11,
+                    user: User.all.sample,
                     campaign: campaign)
   puts "New pledge: #{new_shareholder.amount} € on #{new_shareholder.campaign.name}"
   new_shareholder.save
+
+  order = Order.new(
+          campaign: campaign,
+          campaign_sku: campaign.name.gsub(' ', '_') + rand(1..9999).to_s,
+          amount: new_shareholder.amount,
+          state: 'paid',
+          user: User.all.sample)
+
+  puts "Creating receipt #{order.campaign_sku} for #{order.user.first_name}"
+  order.save
 end
 
 puts "Shareholder: #{Shareholder.all.count}"

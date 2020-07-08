@@ -29,10 +29,10 @@
                 <div id="user-without-project">
                   <h5>No <strong>projects</strong> under your belt yet, but you have great ideas and so do the people you know.
                   <br>You could start a <strong>project</strong> today or team up with friends to make your ideas come to life!</h4>
-                </div>  
+                </div>
                 <% end %>
-              </div>  
-            </div> 
+              </div>
+            </div>
             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
               <% if !@orders.nil? %>
                 <% @orders.each do |order|%>
@@ -40,7 +40,9 @@
                 <% end %>
               <% else %>
                 <h6>No contribuition under your belt at the moment.</h6>
-                  <% end %>
+              <% end %>
+
+                  <!------------------- -->
             </div>
             <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
               <div id="dashboard-show-user-info">
@@ -52,9 +54,9 @@
                         <% if @user.photo.attached? %>
                         <%= cl_image_tag @user.photo.key, crop: :fill, height: 400, width: 400, radius: 5, class: "img-round"%>
                         <% end %>
-                      </div>  
-                    </div>  
-                    <div id="user-tags-personal" class="col-lg-6 col-md-6 col-xs-3"> 
+                      </div>
+                    </div>
+                    <div id="user-tags-personal" class="col-lg-6 col-md-6 col-xs-3">
                       <div id="user-address">
                         <h6>Address</h6>
                         <p><strong><%= @user.address%></strong></p>
@@ -69,14 +71,14 @@
                       </div>
                     </div>
                   </div>
-                </div>          
-              </div> 
-            </div>    
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
         </div>
-      </div> 
-    </div>   
-  </div>            
+      </div>
+    </div>
+  </div>
 </div>
