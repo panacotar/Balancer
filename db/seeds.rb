@@ -1,6 +1,5 @@
 require 'faker'
 require 'open-uri'
-require 'pry-byebug'
   #Users
   #campaingn
   #transactions
