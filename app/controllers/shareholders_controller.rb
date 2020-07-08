@@ -31,7 +31,6 @@ class ShareholdersController < ApplicationController
     project = Project.find(params[:project_id])
     authorize Shareholder
 
-    raise
     pledge_amount = params[:pledge_amount].to_i
     campaign = project.campaigns.first
     if campaign.nil?
@@ -43,9 +42,10 @@ class ShareholdersController < ApplicationController
     campaign.shareholders.each do |sh|
       pledged_before += sh.amount
     end
-    pledge_avail = campaign.amount - pledged_before
 
-    if (pledge_amount > pledge_avail)
+    @pledge_avail = campaign.amount - pledged_before
+
+    if (pledge_amount > @pledge_avail)
       return redirect_to project_path(project)
     end
 

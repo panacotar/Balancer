@@ -16,7 +16,6 @@ export const showProgress = () => {
     let progressWidth = progress.offsetWidth;
 
     // here you can set the actual progress (progressWidth)!!
-    // in percentage. how fucking awesome!
     // progressWidth = 50
     progressWidth = progressDiv.dataset.campaigns.length + 25
 
