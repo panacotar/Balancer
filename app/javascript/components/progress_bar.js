@@ -15,10 +15,15 @@
 //     let progress = progressDiv.querySelector(".js-progress")
 //     let progressWidth = progress.offsetWidth;
 
+
+    // here you can set the actual progress (progressWidth)!!
+    // progressWidth = 50
+    progressWidth = progressDiv.dataset.campaigns.length + 25
+
 //     // here you can set the actual progress (progressWidth)!!
-//     // in percentage. how fucking awesome!
 //     // progressWidth = 50
 //     progressWidth = progressDiv.dataset.campaigns.length + 25
+
 
 //     // different colors for progress!!
 //     if(progressWidth >= 80){
