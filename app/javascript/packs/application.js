@@ -56,7 +56,7 @@ document.addEventListener('turbolinks:load', () => {
   const day = currentDate.getDate();
 
   flatpickr(".date-picker", {
-     altInput: true,
+    altInput: true,
     altFormat: "F j, Y",
     dateFormat: "Y-m-d",
     maxDate: `${year - 15}-${month}-${day + 1}`
@@ -69,6 +69,9 @@ document.addEventListener('turbolinks:load', () => {
     minDate: `${year}-${month}-${day + 1}`
   });
 
+  initUpdateNavbarOnScroll();
+  showProgress();
+  initSlick();
 });
 
 

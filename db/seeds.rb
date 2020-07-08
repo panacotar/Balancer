@@ -7,7 +7,9 @@ require 'open-uri'
   #shareholders
 Campaign.destroy_all
 Project.destroy_all
+Order.destroy_all
 User.destroy_all
+
 
 puts 'Creating Users'
 
