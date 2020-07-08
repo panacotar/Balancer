@@ -4,6 +4,7 @@ class CampaignsController < ApplicationController
 
 
   def index
+    @projects = policy_scope(Project)
     if params[:query].present?
       @campaigns = policy_scope(Campaign.search_by_name_and_description(params[:query]))
       if @campaigns.present?
