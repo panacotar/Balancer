@@ -10,22 +10,22 @@
             <h2><%= @campaigns.last %></h2>
           </div>
         </div>
-      <% @campaigns.take(2).each do |campaign| %>
+      <%# @campaigns.take(2).each do |campaign| %>
       <div class="carousel-item" style="height: 65vh">
-        <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Second slide"%>
+        <%=cl_image_tag @campaigns.sample.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Second slide"%>
         <div class="carousel-content">
             <div class="featured">
               <p>Featured</p>
             </div>
-            <h2><%= campaign.name %></h2>
+            <h2><%= @campaigns.sample.name %></h2>
           </div>
       </div>
-       <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Second slide"%>
+        <%=cl_image_tag @campaigns.sample.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.6", :crop=>"crop", :effect=> "gradient_fade", y: -0.9, background: "#3e2222", opacity: 60, alt:"Second slide"%>
         <div class="carousel-content">
             <div class="featured">
               <p>Featured</p>
             </div>
-            <h2><%= campaign.name %></h2>
+            <h2><%= @campaigns.sample.name %></h2>
           </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
@@ -36,7 +36,7 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-      <%= end %>
+      <%#= end %>
     </div>
 </div>
 
