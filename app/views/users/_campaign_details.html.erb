@@ -2,8 +2,8 @@
   <div id=wraper-dashboard-project>
     <div class="container">
       <div class="row">
-        <div class="col-lg-12">    
-          <div id="dashboard-project-photo" class="flex-gap"> 
+        <div class="col-lg-12">
+          <div id="dashboard-project-photo" class="flex-gap">
             <%= cl_image_tag order.campaign.project.photo.key, crop: :fill, height: 180, width: 180, radius: 5 %>
             <div id="dashboard-campaign-details">
               <h1 class="order-title">Pledge #<%= order.id %></h1>
@@ -14,10 +14,11 @@
                 </li>
               </ul>
               <p class="order-text"><!-- some text we want to add --></p>
+              <%= link_to "Receipt", order_path(order.id), class: "btn" %>
             </div>
-          </div>   
-        </div>     
+          </div>
+        </div>
      </div>
-    </div>  
-  </div> 
-</div>  
+    </div>
+  </div>
+</div>
