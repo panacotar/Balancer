@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
 
   def create
     campaign = Campaign.find(params[:campaign_id])
-
     order = Order.create!(campaign: campaign, campaign_sku: gen_sku(campaign), amount: monetize_pledge(params[:pledge_amount]), state: 'pending', user: current_user)
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
