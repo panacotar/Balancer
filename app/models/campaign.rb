@@ -33,6 +33,6 @@ class Campaign < ApplicationRecord
     shareholders.each do |sh|
       pledged_total += sh.amount
     end
-    ((pledged_total / amount) * 100).to_i
+    ((pledged_total / investment_goal) * 100).to_i
   end
 end
