@@ -6,11 +6,11 @@ require 'open-uri'
   #projects
   #shareholders
 
-Campaign.destroy_all
-Project.destroy_all
-Order.destroy_all
 User.destroy_all
+Project.destroy_all
+Campaign.destroy_all
 Shareholder.destroy_all
+Order.destroy_all
 
 
 puts 'Creating Users'
@@ -79,15 +79,46 @@ puts "Projects: #{Project.all.count}"
 
 projects_arr = Project.all
 
+campaigns_names = [
+  'The Briiv Air Filter',
+  'AusAir',
+  'Reinventing The Lightest Luxury Smart Glasses',
+  'Atelier Riforma',
+  'KEFIRKO - VEGGIE FERMENTER',
+  'Hitch',
+  'Prepared, Protected and always Up-to-Date!',
+  'Rich Recovery: Brain Power In a Bottle',
+  'AMX Electric Bike: The e-bike for cities',
+  'QuenchSea',
+  'V-Tex'
+  ]
+
+campaigns_descriptions = [
+  "Unlock The Power Of Plants. The world's most sustainable air purifier.",
+  'Next Gen Filtration Mask With Botanicals. Highly breathable, and reusable.',
+  'Combining the finest materials with the most advanced technology',
+  'We use creativity to reduce the environmental impact of fashion.',
+  'Ferment mixed veggies, kimchi, or any other vegetable in your kitchen!',
+  'The water bottle with a removable cup hidden inside. Go zero waste.',
+  'Qurelife, Much More than just First Aid! - invented in Switzerland',
+  'A 3 oz, natural drink to boost cognition, physical performance, and immunity.',
+  'The AMX is a lightweight, high-performance, urban electric bike.',
+  'The World’s Only Low-Cost Portable Seawater Desalination Device.',
+  'Nanotech-12 Waterproof Knit Shoe. Mix of cozy slippers & waterproof boots'
+
+  ]
+
+counter = 0
 puts 'Creating campaigns'
 projects_arr.each do |project|
-  campaign = Campaign.new(name: Faker::Marketing.buzzwords,
+  campaign = Campaign.new(name: campaigns_names[counter],
                   start_date: Faker::Date.backward(days: 2),
                   end_date: Faker::Date.forward(days: 28),
-                  description: Faker::Lorem.sentence(word_count: 8),
+                  description: campaigns_descriptions[counter],
                   project: project,
-                  percentage: Faker::Number.between(from: 1, to: 10),
-                  amount: Faker::Number.number(digits: 5))
+                  equity: Faker::Number.between(from: 1, to: 15),
+                  investment_goal: Faker::Number.number(digits: 5))
+  counter += 1
 
   puts "Creating campaign: #{campaign.name}"
   campaign.save
@@ -99,12 +130,10 @@ puts 'Creating Shareholder'
 30.times do
 
   campaign = Campaign.all.sample
-  amount_pledged = rand(1..campaign.amount).floor
-  #might need to remove .floor later!
+  amount_pledged = rand(1..campaign.investment_goal)
 
-  percent = ( amount_pledged / campaign.amount ) * 100
+  percent = ( amount_pledged / campaign.investment_goal ) * 100
 
-  #change campaign amount from float to integer
   new_shareholder = Shareholder.new(
                     amount: amount_pledged,
                     percentage: percent,
