@@ -15,8 +15,8 @@
                 Show All
               </button>
               <div id="sidebar-dropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <% @projects.each do |project|%>
-                <%= link_to "#{project.category}", campaigns_path(params[:category]), class: "dropdown-item" %>
+                <% @categories.each do |category|%>
+                <%= link_to category, campaigns_path(params[:category]), class: "dropdown-item" %>
                 <% end %>
               </div>
             </div>
