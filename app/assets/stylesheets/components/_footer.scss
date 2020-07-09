@@ -1,3 +1,7 @@
+$break-small: 600px;
+$break-large: 1200px;
+
+
 .footer {
   background: #0F2D30;
   display: flex;
@@ -6,6 +10,15 @@
   height: 100px;
   padding: 0px 50px;
   color: rgba(251, 252, 251, 0.6);
+
+   @media screen and (max-width: $break-small) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+   }
+
 }
 .footer-links {
   display: flex;

@@ -1,17 +1,19 @@
 class CampaignsController < ApplicationController
+
   skip_before_action :authenticate_user!, only: %i[index show]
 
-  def index
-    @campaigns = policy_scope(Campaign)
 
+  def index
+    @projects = policy_scope(Project)
     if params[:query].present?
-      sql_query = " \
-        campaings.name @@ :query \
-        OR campaings.description @@ :query \
-      "
-      @campaings = Campaign.where(sql_query, query: "%#{params[:query]}%")
+      @campaigns = policy_scope(Campaign.search_by_name_and_description(params[:query]))
+      if @campaigns.present?
+        @campaings
+      else
+        redirect_to campaigns_path, notice: "No search results were found"
+      end
     else
-      @campaings = Campaign.all
+      @campaigns = policy_scope(Campaign)
     end
   end
 

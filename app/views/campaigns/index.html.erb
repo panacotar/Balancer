@@ -1,7 +1,7 @@
 
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active" style="height: 65vh">
+        <div class="carousel-item active" style="height: 70vh">
             <%=cl_image_tag @campaigns.last.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
           <div class="carousel-content">
             <p class="feature-btn">Featured</p>
@@ -39,33 +39,10 @@
 </div>
 
 
-      <!-- Title -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12 col-md-5 col-sm-3">
-      <div class="index-title">
-        <h1>Make a difference</h1>
-        <h2>choose impact investments</h2>
-      </div>
-
-      <div class="search-bar">
-        <%= form_tag campaigns_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Find a campaign"
-        %>
-       <%= submit_tag "Search", class: "btn btn-primary" %>
-       <% end %>
-        <%#= simple_form_for :search, url: campaigns_path, method: :get do |f| %>
-         <!--  <div class="search-form" data-campaigns="<%= @campaigns.to_json %>" id="search-data">
-            <input class="form-control string required" type="text" name="search" id="search_string" />
-            <button type="submit" id="search-btn" class="btn">
-              <i class="fas fa-search"></i> Search
-            </button>
-            </div> -->
-          <%# end %>
-      </div>
+      <!-- Sidebar & Campaigns -->
+    <div class="index-title">
+      <h1>Make a difference</h1>
+      <h2>choose impact investments</h2>
     </div>
   </div>
 </div>
@@ -103,10 +80,12 @@
             <div class="progress" data-campaigns="<%= campaign.name %>">
               <%= render 'progress_bar', campaign: campaign %>
             </div>
+         <% end %>
           </div>
-        <% end %>
-       </div>
+        </div>
+       <% end %>
       </div>
-    <% end %>
-  </div>
+</div>
+</div>
+</div>
 </div>
