@@ -26,6 +26,23 @@
     font-size: 12px;
  }
 
+  .card-img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+  }
+
+  .card-body {
+    height: 300px;
+    flex-direction: column;
+    align-items: inherit;
+    padding: 10px 20px;
+
+    .progress-bar {
+      font-size: 15px;
+    }
+  }
+
 }
 
 .card-title {
@@ -111,5 +128,4 @@
 .campaign-btn {
   border: 1px solid lightgray;
 }
-
 

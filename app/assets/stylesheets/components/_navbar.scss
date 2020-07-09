@@ -1,8 +1,10 @@
 .navbar-lewagon {
-  justify-content: space-between;
   background: transparent;
   transition: 0.5s background-color ease;
-  padding: 15px;
+  padding: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .navbar-lewagon-yellow {
@@ -32,7 +34,7 @@
 }
 
 .navbar-nav {
-  float: left;
+  float: right;
 }
 
 .nav-btn {
@@ -41,7 +43,6 @@
   border-radius: 2px;
   padding: 15px;
   border-style: none;
-  margin-right: 30px;
 
   &:hover{
     background-color:rgba(251, 252, 251, 0.9);
