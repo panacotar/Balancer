@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 
-$break-small: 600px;
-$break-large: 1200px;
+$break-small: 800px;
+$break-large: 900px;
 
 body {
   display: flex;
@@ -27,10 +27,6 @@ body {
     align-items: center;
 
 }
-
-
-
-
 
 }
 
@@ -100,8 +96,11 @@ body {
 
 #home-cards-container {
   display: flex;
-  justify-content: space-evenly;
-  padding: 50px 0px;
+  justify-content: space-around;
+  padding: 0px;
+  margin-right: 0px;
+  width: 100%;
+  margin-left: 40px;
 }
 
 .cards-header {
@@ -123,6 +122,11 @@ body {
 .separator {
   width: 95%;
   border: 1px solid lightgray;
-  margin-bottom: 0px;
+  margin-bottom: 40px;
 }
+
+#carousel {
+  padding: 0px;
+}
+
 

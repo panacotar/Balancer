@@ -62,7 +62,7 @@
             <div class="card">
             <%= link_to project_path(campaign.project), class: "card-link" do %>
               <% if campaign.project.photo.attached? %>
-               <%=cl_image_tag campaign.project.photo.key, class: "card-img-top"%>
+               <%=cl_image_tag campaign.project.photo.key, class: "card-img"%>
               <% end %>
               <div class="card-body">
                 <div class="campaign-info">

@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @campaigns = policy_scope(Campaign)
+    @projects = policy_scope(Project)
   end
 
   def about
