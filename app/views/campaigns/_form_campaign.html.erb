@@ -1,5 +1,5 @@
 
-  <%= simple_form_for [@project, @campaign] do |f| %>
+  <%= simple_form_for [@project,@campaign] do |f| %>
     <%= f.input :name %>
     <%= f.input :description, required: true,
                 hint: ("80 characters maximum")

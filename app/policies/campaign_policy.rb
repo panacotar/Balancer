@@ -13,6 +13,6 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user.admin
+    true
   end
 end

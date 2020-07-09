@@ -17,12 +17,12 @@
             <% end %>
             <li class="list-inline-item">
               <% if @project.user == current_user %>
-              <p><%= link_to "Create a campaign", new_project_campaign_path(@project) %></p>
+              <p><%= link_to "Create a Campaign", new_project_campaign_path(@project) %></p>
             </li>
               <% end %>
             <li class="list-inline-item">
               <% if @project.user == current_user %> 
-              <p><%= link_to " All Campaigns", campaigns_path %></p>
+              <p><%= link_to " Edit Your Campaign", edit_project_campaign_path(@project) %></p>
             </li>
               <% end %>
             <li class="list-inline-item">

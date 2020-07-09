@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: %i[show new create edit update] do
 
-    resources :campaigns, only: %i[new create]
+    resources :campaigns, only: %i[new create edit update]
     resources :shareholders, only: %i[new create]
   end
 

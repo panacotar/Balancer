@@ -40,6 +40,20 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+    @campaign = Campaign.find(params[:id])
+    authorize @campaign
+
+  end
+
+  def update
+    @campaign = Campaign.find(params[:id])
+    authorize @campaign
+    @campaign.update(campaign_params)
+    redirect_to campaigns_path(@campaigns)
+  end
+
   private
 
   def campaign_params
