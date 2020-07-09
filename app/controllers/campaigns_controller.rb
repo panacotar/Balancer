@@ -5,16 +5,19 @@ class CampaignsController < ApplicationController
 
   def index
     @projects = policy_scope(Project)
+    @last_campaign = policy_scope(Campaign).last
     if params[:query].present?
       @campaigns = policy_scope(Campaign.search_by_name_and_description(params[:query]))
       if @campaigns.present?
-        @campaings
+        @campaigns
       else
         redirect_to campaigns_path, notice: "No search results were found"
       end
     else
       @campaigns = policy_scope(Campaign)
     end
+    @campaigns_list = @campaigns.reject{|camp| camp.id == @last_campaign.id }.shuffle
+    @categories = Project.list_categories
   end
 
   def new
