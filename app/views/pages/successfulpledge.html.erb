@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid p-0">
   <div class="row">
     <div class="col-lg-12">
       <div id="wraper-successfulpledge">
@@ -6,7 +6,12 @@
           <div class="row">
             <div class="col">
               <div id="thank-you-photo">
-              <h1>Your pledge was successful!</h1>
+                <h1>Your pledge was successful!</h1>
+              <div>
+              <div id="campaing-thanks" style="padding-left: 100px; color: #216869; font-weight: 500; margin-top: 20px;margin-bottom: 15px;">
+                <h4>Thank you for investing in <strong><%= current_user.orders.last.campaign.name.capitalize %></strong> </h4>
+                <p><small>* You can check all your investments in your dashboard</small><p>
+              </div>
               <div id="option-to-go">
                 <p class="alignleft"><%= link_to "< Go to your dashboard", dashboard_path%></p>
                 <p class="alignright"><%= link_to "Go to all campaigns >", campaigns_path%></p>

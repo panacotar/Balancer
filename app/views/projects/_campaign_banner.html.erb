@@ -44,7 +44,7 @@
         </div>
         <div id="button-investement">
           <button <% if !@allow_pledges %>disabled<% end %> type="button" class="btn" data-toggle="modal" data-target="#project-pledge-modal">
-            <% if @allow_pledges %>Pledge!<% else %>Funded!<% end %>
+            <% if @allow_pledges %><strong>Pledge!</strong><% else %>Funded!<% end %>
           </button>
         </div>
         <div id="social-media-icons">
