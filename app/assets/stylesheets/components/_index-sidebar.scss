@@ -1,0 +1,47 @@
+.sidebar-title {
+  margin-top: 30px;
+  color: $bblack;
+  font-weight: lighter;
+}
+
+.sidebar-sticky {
+  margin-top: 33px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: lighter;
+
+  a {
+    color: $bblack;
+    &:hover {
+      background-color: rgba(240, 240, 240, 0.7);
+    }
+  }
+}
+
+
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: lighter;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  color: $bblack;
+
+  &:hover {
+    background-color: rgba(240, 240, 240, 0.7);
+  }
+}
+
+
+#sidebar-dropdown {
+  background: transparent;
+  font-weight: lighter;
+}
