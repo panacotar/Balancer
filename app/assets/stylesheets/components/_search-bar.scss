@@ -1,0 +1,33 @@
+#search-form {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+
+
+
+  #query {
+    width: 100%;
+    border-radius: 8px;
+    font-weight: lighter;
+  }
+
+  button {
+    border: none;
+    background: none;
+  }
+
+  .search-btn {
+    font-size: 30px;
+    margin-left: 10px;
+    color: $bwhite;
+    text-shadow: 0 1px 0.8px rgba(0,0,0,0.6);
+    &:hover {
+      color: $borange;
+      text-shadow: 0 1px 0.8px rgba(255,255,255,0.3);
+    }
+  }
+}

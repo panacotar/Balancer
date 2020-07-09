@@ -9,7 +9,7 @@ class ShareholdersController < ApplicationController
 
     pledge_amount = last_pay.amount
 
-    proj_percent = (campaign.percentage * pledge_amount.to_i) / campaign.amount
+    proj_percent = (campaign.equity * pledge_amount.to_i) / campaign.investment_goal
 
     new_shareholder = Shareholder.new(amount: pledge_amount,
                                       percentage: proj_percent,
@@ -42,14 +42,14 @@ class ShareholdersController < ApplicationController
       pledged_before += sh.amount
     end
 
-    @pledge_avail = campaign.amount - pledged_before
+    @pledge_avail = campaign.investment_goal - pledged_before
 
     if (pledge_amount > @pledge_avail)
       return redirect_to project_path(project)
     end
 
     # calculate percent
-    proj_percent = (campaign.percentage * pledge_amount) / campaign.amount
+    proj_percent = (campaign.equity * pledge_amount) / campaign.investment_goal
 
     # create the shareholder
     pledge = Shareholder.new
