@@ -66,9 +66,6 @@ document.addEventListener('turbolinks:load', () => {
     dateFormat: "Y-m-d H:i",
     minDate: `${year}-${month}-${day + 1}`
   });
-
-  initUpdateNavbarOnScroll();
-  initSlick();
 });
 
 

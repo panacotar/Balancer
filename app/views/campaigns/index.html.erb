@@ -78,7 +78,9 @@
               </div>
             </div>
             <div class="progress" data-campaigns="<%= campaign.name %>">
-              <%= render 'progress_bar', campaign: campaign %>
+                <div class="progress-bar bg-info" role="progressbar" style="width:<%= campaign.percent %>%;" aria-valuenow="<%= campaign.percent %>" aria-valuemin="0" aria-valuemax="100">
+                  <%= campaign.percent %>%
+                </div>
             </div>
          <% end %>
           </div>
