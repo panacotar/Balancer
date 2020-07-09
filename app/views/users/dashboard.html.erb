@@ -12,7 +12,7 @@
                   <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">PROJECTS</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">YOUR CONTRIBUTIONS</a>
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">MY CONTRIBUTIONS</a>
                 </li>
                 <li class="nav-item" role="presentation">
                   <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">MY DETAILS</a>
@@ -26,27 +26,29 @@
                     <% @projects.each do |project|%>
                       <%= render "project_details", project: project %>
                     <% end %>
-                  <% else %>
-                  <div id="user-without-project">
-                    <h5>No <strong>projects</strong> under your belt yet, but you have great ideas and so do the people you know.
-                    <br>You could start a <strong>project</strong> today or team up with friends to make your ideas come to life!</h4>
-                  </div>  
-                  <% end %>
                 </div> 
+                <% end %>    
+                  <% if @projects.empty? %>
+                    <div id="user-without-project">
+                      <h5>No <strong>projects</strong> under your belt yet, but you have great ideas and so do the people you know.
+                      <br>You could start a <strong>project</strong> today or team up with friends to make your ideas come to life!</h4>
+                    </div> 
+                  <% end %>
+                <%if !@projects.empty? %>
                 <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div id="real-time-impact">
-                    <h1>YOUR PROJECT VIEWS</h1>
-                    <h3>You can visualize in real time where your <br>project is making an impact.</h3>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div id="real-time-impact">
+                      <h1>YOUR PROJECT VIEWS</h1>
+                      <h3>You can visualize in real time where your <br>project is making an impact.</h3>
                     </div>
                     <div id="chartdiv">
                     </div>
                   </div>  
                 </div>
+                <% end %>
               </div> 
-              </div>
-            
+            </div>
               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <% if !@orders.nil? %>
                   <% @orders.each do |order|%>
@@ -54,7 +56,7 @@
                   <% end %>
                 <% else %>
                   <h6>No contribuition under your belt at the moment.</h6>
-                    <% end %>
+                <% end %>
               </div>
               <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div id="dashboard-show-user-info">
