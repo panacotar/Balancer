@@ -16,4 +16,12 @@ class Project < ApplicationRecord
   def active?
     status
   end
+
+  def self.list_categories
+    categories = []
+    self.all.each do |proj|
+      categories << proj.category
+    end
+    return categories.uniq
+  end
 end

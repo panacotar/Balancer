@@ -2,25 +2,17 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" style="height: 70vh">
-            <%=cl_image_tag @campaigns.last.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
+            <%=cl_image_tag @last_campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
           <div class="carousel-content">
             <p class="feature-btn">Featured</p>
-            <h2><%= @campaigns.last.name.capitalize %></h2>
+            <h2><%= @last_campaign.name.capitalize %></h2>
             <%= link_to "SEE CAMPAIGN", project_path(@campaigns.last.project), class: "carousel-btn" %>
           </div>
         </div>
-      <% @campaigns.offset(rand(Campaign.count)).first(2).each do |campaign| %>
+      <% @campaigns_list.first(2).each do |campaign| %>
       <div class="carousel-item" style="height: 65vh">
         <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
         <div class="carousel-content">
-            <p class="feature-btn">Featured</p>
-            <h2><%= campaign.name.capitalize %></h2>
-            <%= link_to "SEE CAMPAIGN", project_path(campaign.project), class: "carousel-btn" %>
-        </div>
-      </div>
-       <div class="carousel-item" style="height: 65vh">
-        <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
-         <div class="carousel-content">
             <p class="feature-btn">Featured</p>
             <h2><%= campaign.name.capitalize %></h2>
             <%= link_to "SEE CAMPAIGN", project_path(campaign.project), class: "carousel-btn" %>
@@ -65,7 +57,7 @@
           <hr>
         <!-- Cards -->
         <div id="cards-campaign" class="row">
-          <% @campaigns.first(9).each do |campaign| %>
+          <% @campaigns.order('created_at DESC').first(9).each do |campaign| %>
           <div class="col-lg-4 col-md-3 col-sm-5 col-10">
             <div class="card">
             <%= link_to project_path(campaign.project), class: "card-link" do %>
