@@ -33,20 +33,21 @@
                   </div>  
                   <% end %>
                 </div> 
+                <%if !@projects.empty? %>
                 <div class="container-fluid">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div id="real-time-impact">
-                    <h1>YOUR PROJECT VIEWS</h1>
-                    <h3>You can visualize in real time where your <br>project is making an impact.</h3>
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div id="real-time-impact">
+                      <h1>YOUR PROJECT VIEWS</h1>
+                      <h3>You can visualize in real time where your <br>project is making an impact.</h3>
                     </div>
                     <div id="chartdiv">
                     </div>
                   </div>  
                 </div>
+                <% end %>
               </div> 
               </div>
-            
               <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                 <% if !@orders.nil? %>
                   <% @orders.each do |order|%>
@@ -54,7 +55,7 @@
                   <% end %>
                 <% else %>
                   <h6>No contribuition under your belt at the moment.</h6>
-                    <% end %>
+                <% end %>
               </div>
               <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                 <div id="dashboard-show-user-info">
