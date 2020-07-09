@@ -44,43 +44,57 @@
       <h1>Make a difference</h1>
       <h2>choose impact investments</h2>
     </div>
-  </div>
-</div>
-
-      <!-- Cards -->
-<div class="content-wrapper">
-  <div id="cards-campaign" class="row">
-    <% @campaigns.each do |campaign| %>
-      <div class="col-lg-3 col-md-5 col-sm-5 col-10">
-        <div class="card">
-          <%= link_to project_path(campaign.project), class: "card-link" do %>
-
-          <% if campaign.project.photo.attached? %>
-          <%=cl_image_tag campaign.project.photo.key, class: "card-img-top"%>
-          <% end %>
-
-          <div class="card-body">
-            <div class="campaign-info">
-              <h5 class="card-title"><%=campaign.name.capitalize%></h5>
-              <p class="description card-text"> <%= campaign.description %> </p>
-            </div>
-            <div class="campaign-end-date">
-              <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
-            </div>
-            <div class="investment-info">
-              <div class="campaign-equity">
-                <p class="card-text"><b>Equity</b></p>
-                <p class="card-text"><%= campaign.equity %>%</p>
-              </div>
-              <div class="campaign-investment">
-                <p class="card-text"><b>Investment</b></p>
-                <p class="card-text"><%= campaign.investment_goal %>€</p>
-              </div>
-            </div>
-            <div class="progress" data-campaigns="<%= campaign.name %>">
-                <div class="progress-bar bg-info" role="progressbar" style="width:<%= campaign.percent %>%;" aria-valuenow="<%= campaign.percent %>" aria-valuemin="0" aria-valuemax="100">
-                  <%= campaign.percent %>%
+<div class="index-container">
+   <%= render 'shared/sidebar' %>
+    <div class="col-md-10">
+      <div class="container">
+          <div id="dashboard" class="col-md-12">
+          <!-- Search Bar -->
+            <div class="search-bar">
+              <%= form_tag campaigns_path, method: :get, id:"search-form" do %>
+              <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Find a campaign"
+              %>
+              <%= button_tag(type: "submit", class: "search-btn") do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+            <% end %>
+          </div>
+          <hr>
+        <!-- Cards -->
+        <div id="cards-campaign" class="row">
+          <% @campaigns.first(9).each do |campaign| %>
+          <div class="col-lg-4 col-md-3 col-sm-5 col-10">
+            <div class="card">
+            <%= link_to project_path(campaign.project), class: "card-link" do %>
+              <% if campaign.project.photo.attached? %>
+               <%=cl_image_tag campaign.project.photo.key, class: "card-img-top"%>
+              <% end %>
+              <div class="card-body">
+                <div class="campaign-info">
+                  <h5 class="card-title"><%=campaign.name.capitalize%></h5>
+                  <p class="description card-text"> <%= campaign.description %> </p>
                 </div>
+                <div class="campaign-end-date">
+                  <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
+                </div>
+                <div class="investment-info">
+                  <div class="campaign-equity">
+                    <p class="card-text"><b>Equity</b></p>
+                    <p class="card-text"><%= campaign.equity %>%</p>
+                  </div>
+                  <div class="campaign-investment">
+                    <p class="card-text"><b>Investment</b></p>
+                    <p class="card-text"><%= campaign.investment_goal %>€</p>
+                  </div>
+                </div>
+                <div class="progress" data-campaigns="<%= campaign.name %>">
+                <div class=“progress-bar bg-info” role=“progressbar” style=“width:<%= campaign.percent %>%;” aria-valuenow=“<%= campaign.percent %>” aria-valuemin=“0” aria-valuemax=“100">
+                  <%= campaign.percent %>%
+                 </div>
+               </div>
             </div>
          <% end %>
           </div>
