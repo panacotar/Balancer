@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+
+$break-small: 600px;
+$break-large: 1200px;
+
 body {
   display: flex;
   min-height: 100vh;
@@ -12,15 +16,42 @@ body {
   height: 100vh;
   background-size: cover;
   display: flex;
+
+
+@media screen and (max-width: $break-small) {
+
+    margin-right: 0px;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+
+
+
 }
 
 .catch-phrase {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   color: #FAFFFE;
+
+
+ @media screen and (max-width: $break-small) {
+  margin: 0px;
+  align-items: center;
+  text-align: center;
+
+ }
+
+@media screen and (min-width: $break-large) {
   width: 40%;
   margin: 200px 90px;
+}
+
 }
 
 .catch-phrase h1 {
@@ -30,12 +61,24 @@ body {
   font-weight: bold;
   text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
   text-shadow: horizontal-offset vertical-offset blur color;
+
+@media screen and (max-width: $break-small) {
+    font-size: 39px;
+    width: max-content;
+  }
+
+
 }
 
 .catch-phrase p {
   font-size: 24px;
   text-shadow: 1px 3px 3px rgba(0,0,0,0.3);
   text-shadow: horizontal-offset vertical-offset blur color;
+
+@media screen and (max-width: $break-small) {
+  width: -webkit-fill-available;
+    font-size: 16px;
+ }
 }
 
 
