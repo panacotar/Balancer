@@ -1,6 +1,6 @@
  <div class="responsive">
-  <% @campaigns.each do |campaign| %>
-    <div>
+    <% @campaigns.each do |campaign| %>
+    <div id="carousel">
       <%= link_to project_path(campaign.project), class: "card-link" do %>
         <div class="card" style="width: 16rem;">
           <% if campaign.project.photo.attached? %>
