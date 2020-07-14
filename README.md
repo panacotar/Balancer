@@ -6,7 +6,7 @@ Entrepreneurs can add their projects and create campaigns for raising funding
 Investors are able to browse through campaigns and make a pledge.
 
 --------------------------------
-[Balancer in production]( https://balancer-lw.herokuapp.com/, "Check it out online")
+[Balancer in production]( https://balancer-lw.herokuapp.com/ "Check it out online")
 
 ### Built using:
 - Ruby on Rails
