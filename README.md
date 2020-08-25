@@ -7,7 +7,14 @@ Investors are able to browse through campaigns and make a pledge.
 
 --------------------------------
 
-<a href="https://balancer-lw.herokuapp.com/" target="_blank">Balancer in production</a>
+[Balancer in production](https://balancer-lw.herokuapp.com/ "CTRL/CMD + click to open in a new tab")
+
+## Contributors
+
+Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/graphs/contributors) that contributed to this project. 
+
+-----------------------------
+
 
 ### Built using:
 - Ruby on Rails
