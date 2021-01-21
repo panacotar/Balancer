@@ -5,8 +5,6 @@ Social Impact Investing platform that aims to support and listen to the needs of
 Entrepreneurs can add their projects and create campaigns for raising funding
 Investors are able to browse through campaigns and make a pledge.
 
---------------------------------
-
 [Balancer in production](https://balancer-lw.herokuapp.com/ "CTRL/CMD + click to open in a new tab")
 
 ## Contributors
