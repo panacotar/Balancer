@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  get "/healthcheck", to: proc { [200, {}, ["success"]] }
   get :about, to: 'pages#about'
   get :dashboard, to: "users#dashboard"
   get :successfulpledge, to: 'pages#successfulpledge'
