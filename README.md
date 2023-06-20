@@ -36,5 +36,4 @@ Create a .env file with the following environments:
 - STRIPE_PUBLISHABLE_KEY
 - STRIPE_SECRET_KEY
 
-
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
