@@ -20,7 +20,7 @@ Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/gra
 
 ### Built using:
 - Ruby on Rails
-- Boostratp
+- Bootstrap
 - Stripe Payments
 - Cloudinary gem
 - flatpickr gem
