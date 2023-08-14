@@ -83,3 +83,5 @@ production:
   database: Balancer_production
   username: Balancer
   password: <%= ENV['BALANCER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['PGHOST'] %>
+  port: <%= ENV['PGPORT'] %>

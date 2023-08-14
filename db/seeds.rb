@@ -1,10 +1,12 @@
 require 'faker'
 require 'open-uri'
-  #Users
-  #campaingn
-  #transactions
-  #projects
-  #shareholders
+  # Users
+  # Campaign
+  # Transactions
+  # Projects
+  # Shareholders
+
+puts 'Destroying previous DB items'
 
 User.destroy_all
 Project.destroy_all
@@ -31,19 +33,19 @@ puts "Users: #{User.all.count}"
 
 
 projects_categories = [
-    'Arts & crafts',
-    'Beauty and fragrances',
-    'Books and magazines',
-    'Clothing, accessories',
-    'Computers, accessories',
-    'Education',
-    'Entertainment and media',
-    'Food retail and service',
-    'Sports and outdoors',
-    'Travel',
-    'Services',
-    'Others'
-  ]
+  'Arts & crafts',
+  'Beauty and fragrances',
+  'Books and magazines',
+  'Clothing, accessories',
+  'Computers, accessories',
+  'Education',
+  'Entertainment and media',
+  'Food retail and service',
+  'Sports and outdoors',
+  'Travel',
+  'Services',
+  'Others'
+]
 
 projects_photos_url = [
   'https://images.unsplash.com/photo-1562157646-4303261af91e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',
@@ -57,7 +59,7 @@ projects_photos_url = [
   'https://images.unsplash.com/photo-1564974944378-7f6b56fea4a2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',
   'https://images.unsplash.com/photo-1588959570984-9f1e0e9a91a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80',
   'https://images.unsplash.com/photo-1571115355423-1d318bd95e22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1100&q=80'
-  ]
+]
 
 puts 'Creating projects'
 projects_photos_url.each do |url|
@@ -68,6 +70,7 @@ projects_photos_url.each do |url|
                  target: Faker::Team.name,
                  user: User.all.sample)
 
+  puts "Getting photo at #{url} for the #{pr.project_name}"
   file = URI.open(url)
   pr.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 

@@ -20,7 +20,7 @@ Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/gra
 
 ### Built using:
 - Ruby on Rails
-- Boostratp
+- Bootstrap
 - Stripe Payments
 - Cloudinary gem
 - flatpickr gem
@@ -29,5 +29,11 @@ Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/gra
 - **Database**:
 - - PostgreSQL.
 
+## Setup
+
+Create a .env file with the following environments:
+- CLOUDINARY_URL (from the Cloudinary console > Dashboard)
+- STRIPE_PUBLISHABLE_KEY
+- STRIPE_SECRET_KEY
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
