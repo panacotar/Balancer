@@ -9,19 +9,17 @@ class ProjectsController < ApplicationController
     @pledge_remaining = 0
 
     @campaign = nil
-    if !@project.campaigns.empty?
-      @campaign = @project.campaigns.first
+    return if @project.campaigns.empty?
 
-      @campaign.shareholders.each do |sh|
-        @pledged_before += sh.amount
-      end
+    @campaign = @project.campaigns.first
 
-      if @pledged_before < @campaign.investment_goal
-        @allow_pledges = true
-      end
-
-      @pledge_remaining = @campaign.investment_goal - @pledged_before
+    @campaign.shareholders.each do |sh|
+      @pledged_before += sh.amount
     end
+
+    @allow_pledges = true if @pledged_before < @campaign.investment_goal
+
+    @pledge_remaining = @campaign.investment_goal - @pledged_before
   end
 
   def new
