@@ -35,7 +35,7 @@
 yarn-debug.log*
 .yarn-integrity
 /.yarn/releases/*
-Gemfile.lock
+
 # Ignore .env file containing credentials.
 .env*
 # Ignore Mac and Linux file system files
