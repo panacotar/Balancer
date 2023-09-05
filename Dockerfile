@@ -36,7 +36,7 @@ FROM base as build
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev node-gyp pkg-config python
+    apt-get install --no-install-recommends -y build-essential libpq-dev node-gyp pkg-config python nodejs -y
 
 # Install yarn
 ARG YARN_VERSION=1.22.19
