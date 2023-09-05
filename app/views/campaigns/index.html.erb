@@ -1,4 +1,4 @@
-<% if @campaigns&.empty? %>
+<% if @campaigns && @campaigns.empty? %>
   <%= render 'campaigns/partials/no_campaign' %>
 <% else %>
   <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
