@@ -8,7 +8,7 @@ Investors are able to browse through campaigns and make a pledge.
 
 
 
-[Balancer in production](https://balancer-init.fly.dev/ "CTRL/CMD + click to open in a new tab")
+[Balancer in production](https://balancer-app.fly.dev "CTRL/CMD + click to open in a new tab")
 
 
 ## Contributors
