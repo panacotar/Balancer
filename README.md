@@ -48,6 +48,10 @@ Notes on Fly.io:
 - - I modified the number of machines for the main app (balancer) to 1
 - - fly scale count 1 (CLI to modify the # of machines)
 
+- An alternative to this would be to do some steps after deployment (maybe a bash script):
+- - Remove the builder app with its machine
+- - Clone one machine of the balancer app (so now you can have two machines to power it) 
+
 
 For the CLI:
 - Run a rails command on the app's console
