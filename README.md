@@ -52,10 +52,16 @@ Notes on Fly.io:
 - - Remove the builder app with its machine
 - - Clone one machine of the balancer app (so now you can have two machines to power it) 
 
+To remove an app
+fly apps destroy <APPNAME>
+
+To remove a machine
+fly m remove <MACHINE_ID>
+
+To clone a machine
+fly m clone <MACHINE_ID>
 
 For the CLI:
 - Run a rails command on the app's console
 fly ssh console --pty -C '/rails/bin/rails console'
-
-
 -->
