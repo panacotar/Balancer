@@ -19,7 +19,7 @@ class Project < ApplicationRecord
 
   def self.list_categories
     categories = []
-    self.all.each do |proj|
+    all.each do |proj|
       categories << proj.category
     end
     return categories.uniq
