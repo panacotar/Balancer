@@ -8,7 +8,7 @@ class CampaignPolicy < ApplicationPolicy
   def create?
     return unless record.project.user == user
 
-    return true
+    true
   end
 
   def update?
