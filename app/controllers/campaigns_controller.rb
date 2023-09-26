@@ -1,7 +1,5 @@
 class CampaignsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: %i[index show]
-
 
   def index
     @projects = policy_scope(Project)
@@ -16,7 +14,7 @@ class CampaignsController < ApplicationController
     else
       @campaigns = policy_scope(Campaign)
     end
-    @campaigns_list = @campaigns.reject{|camp| camp.id == @last_campaign.id }.shuffle
+    @campaigns_list = @campaigns.reject { |camp| camp.id == @last_campaign.id }.shuffle
     @categories = Project.list_categories
   end
 
@@ -44,7 +42,6 @@ class CampaignsController < ApplicationController
     @project = Project.find(params[:project_id])
     @campaign = Campaign.find(params[:id])
     authorize @campaign
-
   end
 
   def update

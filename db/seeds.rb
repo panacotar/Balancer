@@ -1,19 +1,10 @@
 require 'faker'
 require 'open-uri'
-  # Users
-  # Campaign
-  # Transactions
-  # Projects
-  # Shareholders
-
-puts 'Destroying previous DB items'
-
-User.destroy_all
-Project.destroy_all
-Campaign.destroy_all
-Shareholder.destroy_all
-Order.destroy_all
-
+# Users
+# Campaign
+# Transactions
+# Projects
+# Shareholders
 
 puts 'Creating Users'
 

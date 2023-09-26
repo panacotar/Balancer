@@ -5,10 +5,10 @@ class Campaign < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
-    against: [ :name, :description ],
-    using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
+                  against: %i[name description],
+                  using: {
+                    tsearch: { prefix: true } # <-- now `superman batm` will return something!
+                  }
 
   validates :name, presence: true, uniqueness: true
   validates :description, length: { maximum: 80 }

@@ -4,13 +4,13 @@ class ProjectPolicy < ApplicationPolicy
       scope.all
     end
   end
-    
+
   def create?
     return true # anyone can create a project after login
   end
 
   def update?
-    record.user == user 
+    record.user == user
   end
 
   def destroy?
@@ -22,5 +22,4 @@ class ProjectPolicy < ApplicationPolicy
   def user_is_admin?
     record.user == user.admin
   end
-  
 end

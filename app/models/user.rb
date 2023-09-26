@@ -21,7 +21,9 @@ class User < ApplicationRecord
 
   validates :first_name, length: { minimum: 2 }
   validates :phone_number, uniqueness: true
-  validates :gender, inclusion: { in: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender others] }
+  validates :gender,
+            inclusion: { in: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender
+                                others] }
 end
 
 # t.string "email", default: "", null: false

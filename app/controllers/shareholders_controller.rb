@@ -44,7 +44,7 @@ class ShareholdersController < ApplicationController
 
     @pledge_avail = campaign.investment_goal - pledged_before
 
-    if (pledge_amount > @pledge_avail)
+    if pledge_amount > @pledge_avail
       return redirect_to project_path(project)
     end
 
