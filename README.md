@@ -26,8 +26,7 @@ Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/gra
 - flatpickr gem
 - slick-carousel
 - popper.js
-- **Database**:
-- - PostgreSQL.
+- Database - PostgreSQL
 
 ## Setup
 
@@ -35,6 +34,16 @@ Create a .env file with the following environments:
 - CLOUDINARY_URL (from the Cloudinary console > Dashboard)
 - STRIPE_PUBLISHABLE_KEY
 - STRIPE_SECRET_KEY
+
+Using SendGrid for email delivery, setting it up requires adding this on the Rails credentials, open with `EDITOR='code --wait' rails credentials:edit`
+
+```
+sendgrid:
+  username: "apikey" # leave it as is
+  password: "Your API key"
+```
+
+<!-- More info: https://williamafil.github.io/notes/2021/06/28/Devise-Confirmable-with-SendGrid/ -->
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
