@@ -40,7 +40,7 @@ Using SendGrid for email delivery, setting it up requires adding this on the Rai
 ```
 sendgrid:
   username: "apikey" # leave it as is
-  password: "Your API key"
+  password: "<API_KEY>"
 ```
 
 <!-- More info: https://williamafil.github.io/notes/2021/06/28/Devise-Confirmable-with-SendGrid/ -->
