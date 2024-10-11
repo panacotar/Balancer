@@ -13,7 +13,7 @@ Investors are able to browse through campaigns and make a pledge.
 
 ## Contributors
 
-Many thanks to all the [people](https://github.com/DariusPirvulescu/Balancer/graphs/contributors) that contributed to this project. 
+Many thanks to all the [people](https://github.com/panacotar/Balancer/graphs/contributors) that contributed to this project. 
 
 -----------------------------
 
