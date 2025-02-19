@@ -32,6 +32,7 @@
   padding: 20px 40px;
   margin-right: 0px;
   border-radius: 4px;
+  width: 450px;
 
   h1 {
     font-size: 40px;
@@ -46,10 +47,12 @@
     text-shadow: 0px 0.5px 0.5px rgba(0,0,0,0.2);
   }
 
-
+  .form-actions {
+    text-decoration: none;
+    padding-top: 10px;
+  }
 
   .form-btn {
-
     font-size: 15px;
     font-weight: light-bold;
     background-color: $bgreen;
@@ -60,18 +63,14 @@
     width: 100%;
     margin-bottom: 20px;
 
-      &:hover{
-    background-color: $bwhite;
-    color: $borange;
+    &:hover{
+      background-color: $bwhite;
+      color: $borange;
     }
   }
+
 }
 
-.form-actions {
-  text-decoration: none;
-  padding-top: 10px;
-}
-
-.sign-up-form {
-  width: 450px;
+.shared-auth-links {
+  font-size: 1rem !important;
 }

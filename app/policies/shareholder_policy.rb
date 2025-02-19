@@ -4,7 +4,7 @@ class ShareholderPolicy < ApplicationPolicy
       scope.all
     end
   end
-  
+
   def create?
     return true # anyone can create a project after login
   end

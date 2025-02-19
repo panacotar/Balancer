@@ -8,5 +8,4 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     show?
   end
-
 end

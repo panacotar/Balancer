@@ -1,15 +1,14 @@
 class CampaignPolicy < ApplicationPolicy
   class Scope < Scope
-
     def resolve
       scope.all
     end
   end
 
   def create?
-    if record.project.user == user 
-      return true
-    end
+    return unless record.project.user == user
+
+    true
   end
 
   def update?

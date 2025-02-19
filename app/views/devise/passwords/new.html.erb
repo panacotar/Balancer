@@ -1,7 +1,7 @@
 <div class="form-background">
   <div id="form-container" class="container">
     <div class="row">
-      <div class="col-xs-12 col-sm-4">
+      <div>
         <div class="sign-up-form">
           <h2>Forgot your password?</h2>
 
@@ -19,9 +19,9 @@
               <%= f.button :submit, "Send me reset password instructions", class: "form-btn" %>
             </div>
           <% end %>
-
-          <%= render "devise/shared/links" %>
         </div>
+
+        <%= render "devise/shared/links" %>
       </div>
     </div>
   </div>

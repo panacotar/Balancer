@@ -1,20 +1,16 @@
-
-
 .index-title {
   margin-top: 30px;
   text-align: center;
 
   h1 {
-   color: $bgreen;
+    color: $bgreen;
   }
 
   h2 {
-  color: $borange;
-  font-weight: lighter;
+    color: $borange;
+    font-weight: lighter;
+  }
 }
-
-}
-
 
 .content-wrapper {
   margin: 50px;
@@ -26,9 +22,10 @@
   left: 10%;
   z-index: 20;
 
-  h2, .carousel-btn {
-   color: $bwhite;
-   text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+  h2,
+  .carousel-btn {
+    color: $bwhite;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
   }
 
   .carousel-btn {
@@ -36,7 +33,7 @@
     text-decoration: none;
     &:hover {
       color: $borange;
-      text-shadow: 0 1px 0.8px rgba(255,255,255,0.3);
+      text-shadow: 0 1px 0.8px rgba(255, 255, 255, 0.3);
     }
   }
 }
@@ -52,8 +49,6 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
 }
 
-
-
 #cards-campaign {
   margin-top: 40px;
 }
@@ -61,9 +56,17 @@
 .index-container {
   display: flex;
   justify-content: space-between;
+
+  &.empty-state {
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+  }
 }
 
 .nav-item a {
   text-decoration: none;
 }
-

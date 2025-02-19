@@ -1,99 +1,110 @@
-
-<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+<% if @campaigns && @campaigns.empty? %>
+  <%= render 'campaigns/partials/no_campaign' %>
+<% else %>
+  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
     <div class="carousel-inner">
+      <% if @last_campaign %>
         <div class="carousel-item active" style="height: 70vh">
-            <%=cl_image_tag @last_campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
-          <div class="carousel-content">
-            <p class="feature-btn">Featured</p>
-            <h2><%= @last_campaign.name.capitalize %></h2>
-            <%= link_to "SEE CAMPAIGN", project_path(@campaigns.last.project), class: "carousel-btn" %>
-          </div>
-        </div>
-      <% @campaigns_list.first(2).each do |campaign| %>
-      <div class="carousel-item" style="height: 65vh">
-        <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
-        <div class="carousel-content">
-            <p class="feature-btn">Featured</p>
-            <h2><%= campaign.name.capitalize %></h2>
-            <%= link_to "SEE CAMPAIGN", project_path(campaign.project), class: "carousel-btn" %>
-        </div>
-      </div>
-      <% end %>
-      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-  </div>
-</div>
-
-
-      <!-- Sidebar & Campaigns -->
-    <div class="index-title">
-      <h1>Make a difference</h1>
-      <h2>choose impact investments</h2>
-    </div>
-<div class="index-container">
-   <%= render 'shared/sidebar' %>
-    <div class="col-md-10">
-      <div class="container">
-          <div id="dashboard" class="col-md-12">
-          <!-- Search Bar -->
-            <div class="search-bar">
-              <%= form_tag campaigns_path, method: :get, id:"search-form" do %>
-              <%= text_field_tag :query,
-                  params[:query],
-                  class: "form-control",
-                  placeholder: "Find a campaign"
-              %>
-              <%= button_tag(type: "submit", class: "search-btn") do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <hr>
-        <!-- Cards -->
-        <div id="cards-campaign" class="row">
-          <% @campaigns.order('created_at DESC').first(9).each do |campaign| %>
-          <div class="col-lg-4 col-md-3 col-sm-5 col-10">
-            <div class="card">
-            <%= link_to project_path(campaign.project), class: "card-link" do %>
-              <% if campaign.project.photo.attached? %>
-               <%=cl_image_tag campaign.project.photo.key, class: "card-img"%>
-              <% end %>
-              <div class="card-body">
-                <div class="campaign-info">
-                  <h5 class="card-title"><%=campaign.name.capitalize%></h5>
-                  <p class="description card-text"> <%= campaign.description %> </p>
-                </div>
-                <div class="campaign-end-date">
-                  <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b></p>
-                </div>
-                <div class="investment-info">
-                  <div class="campaign-equity">
-                    <p class="card-text"><b>Equity</b></p>
-                    <p class="card-text"><%= campaign.equity %>%</p>
-                  </div>
-                  <div class="campaign-investment">
-                    <p class="card-text"><b>Investment</b></p>
-                    <p class="card-text"><%= campaign.investment_goal %>€</p>
-                  </div>
-                </div>
-                <div class="progress" data-campaigns="<%= campaign.name %>">
-                <div class="progress-bar bg-info" role="progressbar" style="width:<%= campaign.percent %>%;" aria-valuenow="<%= campaign.percent %>" aria-valuemin="0" aria-valuemax="100">
-                  <%= campaign.percent %>%
-                 </div>
-               </div>
+          <%=cl_image_tag @last_campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
+            <div class="carousel-content">
+              <p class="feature-btn">Featured</p>
+              <h2><%= @last_campaign.name.capitalize %></h2>
+              <%=link_to "SEE CAMPAIGN", project_path(@campaigns.last.project), class: "carousel-btn" %>
             </div>
-         <% end %>
+        </div>
+      <% end %>
+
+      <% @campaigns_list.first(2).each do |campaign| %>
+        <div class="carousel-item" style="height: 65vh">
+          <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
+            <div class="carousel-content">
+              <p class="feature-btn">Featured</p>
+              <h2><%= campaign.name.capitalize %></h2>
+              <%=link_to "SEE CAMPAIGN", project_path(campaign.project), class: "carousel-btn" %>
+            </div>
+        </div>
+        <% end %>
+
+          <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+    </div>
+  </div>
+
+  <!-- Sidebar & Campaigns -->
+  <div class="index-title">
+    <h1>Make a difference</h1>
+    <h2>choose impact investments</h2>
+  </div>
+
+  <div class="index-container">
+    <%=render 'shared/sidebar' %>
+      <div class="col-md-10">
+        <div class="container">
+          <div id="dashboard" class="col-md-12">
+            <!-- Search Bar -->
+            <div class="search-bar">
+              <%=form_tag campaigns_path, method: :get, id: "search-form" do %>
+                <%=text_field_tag :query, params[:query], class: "form-control", placeholder: "Find a campaign" %>
+                  <%=button_tag(type: "submit", class: "search-btn") do %>
+                    <i class="fas fa-search"></i>
+                    <% end %>
+                      <% end %>
+            </div>
+            <hr>
+
+            <!-- Cards -->
+            <div id="cards-campaign" class="row">
+              <% @campaigns.order('created_at DESC').first(9).each do |campaign| %>
+                <div class="col-lg-4 col-md-3 col-sm-5 col-10">
+                  <div class="card">
+                    <%=link_to project_path(campaign.project), class: "card-link" do %>
+                      <% if campaign.project.photo.attached? %>
+                        <%=cl_image_tag campaign.project.photo.key, class: "card-img"%>
+                          <% end %>
+                            <div class="card-body">
+                              <div class="campaign-info">
+                                <h5 class="card-title"><%=campaign.name.capitalize%></h5>
+                                <p class="description card-text">
+                                  <%=campaign.description %>
+                                </p>
+                              </div>
+                              <div class="campaign-end-date">
+                                <p class="card-text end-date-text"><b>End Date: <%= campaign.end_date.strftime("%B %d, %Y") %></b>
+                                </p>
+                              </div>
+                              <div class="investment-info">
+                                <div class="campaign-equity">
+                                  <p class="card-text"><b>Equity</b>
+                                  </p>
+                                  <p class="card-text">
+                                    <%=campaign.equity %>%</p>
+                                </div>
+                                <div class="campaign-investment">
+                                  <p class="card-text"><b>Investment</b>
+                                  </p>
+                                  <p class="card-text">
+                                    <%=campaign.investment_goal %>€</p>
+                                </div>
+                              </div>
+                              <div class="progress" data-campaigns="<%= campaign.name %>">
+                                <div class="progress-bar bg-info" role="progressbar" style="width:<%= campaign.percent %>%;" aria-valuenow="<%= campaign.percent %>" aria-valuemin="0" aria-valuemax="100">
+                                  <%=campaign.percent %>%
+                                </div>
+                              </div>
+                            </div>
+                            <% end %>
+                  </div>
+                </div>
+                <% end %>
+            </div>
           </div>
         </div>
-       <% end %>
       </div>
-</div>
-</div>
-</div>
-</div>
+  </div>
+<% end %>
