@@ -14,7 +14,9 @@ module Balancer
       generate.test_framework :test_unit, fixture: false
     end
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 8.1
+    # Image transformations use Cloudinary; the app does not generate local variants.
+    config.active_storage.variant_processor = :disabled
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

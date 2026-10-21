@@ -1,15 +1,15 @@
 class OrderPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
-
   def create?
-    true
+    user.present? && record.user == user
   end
 
   def show?
-    true
+    create?
+  end
+
+  class Scope < Scope
+    def resolve
+      scope.where(user: user)
+    end
   end
 end

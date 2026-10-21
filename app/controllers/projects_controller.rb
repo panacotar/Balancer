@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -48,8 +48,11 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     authorize @project
-    @project.update(project_params)
-    redirect_to project_path(@project)
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

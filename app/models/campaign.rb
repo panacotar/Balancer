@@ -17,10 +17,10 @@ class Campaign < ApplicationRecord
     validates :start_date, presence: true
     validates :end_date, presence: true
     validates :description, presence: true
-    validates :amount, presence: true
-    validates :percentage, presence: true
-    validates :photo, presence: { message: "a photo must be uploaded, please" }
   end
+
+  validates :investment_goal, numericality: { greater_than: 0 }
+  validates :equity, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
 
   monetize :price_cents
 
@@ -28,11 +28,13 @@ class Campaign < ApplicationRecord
     status
   end
 
+  def remaining_pledge
+    [investment_goal.to_d - shareholders.sum(:amount), 0.to_d].max
+  end
+
   def percent
-    pledged_total = 0
-    shareholders.each do |sh|
-      pledged_total += sh.amount
-    end
-    ((pledged_total / investment_goal) * 100).to_i
+    return 0 unless investment_goal.to_d.positive?
+
+    (shareholders.sum(:amount).to_d / investment_goal * 100).to_i
   end
 end

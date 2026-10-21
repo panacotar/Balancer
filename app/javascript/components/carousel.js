@@ -2,7 +2,7 @@
 const initSlick = () => {
 
 
-$('.responsive').slick({
+$('.responsive').not('.slick-initialized').slick({
   dots: true,
   infinite: false,
   speed: 500,

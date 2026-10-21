@@ -1,17 +1,9 @@
 class CampaignPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
-  end
-
   def create?
-    return unless record.project.user == user
-
-    true
+    user.present? && record.project.user == user
   end
 
   def update?
-    true
+    create?
   end
 end

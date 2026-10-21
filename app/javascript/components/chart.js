@@ -86,7 +86,7 @@ const makeChart = (chartdiv) => {
   return chart.colors.getIndex(target.dataItem.index);
   });
 
-  setInterval(function () {
+  const timer = setInterval(function () {
   am4core.array.each(chart.data, function (item) {
     item.visits += Math.round(Math.random() * 200 - 100);
     item.visits = Math.abs(item.visits);
@@ -95,6 +95,7 @@ const makeChart = (chartdiv) => {
   }, 3000)
 
   categoryAxis.sortBySeries = series;
+  return () => { clearInterval(timer); chart.dispose(); };
 }
 
 export { makeChart }

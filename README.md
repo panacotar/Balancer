@@ -1,5 +1,7 @@
 ## Balancer 
 
+For current setup, testing, and upgrade details, see the [modernization guide](docs/modernization.md).
+
 A social impact investing platform supporting entrepreneurs from underrepresented groups.
 
 Entrepreneurs can add their projects and create campaigns for raising funding.
