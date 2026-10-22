@@ -15,14 +15,22 @@ module StripeCheckout
       end
 
       order.with_lock do
-        return if order.state == 'paid'
+        # Paid and failed are terminal. A later delivery must not raise, or Stripe will retry it.
+        return if order.state == 'paid' || order.state == 'failed'
         raise InvalidSession unless order.state == 'pending'
 
         campaign = order.campaign
-        order.create_shareholder!(user: order.user, campaign: campaign, amount: order.amount.to_d,
-                                  percentage: campaign.equity.to_d * order.amount.to_d / campaign.investment_goal,
-                                  status: 'Active')
-        order.update!(state: 'paid')
+        campaign.with_lock do
+          if order.amount.to_d > campaign.remaining_pledge
+            order.update!(state: 'failed')
+            next
+          end
+
+          order.create_shareholder!(user: order.user, campaign: campaign, amount: order.amount.to_d,
+                                    percentage: campaign.equity.to_d * order.amount.to_d / campaign.investment_goal,
+                                    status: 'Active')
+          order.update!(state: 'paid')
+        end
       end
     end
   end

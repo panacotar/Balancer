@@ -15,6 +15,7 @@ class CampaignsControllerTest < ActionDispatch::IntegrationTest
     assert_select '#cards-campaign .card-title', count: 1
     get campaigns_path, params: { query: 'zzznomatch' }
     assert_redirected_to campaigns_path
+    assert_equal 'No search results were found', flash[:notice]
   end
 
   test 'campaign creation and editing require ownership' do

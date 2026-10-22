@@ -7,4 +7,13 @@ class CampaignTest < ActiveSupport::TestCase
     assert_equal 25, campaign.percent
     assert_equal BigDecimal('74.50'), campaign.remaining_pledge
   end
+
+  test 'pending orders reserve pledge room without counting as funded' do
+    campaign = create_campaign(investment_goal: 100)
+    create_order(campaign: campaign, amount: BigDecimal('25.50'))
+    create_order(campaign: campaign, amount: BigDecimal('10'), state: 'failed')
+    assert_equal BigDecimal('74.50'), campaign.available_pledge
+    assert_equal BigDecimal('100'), campaign.remaining_pledge
+    assert_equal 0, campaign.percent
+  end
 end

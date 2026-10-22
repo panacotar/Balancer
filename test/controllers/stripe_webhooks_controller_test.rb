@@ -55,6 +55,16 @@ class StripeWebhooksControllerTest < ActionDispatch::IntegrationTest
     assert_response :bad_request
   end
 
+  test 'a paid session beyond remaining capacity records no pledge and does not retry' do
+    Shareholder.create!(user: create_user, campaign: @order.campaign, amount: @order.campaign.investment_goal,
+                        percentage: @order.campaign.equity, status: 'Active')
+    assert_no_difference('Shareholder.count') { send_event }
+    assert_response :success
+    assert_equal 'failed', @order.reload.state
+    assert_no_difference('Shareholder.count') { send_event }
+    assert_response :success
+  end
+
   test 'unpaid, expired and unrelated events do not create pledges' do
     assert_no_difference('Shareholder.count') do
       send_event(session: checkout_session(@order, payment_status: 'unpaid'))

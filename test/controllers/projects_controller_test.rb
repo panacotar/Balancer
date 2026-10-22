@@ -1,6 +1,21 @@
 require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
+  test 'pledge form shows cents still available after a pending checkout' do
+    project = create_project
+    campaign = create_campaign(project: project, investment_goal: 100)
+    create_order(campaign: campaign, amount: BigDecimal('25.50'))
+    get project_path(project)
+    assert_response :success
+    assert_select '#pledge-amount[max="74.50"][step="0.01"]'
+    assert_select '#button-investement button[disabled]', count: 0
+    assert_select '#button-investement button', text: 'Pledge!'
+
+    create_order(campaign: campaign, amount: BigDecimal('74.50'))
+    get project_path(project)
+    assert_select '#button-investement button[disabled]', text: 'Pledge!'
+  end
+
   test 'public project is visible but creating a project requires login' do
     project = create_project
     get project_path(project)

@@ -66,17 +66,72 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'failed', Order.last.state
   end
 
+  test 'a pending checkout reserves the remaining campaign amount' do
+    campaign = create_campaign(investment_goal: 100)
+    sign_in create_user
+    with_stripe_test_keys do
+      Stripe::Checkout::Session.stub(:create, lambda { |params, _options|
+        Stripe::Checkout::Session.construct_from(id: "cs_test_#{params[:client_reference_id]}", livemode: false)
+      }) do
+        assert_difference('Order.count', 1) do
+          post orders_path, params: { campaign_id: campaign.id, pledge_amount: '60.50' }
+        end
+        assert_difference('Order.count', 1) do
+          post orders_path, params: { campaign_id: campaign.id, pledge_amount: '39.50' }
+        end
+        assert_no_difference('Order.count') do
+          post orders_path, params: { campaign_id: campaign.id, pledge_amount: '0.01' }
+        end
+      end
+    end
+    assert_redirected_to project_path(campaign.project)
+    assert_equal 2, campaign.orders.where(state: 'pending').count
+  end
+
   test 'order return and cancel pages cannot complete payment or expose another account order' do
     order = create_order
     sign_in order.user
     assert_no_difference('Shareholder.count') do
       get order_path(order)
       assert_response :success
-      get order_path(order), params: { canceled: '1' }
-      assert_response :success
     end
     assert_equal 'pending', order.reload.state
+    with_stripe_test_keys do
+      open_session = checkout_session(order, status: 'open', payment_status: 'unpaid')
+      Stripe::Checkout::Session.stub(:retrieve, open_session) do
+        Stripe::Checkout::Session.stub(:expire, open_session) do
+          get order_path(order), params: { canceled: '1' }
+        end
+      end
+    end
+    assert_response :success
+    assert_equal 'failed', order.reload.state
+    assert_select 'p', text: 'This demo checkout did not complete, so no pledge was recorded.'
     sign_in create_user
     assert_raises(ActiveRecord::RecordNotFound) { get order_path(order) }
+  end
+
+  test 'cancel leaves a completed checkout pending for the webhook' do
+    order = create_order
+    sign_in order.user
+    with_stripe_test_keys do
+      Stripe::Checkout::Session.stub(:retrieve, checkout_session(order)) do
+        get order_path(order), params: { canceled: '1' }
+      end
+    end
+    assert_equal 'pending', order.reload.state
+    assert_nil order.shareholder
+  end
+
+  test 'an expired checkout releases the reserved pledge' do
+    order = create_order
+    sign_in order.user
+    with_stripe_test_keys do
+      Stripe::Checkout::Session.stub(:retrieve, checkout_session(order, status: 'expired', payment_status: 'unpaid')) do
+        get order_path(order), params: { canceled: '1' }
+      end
+    end
+    assert_equal 'failed', order.reload.state
+    assert_nil order.shareholder
   end
 end

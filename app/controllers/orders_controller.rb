@@ -5,12 +5,14 @@ class OrdersController < ApplicationController
                       campaign_sku: "campaign_#{campaign.id}_#{SecureRandom.hex(8)}")
     authorize order
     order.amount = Order.parse_pledge(params[:pledge_amount])
-    unless order.valid? && order.amount.to_d <= campaign.remaining_pledge
-      return redirect_to project_path(campaign.project), alert: 'Enter a positive pledge within the available amount.'
-    end
+    campaign.with_lock do
+      unless order.valid? && order.amount.to_d <= campaign.available_pledge
+        return redirect_to project_path(campaign.project), alert: 'Enter a positive pledge within the available amount.'
+      end
 
-    StripeCheckout.ensure_test_mode!
-    order.save!
+      StripeCheckout.ensure_test_mode!
+      order.save!
+    end
     session = Stripe::Checkout::Session.create({
       mode: 'payment',
       payment_method_types: ['card'],
@@ -41,5 +43,35 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.find(params[:id])
     authorize @order
+    release_canceled_checkout if params[:canceled] == '1'
+  end
+
+  private
+
+  def release_canceled_checkout
+    @order.with_lock do
+      next unless @order.state == 'pending'
+
+      if @order.checkout_session_id.blank?
+        @order.update!(state: 'failed')
+        next
+      end
+
+      StripeCheckout.ensure_test_mode!
+      session = Stripe::Checkout::Session.retrieve(@order.checkout_session_id)
+      next unless session.livemode == false && session.id == @order.checkout_session_id &&
+                  session.client_reference_id == @order.id.to_s && session.currency == 'eur' &&
+                  session.amount_total == @order.amount_cents
+
+      case session.status
+      when 'open'
+        Stripe::Checkout::Session.expire(session.id)
+        @order.update!(state: 'failed')
+      when 'expired'
+        @order.update!(state: 'failed')
+      end
+    end
+  rescue Stripe::StripeError, StripeCheckout::ConfigurationError
+    # Keep the reservation when Stripe cannot confirm the session is still open.
   end
 end

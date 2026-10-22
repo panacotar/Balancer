@@ -9,7 +9,7 @@ class CampaignsController < ApplicationController
       if @campaigns.present?
         @campaigns
       else
-        redirect_to campaigns_path, notice: "No search results were found"
+        return redirect_to campaigns_path, notice: 'No search results were found'
       end
     else
       @campaigns = policy_scope(Campaign)
