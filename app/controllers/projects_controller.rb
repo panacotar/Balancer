@@ -6,20 +6,17 @@ class ProjectsController < ApplicationController
     authorize @project
     @pledged_before = 0
     @allow_pledges = false
+    @fully_funded = false
     @pledge_remaining = 0
 
     @campaign = nil
     return if @project.campaigns.empty?
 
     @campaign = @project.campaigns.first
-
-    @campaign.shareholders.each do |sh|
-      @pledged_before += sh.amount
-    end
-
-    @allow_pledges = true if @pledged_before < @campaign.investment_goal
-
-    @pledge_remaining = @campaign.investment_goal - @pledged_before
+    @pledged_before = @campaign.shareholders.sum(:amount)
+    @pledge_remaining = @campaign.available_pledge
+    @allow_pledges = @pledge_remaining.positive?
+    @fully_funded = @campaign.remaining_pledge.zero?
   end
 
   def new
@@ -36,7 +33,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -48,8 +45,11 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     authorize @project
-    @project.update(project_params)
-    redirect_to project_path(@project)
+    if @project.update(project_params)
+      redirect_to project_path(@project)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy

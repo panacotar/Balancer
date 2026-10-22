@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
+  post '/stripe/webhook', to: 'stripe_webhooks#create'
   get "/healthcheck", to: proc { [200, {}, ["success"]] }
   get :about, to: 'pages#about'
   get :dashboard, to: "users#dashboard"
@@ -13,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :campaigns, only: %i[index]
-  resources :transactions, only: %i[index create updated]
+  resources :transactions, only: %i[index create update]
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end

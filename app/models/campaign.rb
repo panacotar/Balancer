@@ -1,6 +1,7 @@
 class Campaign < ApplicationRecord
   belongs_to :project
   has_many :shareholders, dependent: :destroy
+  has_many :orders
   has_one_attached :photo
 
   include PgSearch::Model
@@ -17,10 +18,10 @@ class Campaign < ApplicationRecord
     validates :start_date, presence: true
     validates :end_date, presence: true
     validates :description, presence: true
-    validates :amount, presence: true
-    validates :percentage, presence: true
-    validates :photo, presence: { message: "a photo must be uploaded, please" }
   end
+
+  validates :investment_goal, numericality: { greater_than: 0 }
+  validates :equity, numericality: { greater_than: 0, less_than_or_equal_to: 100 }
 
   monetize :price_cents
 
@@ -28,11 +29,28 @@ class Campaign < ApplicationRecord
     status
   end
 
+  def remaining_pledge
+    [investment_goal.to_d - confirmed_pledge_amount, 0.to_d].max
+  end
+
+  # Room left for a new checkout. Pending sessions reserve capacity; confirmed pledges are shareholders.
+  def available_pledge
+    [remaining_pledge - pending_pledge_amount, 0.to_d].max
+  end
+
   def percent
-    pledged_total = 0
-    shareholders.each do |sh|
-      pledged_total += sh.amount
-    end
-    ((pledged_total / investment_goal) * 100).to_i
+    return 0 unless investment_goal.to_d.positive?
+
+    (confirmed_pledge_amount / investment_goal * 100).to_i
+  end
+
+  private
+
+  def confirmed_pledge_amount
+    shareholders.sum(:amount).to_d
+  end
+
+  def pending_pledge_amount
+    BigDecimal(orders.where(state: 'pending').sum(:amount_cents).to_i) / 100
   end
 end

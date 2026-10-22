@@ -11,9 +11,9 @@
         <div class="modal-body">
             <div class="form-group">
               <label for="pledge-amount">Amount to Pledge:</label>
-              <input type="number" name="pledge_amount" min="1" max="<%= @pledge_remaining %>"  value="<%= @pledge_remaining %>" class="form-control" id="pledge-amount" placeholder="Enter amount">
+              <input type="number" name="pledge_amount" min="1" max="<%= format('%.2f', @pledge_remaining) %>" step="0.01" value="<%= format('%.2f', @pledge_remaining) %>" class="form-control" id="pledge-amount" placeholder="Enter amount">
               <%= hidden_field_tag 'campaign_id', @campaign.id %>
-              <small id="amount-help" class="form-text text-muted">Maximum amount available to pledge is EUR <%= @pledge_remaining %>.</small>
+              <small id="amount-help" class="form-text text-muted">Maximum amount available to pledge is EUR <%= format('%.2f', @pledge_remaining) %>.</small>
             </div>
         </div>
         <div class="modal-footer">

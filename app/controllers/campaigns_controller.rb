@@ -9,12 +9,12 @@ class CampaignsController < ApplicationController
       if @campaigns.present?
         @campaigns
       else
-        redirect_to campaigns_path, notice: "No search results were found"
+        return redirect_to campaigns_path, notice: 'No search results were found'
       end
     else
       @campaigns = policy_scope(Campaign)
     end
-    @campaigns_list = @campaigns.reject { |camp| camp.id == @last_campaign.id }.shuffle
+    @campaigns_list = @campaigns.reject { |camp| camp.id == @last_campaign&.id }.shuffle
     @categories = Project.list_categories
   end
 
@@ -34,7 +34,7 @@ class CampaignsController < ApplicationController
     if @campaign.save
       redirect_to project_path(@project)
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -47,8 +47,12 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
     authorize @campaign
-    @campaign.update(campaign_params)
-    redirect_to campaigns_path(@campaigns)
+    if @campaign.update(campaign_params)
+      redirect_to project_path(@campaign.project)
+    else
+      @project = @campaign.project
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private
