@@ -20,22 +20,18 @@ Many thanks to all the [people](https://github.com/panacotar/Balancer/graphs/con
 
 
 ### Built using:
-- Ruby on Rails
-- Bootstrap
-- Stripe Payments
-- Cloudinary gem
-- flatpickr gem
-- slick-carousel
-- popper.js
-- **Database**:
-- - PostgreSQL.
+
+- Ruby 3.4 and Rails 8.1
+- PostgreSQL 15+
+- Bootstrap 4, jQuery, Flatpickr, Slick, and amCharts
+- Stripe (test mode) and Cloudinary
+- esbuild, Dart Sass, and Sprockets
 
 ## Setup
 
-Create a .env file with the following environments:
-- CLOUDINARY_URL (from the Cloudinary console > Dashboard)
-- STRIPE_PUBLISHABLE_KEY
-- STRIPE_SECRET_KEY
+- Select the Ruby/Node versions in `.ruby-version` and `.node-version`, and start PostgreSQL.
+- Copy `.env.example` to `.env`, then run `bin/setup`.
+- Run `bin/rails server` and open [localhost:3000](http://localhost:3000).
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
