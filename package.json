@@ -19,7 +19,7 @@
     "aos": "~2.3.4",
     "bootstrap": "~4.6.2",
     "flatpickr": "~4.6.13",
-    "jquery": "~3.7.1",
+    "jquery": "~4.0.0",
     "popper.js": "~1.16.1",
     "slick-carousel": "~1.8.1",
     "turbolinks": "~5.2.0"
