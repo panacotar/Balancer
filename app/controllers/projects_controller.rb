@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  include PhotoUploadLimits
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def show

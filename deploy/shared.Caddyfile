@@ -1,0 +1,37 @@
+{
+	email {$ACME_EMAIL}
+	admin off
+	servers {
+		timeouts {
+			read_header 10s
+			read_body 15s
+			write 30s
+			idle 2m
+		}
+	}
+}
+
+# Preserve SillyStories' existing configuration and DOMAIN environment.
+{$DOMAIN} {
+	encode zstd gzip
+	header -Server
+	request_body {
+		max_size 8KB
+	}
+	reverse_proxy app:3000
+}
+
+balancer.organicdarius.com {
+	encode zstd gzip
+	header -Server
+	request_body {
+		max_size 8MB
+	}
+	reverse_proxy balancer-web:3000 {
+		health_uri /healthcheck
+		health_headers {
+			Host balancer.organicdarius.com
+			X-Forwarded-Proto https
+		}
+	}
+}

@@ -41,6 +41,8 @@ jobs:
       - run: bin/rails zeitwerk:check
       - run: bin/rails test
       - run: bin/rails test:system
+      - name: Deployment helper regression tests
+        run: python3 -m unittest discover -s test/deployment -p '*_test.py' -v
       - name: Production asset compilation
         run: bin/rails assets:precompile
         env:
@@ -68,3 +70,11 @@ jobs:
       - run: bundle exec bundler-audit check --update
       - run: bundle exec brakeman --no-pager
       - run: npm audit --audit-level=low
+  container:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - uses: actions/checkout@v7
+      - name: Build ARM64 production image
+        run: docker build --pull -t balancer:ci .
+      - name: Container lifecycle, security and recovery
+        run: scripts/test-container.sh balancer:ci

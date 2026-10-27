@@ -1,0 +1,176 @@
+# Stable IDs retain the original demo account and placeholder mapping.
+- id: 1
+  key: briiv
+  name: The Briiv Air Filter
+  project_name: Briiv circular living
+  category: Others
+  founder: Ines Costa
+  description: Help prototype a plant-inspired air filter with replaceable natural materials.
+  vision: Make everyday home appliances easier to repair and less dependent on disposable plastic.
+  pitch: Fund a small pilot of a plant-inspired air filter with a reusable housing and replaceable natural filter materials. The team will compare material durability, document maintenance costs, and run workshops with local repair cafes before considering a wider launch.
+  target: Apartment residents, repair cafes, and households exploring lower-waste living.
+  investment_goal: 40000
+  equity: 8
+  funding_percent: 35
+  started_days_ago: 8
+  ends_in_days: 36
+
+- id: 2
+  key: ausair
+  name: AusAir
+  project_name: AusAir reusable essentials
+  category: Clothing, accessories
+  founder: Tiago Martins
+  description: Back a reusable mask pilot focused on comfort, fit, and less packaging.
+  vision: Give commuters practical reusable essentials with clear care instructions and less packaging.
+  pitch: Support a workshop pilot of washable mask designs with replaceable components. Funding covers fabric samples, fit feedback, independent material testing, and recyclable packaging trials. The pilot makes no claim of medical certification or protection.
+  target: Urban commuters and community groups interested in reusable everyday accessories.
+  investment_goal: 30000
+  equity: 7
+  funding_percent: 60
+  started_days_ago: 17
+  ends_in_days: 24
+
+- id: 3
+  key: smart-glasses
+  name: Reinventing The Lightest Luxury Smart Glasses
+  project_name: Open frame eyewear studio
+  category: Computers, accessories
+  founder: Marta Silva
+  description: Develop lightweight smart eyewear with modular parts and repair guides.
+  vision: Bring repairable design to connected eyewear without treating the whole frame as disposable.
+  pitch: Help an independent design studio build lightweight connected eyewear prototypes with replaceable arms and accessible electronics. This round funds frame tooling, comfort studies, and a public repair guide, with accessibility feedback shaping the next prototype.
+  target: Eyewear users, independent opticians, and people interested in accessible product design.
+  investment_goal: 75000
+  equity: 10
+  funding_percent: 20
+  started_days_ago: 4
+  ends_in_days: 52
+
+- id: 4
+  key: atelier-riforma
+  name: Atelier Riforma
+  project_name: Atelier Riforma textile workshop
+  category: Arts & crafts
+  founder: Sofia Almeida
+  description: Turn discarded clothes into new pieces while training local makers.
+  vision: Keep useful textiles in circulation and make paid creative work more accessible.
+  pitch: Equip a shared workshop where local makers transform donated garments and surplus fabric into small clothing collections. Funding buys sewing machines, supports paid training places, and sets up a neighborhood repair programme. The pilot will track fabric reused and completed training hours.
+  target: Emerging makers, local clothing shops, and neighbors looking to repair or reuse garments.
+  investment_goal: 25000
+  equity: 8
+  funding_percent: 75
+  started_days_ago: 26
+  ends_in_days: 14
+
+- id: 5
+  key: kefirko
+  name: KEFIRKO - VEGGIE FERMENTER
+  project_name: Kefirko community kitchen
+  category: Food retail and service
+  founder: Rafael Sousa
+  description: Make vegetable fermentation approachable with reusable jars and workshops.
+  vision: Help home cooks preserve seasonal vegetables and share practical food skills.
+  pitch: Launch a small batch of reusable fermentation kits alongside hands-on classes in a community kitchen. Funding covers jar components, clear food-handling instructions reviewed by a qualified adviser, and subsidised workshop places. Local growers will supply seasonal surplus for the classes.
+  target: Home cooks, community kitchens, and growers seeking more uses for seasonal produce.
+  investment_goal: 20000
+  equity: 6
+  funding_percent: 45
+  started_days_ago: 12
+  ends_in_days: 31
+
+- id: 6
+  key: hitch
+  name: Hitch
+  project_name: Hitch refill collective
+  category: Clothing, accessories
+  founder: Clara Fernandes
+  description: Pilot a reusable bottle-and-cup system for everyday refill stops.
+  vision: Make carrying a reusable bottle and coffee cup a simple part of the daily commute.
+  pitch: Help prototype a durable bottle with a detachable cup and test it with a network of independent cafes. Funding supports tooling, leak testing, replacement-part planning, and a refill map for the pilot neighborhood. Participants will report how often they reuse the kit.
+  target: Commuters, students, and independent cafes building a local refill habit.
+  investment_goal: 35000
+  equity: 8
+  funding_percent: 55
+  started_days_ago: 19
+  ends_in_days: 27
+
+- id: 7
+  key: qurelife
+  name: Prepared, Protected and always Up-to-Date!
+  project_name: Qurelife community preparedness
+  category: Services
+  founder: Leonor Ramos
+  description: Equip community spaces with refillable first-aid kits and care reminders.
+  vision: Help small community organisations keep essential first-aid supplies organised and up to date.
+  pitch: Pilot refillable first-aid kits and simple stock reminders with local sports clubs and shared workspaces. Funding covers kit assembly, accessible instructions reviewed by a qualified trainer, and introductory workshops. The project supports preparedness and does not replace professional medical care.
+  target: Volunteer groups, local sports clubs, and managers of shared community spaces.
+  investment_goal: 30000
+  equity: 7
+  funding_percent: 30
+  started_days_ago: 6
+  ends_in_days: 43
+
+- id: 8
+  key: rich-recovery
+  name: 'Rich Recovery: Brain Power In a Bottle'
+  project_name: Rich Recovery surplus fruit kitchen
+  category: Food retail and service
+  founder: Duarte Pereira
+  description: Turn surplus fruit into small-batch drinks with returnable bottles.
+  vision: Build a local drinks business that gives surplus fruit a useful route from farm to shelf.
+  pitch: Support recipe development for small-batch fruit drinks using produce that local growers cannot sell through their usual channels. Funding covers kitchen hire, food-safety checks, and a returnable-bottle trial with nearby shops. Despite its historical campaign title, this demo makes no cognitive or health benefit claims.
+  target: Local growers, independent food shops, and customers interested in reducing food waste.
+  investment_goal: 25000
+  equity: 6
+  funding_percent: 15
+  started_days_ago: 3
+  ends_in_days: 48
+
+- id: 9
+  key: amx
+  name: 'AMX Electric Bike: The e-bike for cities'
+  project_name: AMX neighborhood mobility
+  category: Sports and outdoors
+  founder: Beatriz Lopes
+  description: Build a repairable urban e-bike pilot with neighborhood service partners.
+  vision: Make short city journeys easier with bicycles that local workshops can maintain.
+  pitch: Fund a pilot fleet of urban electric bicycles designed around serviceable components. The round supports prototype assembly, safety testing, and mechanic training with independent cycle shops. Riders will trial the bikes on everyday journeys and report maintenance needs before any wider rollout.
+  target: City commuters, independent bike workshops, and employers encouraging cycle travel.
+  investment_goal: 90000
+  equity: 12
+  funding_percent: 80
+  started_days_ago: 32
+  ends_in_days: 10
+
+- id: 10
+  key: quenchsea
+  name: QuenchSea
+  project_name: QuenchSea coastal water lab
+  category: Others
+  founder: Miguel Rocha
+  description: Help test a portable desalination concept with coastal communities.
+  vision: Explore accessible water technology through transparent testing and community feedback.
+  pitch: Support a coastal engineering team investigating a hand-powered desalination prototype. Funding covers prototype materials, independent water-quality testing, and field usability sessions with sailing clubs. The concept is experimental and must not be relied on as a source of safe drinking water.
+  target: Coastal communities, sailing clubs, and educators exploring practical water engineering.
+  investment_goal: 60000
+  equity: 10
+  funding_percent: 65
+  started_days_ago: 22
+  ends_in_days: 19
+
+- id: 11
+  key: v-tex
+  name: V-Tex
+  project_name: V-Tex everyday outdoor footwear
+  category: Clothing, accessories
+  founder: Carolina Neves
+  description: Prototype weather-ready knit shoes with replaceable soles.
+  vision: Keep everyday footwear in use longer through repairable construction and thoughtful material choices.
+  pitch: Back a small footwear studio developing knitted walking shoes with replaceable soles. Funding covers material samples, wet-weather testing, and fit trials with local walking groups. The team will publish what wears out first and use that feedback to improve the next sample run.
+  target: Everyday walkers, outdoor community groups, and independent footwear repair shops.
+  investment_goal: 45000
+  equity: 9
+  funding_percent: 40
+  started_days_ago: 14
+  ends_in_days: 34

@@ -1,0 +1,12 @@
+[Unit]
+Description=Back up Balancer database and uploads
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+# Set your deployment user and absolute checkout path before installing.
+User=YOUR_DEPLOY_USER
+WorkingDirectory=/ABSOLUTE/PATH/TO/Balancer
+ExecStart=/ABSOLUTE/PATH/TO/Balancer/scripts/backup-production.sh
+UMask=0077

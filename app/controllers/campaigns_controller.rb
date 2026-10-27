@@ -1,4 +1,5 @@
 class CampaignsController < ApplicationController
+  include PhotoUploadLimits
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index

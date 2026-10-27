@@ -14,26 +14,24 @@
 /.env*
 !/.env.example
 
-# Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-# Ignore pidfiles, but keep the directory.
-/tmp/pids/*
-!/tmp/pids/
-!/tmp/pids/.keep
-
-# Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
-!/storage/.keep
-/tmp/storage/*
-!/tmp/storage/
-!/tmp/storage/.keep
+# Exclude entire runtime trees: re-including parent directories can accidentally
+# include nested uploads, caches or development secrets in Docker's build context.
+/log/
+/tmp/
+/storage/
+/ngrok
 
 # Ignore assets.
 /node_modules/
-/app/assets/builds/*
-!/app/assets/builds/.keep
+/vendor/bundle/
+/app/assets/builds/
 /public/assets
+/deploy/secrets/
+/backups/
+/dist/
+/test/
+/.github/
+**/__pycache__/
+/.release
+/.previous-release
+/.production-operation.lock/

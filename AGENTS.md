@@ -31,8 +31,8 @@ Important scope decisions:
   migration is outside the current scope unless a task explicitly adds it.
 - Preserve the existing interface and behavior unless the task requests a
   redesign.
-- Bootstrap 4 replacement and deployment/hosting modernization are separate
-  follow-ups. The old Docker/Fly configuration is not supported for this stack.
+- Bootstrap 4 replacement is a separate follow-up. Production uses Docker Compose
+  with PostgreSQL 17 and a shared Caddy proxy; Fly/Kamal are not maintained here.
 
 ## Supported stack
 
@@ -148,7 +148,7 @@ Preserve these invariants:
 
 - Development uses local Active Storage unless `CLOUDINARY_URL` is present.
 - Test storage is isolated under `tmp/storage`.
-- Production is configured for Cloudinary, but deployment remains deferred.
+- Production defaults to persistent local Active Storage; Cloudinary remains optional.
 - Use `attachment_image_tag` so local and Cloudinary attachments both render.
 - Keep credentials in environment variables or Rails credentials. Never commit
   secrets, provider payloads containing secrets, or a real `.env` file.
@@ -209,8 +209,21 @@ git diff --check
 ```
 
 CI runs Rails tests, Chrome system tests, eager loading, production asset
-compilation, and all three security audits. Match CI commands when changing
-tooling. System tests require Chrome.
+compilation, all three security audits, deployment helper failure tests, and an
+ARM64 container lifecycle/backup recovery smoke test. Match CI commands when
+changing tooling. System tests require Chrome.
+
+## VPS deployment
+
+- Read the production section of `docs/modernization.md` before operating services.
+- Use `scripts/production.sh` to select the production Compose file/environment.
+- Share the existing SillyStories Caddy listener; never start a second proxy on 80/443.
+- Keep PostgreSQL private and uploads in the persistent volume. Never prune production volumes.
+- Build ARM64 images off-server; use `scripts/deploy-production.sh init|update`.
+- `scripts/backup-production.sh` captures the DB and uploads with web writes stopped.
+  Restore only into empty storage and the backup's exact image; test in an isolated project.
+- Keep one Puma process (three threads). In-process authentication limits reset on restart.
+- Live SMTP/Stripe verification, DNS and offsite backup setup are separate operator steps.
 
 ## Change discipline
 

@@ -17,7 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    ENV['DOMAIN'].present? ? { host: ENV['DOMAIN'] } : {}
+    options = ENV['DOMAIN'].present? ? { host: ENV['DOMAIN'] } : {}
+    Rails.env.production? ? options.merge(protocol: 'https') : options
   end
 
   private

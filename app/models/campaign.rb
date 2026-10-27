@@ -1,4 +1,5 @@
 class Campaign < ApplicationRecord
+  include ValidatedPhoto
   belongs_to :project
   has_many :shareholders, dependent: :destroy
   has_many :orders

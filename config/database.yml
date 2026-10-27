@@ -80,8 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: Balancer_production
-  username: Balancer
+  database: <%= ENV.fetch('PGDATABASE', 'Balancer_production') %>
+  username: <%= ENV.fetch('PGUSER', 'Balancer') %>
   password: <%= ENV['BALANCER_DATABASE_PASSWORD'] %>
   host: <%= ENV['PGHOST'] %>
   port: <%= ENV['PGPORT'] %>

@@ -1,0 +1,116 @@
+name: ${COMPOSE_PROJECT_NAME:-balancer}
+
+x-defaults: &defaults
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+  security_opt: [no-new-privileges:true]
+
+services:
+  web:
+    <<: *defaults
+    image: ${APP_IMAGE:?Set APP_IMAGE in .env.production}
+    init: true
+    environment:
+      RAILS_ENV: production
+      RAILS_MAX_THREADS: "3"
+      DOMAIN: ${DOMAIN:?Set DOMAIN}
+      PGHOST: db
+      PGUSER: balancer
+      PGDATABASE: balancer_production
+      SECRET_KEY_BASE_FILE: /run/secrets/secret_key_base
+      BALANCER_DATABASE_PASSWORD_FILE: /run/secrets/db_password
+      SMTP_ADDRESS: ${SMTP_ADDRESS:?Set SMTP_ADDRESS}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USERNAME: ${SMTP_USERNAME:?Set SMTP_USERNAME}
+      MAIL_FROM: ${MAIL_FROM:?Set MAIL_FROM}
+      SMTP_PASSWORD_FILE: /run/secrets/smtp_password
+      STRIPE_SECRET_KEY_FILE: /run/secrets/stripe_secret_key
+      STRIPE_PUBLISHABLE_KEY_FILE: /run/secrets/stripe_publishable_key
+      STRIPE_WEBHOOK_SECRET_FILE: /run/secrets/stripe_webhook_secret
+      CLOUDINARY_URL_FILE: /run/secrets/cloudinary_url
+      SENTRY_DSN_FILE: /run/secrets/sentry_dsn
+    secrets: [secret_key_base, db_password, smtp_password, stripe_secret_key,
+              stripe_publishable_key, stripe_webhook_secret, cloudinary_url, sentry_dsn]
+    networks:
+      edge:
+        aliases: [balancer-web]
+      database:
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads:/rails/storage
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+      - /rails/tmp:size=32m,uid=1000,gid=1000,mode=0700
+    cap_drop: [ALL]
+    mem_limit: 768m
+    pids_limit: 150
+    stop_grace_period: 30s
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, --max-time, "5", "http://127.0.0.1:3000/healthcheck"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 30s
+
+  db:
+    <<: *defaults
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_DB: balancer_production
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_admin_password
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+    secrets: [db_admin_password, db_password]
+    networks: [database]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./deploy/postgres-init.sh:/docker-entrypoint-initdb.d/10-balancer.sh:ro
+    command: [postgres, -c, shared_buffers=64MB, -c, max_connections=20,
+              -c, work_mem=4MB, -c, maintenance_work_mem=64MB]
+    mem_limit: 512m
+    shm_size: 128m
+    pids_limit: 150
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U postgres -d balancer_production"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+networks:
+  edge:
+    external: true
+    name: ${EDGE_NETWORK:-balancer-edge}
+  database:
+    internal: true
+
+volumes:
+  postgres_data:
+  uploads:
+
+secrets:
+  secret_key_base:
+    file: ./deploy/secrets/secret_key_base
+  db_password:
+    file: ./deploy/secrets/db_password
+  db_admin_password:
+    file: ./deploy/secrets/db_admin_password
+  smtp_password:
+    file: ./deploy/secrets/smtp_password
+  stripe_secret_key:
+    file: ./deploy/secrets/stripe_secret_key
+  stripe_publishable_key:
+    file: ./deploy/secrets/stripe_publishable_key
+  stripe_webhook_secret:
+    file: ./deploy/secrets/stripe_webhook_secret
+  cloudinary_url:
+    file: ./deploy/secrets/cloudinary_url
+  sentry_dsn:
+    file: ./deploy/secrets/sentry_dsn

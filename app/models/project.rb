@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  include ValidatedPhoto
   belongs_to :user
   has_many :campaigns, dependent: :destroy
   has_one_attached :photo

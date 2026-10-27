@@ -1,0 +1,13 @@
+# Apply AFTER SillyStories' compose.production.yaml. See modernization guide.
+services:
+  caddy:
+    volumes:
+      - ${BALANCER_ROOT:?Set absolute BALANCER_ROOT}/deploy/shared.Caddyfile:/etc/caddy/Caddyfile:ro
+    networks:
+      - public
+      - frontend
+      - balancer_edge
+networks:
+  balancer_edge:
+    external: true
+    name: ${EDGE_NETWORK:-balancer-edge}
