@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   resources :projects, only: %i[show new create edit update] do
 
     resources :campaigns, only: %i[new create edit update]
-    resources :shareholders, only: %i[new create]
+    resources :shareholders, only: %i[new]
   end
 
   resources :campaigns, only: %i[index]
-  resources :transactions, only: %i[index create updated]
+  resources :transactions, only: %i[index create update]
   resources :orders, only: [:show, :create] do
     resources :payments, only: :new
   end

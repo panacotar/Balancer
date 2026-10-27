@@ -1,13 +1,41 @@
 ENV['RAILS_ENV'] ||= 'test'
+ENV['STRIPE_SECRET_KEY'] ||= 'sk_test_placeholder'
+ENV['STRIPE_PUBLISHABLE_KEY'] ||= 'pk_test_placeholder'
+
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'webmock/minitest'
+
+WebMock.disable_net_connect!(allow_localhost: true)
 
 class ActiveSupport::TestCase
-  # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors)
+  # Stripe stubs are process-wide, so keep the suite in one worker.
+  parallelize(workers: 1)
 
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def create_user(email:, phone:)
+    User.create!(
+      email: email,
+      password: 'password123',
+      first_name: 'Ada',
+      last_name: 'Lovelace',
+      address: '1 Street',
+      date_of_birth: Date.new(1990, 1, 1),
+      gender: 'female',
+      phone_number: phone
+    )
+  end
+
+  def create_campaign_for(owner, name:)
+    project = Project.create!(project_name: name, user: owner, status: false)
+    Campaign.create!(
+      name: name,
+      description: 'A short description',
+      project: project,
+      investment_goal: 1_000,
+      equity: 10,
+      status: false
+    )
+  end
 end

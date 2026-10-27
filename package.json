@@ -1,25 +1,35 @@
 {
   "name": "balancer",
   "private": true,
-  "dependencies": {
-    "@amcharts/amcharts4": "^4.10.36",
-    "@rails/actioncable": "^6.0.0",
-    "@rails/activestorage": "^6.0.0",
-    "@rails/ujs": "^6.0.0",
-    "@rails/webpacker": "^5.4.3",
-    "aos": "^3.0.0-beta.6",
-    "bootstrap": "^4.5.0",
-    "flatpickr": "^4.6.3",
-    "jquery": "^3.5.1",
-    "popper.js": "^1.16.1",
-    "serialize-javascript": ">=3.1.0",
-    "slick-carousel": "^1.8.1",
-    "turbolinks": "^5.2.0"
-  },
   "version": "0.1.0",
-  "devDependencies": {
-    "webpack-dev-server": "^3.11.3",
-    "node-forge": ">=1.3.0"
+  "engines": {
+    "node": "24.x"
   },
-  "packageManager": "yarn@1.22.19"
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:css": "node scripts/build-css.mjs"
+  },
+  "dependencies": {
+    "@amcharts/amcharts4": "~4.10.40",
+    "@fortawesome/fontawesome-free": "~6.7.2",
+    "@rails/ujs": "~7.1.3-4",
+    "aos": "~2.3.4",
+    "bootstrap": "~4.6.2",
+    "flatpickr": "~4.6.13",
+    "jquery": "~3.7.1",
+    "popper.js": "~1.16.1",
+    "slick-carousel": "~1.8.1",
+    "turbolinks": "~5.2.0"
+  },
+  "overrides": {
+    "@babel/runtime": "7.26.10",
+    "es5-ext": "0.10.64",
+    "path-parse": "1.0.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "esbuild": "~0.25.10",
+    "postcss": "^8.5.6",
+    "sass": "~1.89.2"
+  }
 }

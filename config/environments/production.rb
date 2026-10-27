@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://balancer.com" }
+  config.action_mailer.default_url_options = { host: ENV['DOMAIN'], protocol: 'https' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -45,11 +45,15 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  # assume_ssl is for a TLS-terminating proxy. The healthcheck stays on HTTP.
+  config.force_ssl = true
+  config.assume_ssl = true
+  config.ssl_options = { redirect: { exclude: ->(request) { request.path == '/healthcheck' } } }
+  config.hosts << ENV['DOMAIN'] if ENV['DOMAIN'].present?
+  config.host_authorization = { exclude: ->(request) { request.path == '/healthcheck' } }
 
-  # Use the lowest log level to ensure availability of diagnostic information
-  # when problems arise.
-  config.log_level = :debug
+  config.log_level = :info
+  config.cache_store = :memory_store
 
   # Prepend all log lines with the following tags.
   config.log_tags = [ :request_id ]
