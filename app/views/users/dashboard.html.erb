@@ -66,7 +66,7 @@
                         <h5>About Me</h5>
                         <div>
                           <% if @user.photo.attached? %>
-                          <%= attachment_image_tag @user.photo, crop: :fill, height: 400, width: 400, radius: 5, class: "img-round"%>
+                          <%= cl_image_tag @user.photo.key, crop: :fill, height: 400, width: 400, radius: 5, class: "img-round"%>
                           <% end %>
                         </div>  
                       </div>  

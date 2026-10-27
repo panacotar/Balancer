@@ -9,13 +9,12 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.responder.error_status = :unprocessable_entity
-  config.responder.redirect_status = :see_other
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
+  # config.secret_key = '59cd0e47e997f30785371b3126071577d8c7c010dd5b57c0ba56cba97f3f21649700d5772632eace544fc61e92361df843cc7ade39956bf4707ad46799c22602'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.

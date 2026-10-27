@@ -5,7 +5,7 @@
     <div class="carousel-inner">
       <% if @last_campaign %>
         <div class="carousel-item active" style="height: 70vh">
-          <%=attachment_image_tag @last_campaign.project.photo, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
+          <%=cl_image_tag @last_campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.8", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"First slide"%>
             <div class="carousel-content">
               <p class="feature-btn">Featured</p>
               <h2><%= @last_campaign.name.capitalize %></h2>
@@ -16,7 +16,7 @@
 
       <% @campaigns_list.first(2).each do |campaign| %>
         <div class="carousel-item" style="height: 65vh">
-          <%=attachment_image_tag campaign.project.photo, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
+          <%=cl_image_tag campaign.project.photo.key, class: "d-block w-100", :aspect_ratio=>"1.9", :crop=>"crop", :effect=> "gradient_fade", y: -0.3, background: "#3e2222", opacity: 60, alt:"Second slide"%>
             <div class="carousel-content">
               <p class="feature-btn">Featured</p>
               <h2><%= campaign.name.capitalize %></h2>
@@ -65,7 +65,7 @@
                   <div class="card">
                     <%=link_to project_path(campaign.project), class: "card-link" do %>
                       <% if campaign.project.photo.attached? %>
-                        <%=attachment_image_tag campaign.project.photo, class: "card-img"%>
+                        <%=cl_image_tag campaign.project.photo.key, class: "card-img"%>
                           <% end %>
                             <div class="card-body">
                               <div class="campaign-info">

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <!-- meta  tags token-->
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
   <!-- meta  tags -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -27,8 +31,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <%= stylesheet_pack_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <%= favicon_link_tag asset_path('favicon.ico') %>
   </head>
 

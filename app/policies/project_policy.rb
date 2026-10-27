@@ -6,11 +6,11 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present?
+    return true # anyone can create a project after login
   end
 
   def update?
-    user.present? && record.user == user
+    record.user == user
   end
 
   def destroy?
@@ -20,6 +20,6 @@ class ProjectPolicy < ApplicationPolicy
   private
 
   def user_is_admin?
-    user&.admin?
+    record.user == user.admin
   end
 end

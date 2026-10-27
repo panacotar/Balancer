@@ -5,7 +5,7 @@
   <div class="row">
     <div id="campaign-photo" class="col-lg-6 col-xl-5 col-xs-4">
       <% if @project.photo.attached? %>
-        <%= attachment_image_tag @project.photo, crop: :fill, radius: 5, class: "img-thumbnail"%>
+        <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "img-thumbnail"%>
       <% end %>
     </div>
     <div id="campaign-all-info" class="col-lg-6 col-xl-6 col-xs-12">
@@ -44,7 +44,7 @@
         </div>
         <div id="button-investement">
           <button <% if !@allow_pledges %>disabled<% end %> type="button" class="btn" data-toggle="modal" data-target="#project-pledge-modal">
-            <% if @fully_funded %>Funded!<% else %><strong>Pledge!</strong><% end %>
+            <% if @allow_pledges %><strong>Pledge!</strong><% else %>Funded!<% end %>
           </button>
         </div>
         <div id="social-media-icons">

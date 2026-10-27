@@ -21,8 +21,8 @@
             </li>
               <% end %>
             <li class="list-inline-item">
-              <% if @project.user == current_user && @campaign %>
-              <p><%= link_to " Edit Your Campaign", edit_project_campaign_path(@project, @campaign) %></p>
+              <% if @project.user == current_user %> 
+              <p><%= link_to " Edit Your Campaign", edit_project_campaign_path(@project) %></p>
             </li>
               <% end %>
             <li class="list-inline-item">
@@ -39,7 +39,7 @@
               <h3>PROJECT VISION</h3>
               <h6><%= @project.vision %><h6>
               <div id="project-photo"> 
-              <%= attachment_image_tag @project.photo, crop: :fill, radius: 5, class: "w-100" %>
+              <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "w-100" %>
               </div>
               <h3>PITCH</h3>
               <h6><%= @project.pitch %><h6>

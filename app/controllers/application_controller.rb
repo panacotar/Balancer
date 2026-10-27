@@ -1,11 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
-  include Pundit::Authorization
-
-  rescue_from Pundit::NotAuthorizedError do
-    head :forbidden
-  end
+  include Pundit
 
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -17,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    ENV['DOMAIN'].present? ? { host: ENV['DOMAIN'] } : {}
+    { host: ENV["DOMAIN"] || 'localhost:3000' }
   end
 
   private
