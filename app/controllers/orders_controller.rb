@@ -10,13 +10,20 @@ class OrdersController < ApplicationController
     authorize order
 
     amount = parse_pledge(params[:pledge_amount])
-    remaining = remaining_pledge(campaign)
-    unless amount && amount >= 1 && amount <= remaining
+    reserved = false
+    if amount && amount >= 1
+      order.amount = amount
+      campaign.with_lock do
+        campaign.release_expired_checkouts!
+        if amount <= campaign.available_pledge
+          order.save!
+          reserved = true
+        end
+      end
+    end
+    unless reserved
       return redirect_to project_path(campaign.project), alert: 'Enter a pledge between 1 and the amount still available.'
     end
-
-    order.amount = amount
-    order.save!
 
     product_data = { name: order.campaign_sku }
     if campaign.project.photo.attached?
@@ -61,11 +68,5 @@ class OrdersController < ApplicationController
     return unless text.match?(/\A[1-9]\d*\z/)
 
     text.to_i
-  end
-
-  def remaining_pledge(campaign)
-    pledged = 0
-    campaign.shareholders.each { |shareholder| pledged += shareholder.amount }
-    campaign.investment_goal - pledged
   end
 end

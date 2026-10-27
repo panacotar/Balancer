@@ -36,6 +36,24 @@ class ShareholdersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to successfulpledge_path
   end
 
+  test 'does not create a shareholder when confirmed pledges already fill the campaign' do
+    Shareholder.create!(amount: 900, percentage: 9, status: 'Active', user: @owner, campaign: @campaign)
+    order = create_order('cs_test_late', amount: 200)
+    stub_session('cs_test_late', payment_status: 'paid', amount_total: order.amount_cents, payment_intent: 'pi_test_late')
+    stub_request(:post, 'https://api.stripe.com/v1/refunds').to_return(
+      status: 200,
+      headers: { 'Content-Type' => 'application/json' },
+      body: { id: 're_test_late', object: 'refund' }.to_json
+    )
+
+    assert_no_difference 'Shareholder.count' do
+      get new_project_shareholder_path(@campaign.project), params: { session_id: order.checkout_session_id }
+    end
+    assert_equal 'failed', order.reload.state
+    assert_redirected_to order_path(order)
+    assert_requested :post, 'https://api.stripe.com/v1/refunds'
+  end
+
   test 'no longer accepts a direct shareholder post' do
     post "/projects/#{@campaign.project.id}/shareholders", params: { pledge_amount: 10 }
     assert_response :not_found
@@ -43,14 +61,14 @@ class ShareholdersControllerTest < ActionDispatch::IntegrationTest
 
   private
 
-  def create_order(session_id)
+  def create_order(session_id, amount: 100)
     order = Order.new(campaign: @campaign, user: @owner, state: 'pending', campaign_sku: 'sku', checkout_session_id: session_id)
-    order.amount = 100
+    order.amount = amount
     order.save!
     order
   end
 
-  def stub_session(session_id, payment_status:, amount_total:)
+  def stub_session(session_id, payment_status:, amount_total:, payment_intent: nil)
     stub_request(:get, "https://api.stripe.com/v1/checkout/sessions/#{session_id}").to_return(
       status: 200,
       headers: { 'Content-Type' => 'application/json' },
@@ -59,6 +77,7 @@ class ShareholdersControllerTest < ActionDispatch::IntegrationTest
         object: 'checkout.session',
         payment_status: payment_status,
         amount_total: amount_total,
+        payment_intent: payment_intent,
         url: "https://checkout.stripe.com/c/pay/#{session_id}",
         livemode: false
       }.to_json

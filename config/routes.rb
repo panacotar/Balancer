@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   get "/healthcheck", to: proc { [200, {}, ["success"]] }
+  post '/stripe/webhook', to: 'stripe_webhooks#create'
   get :about, to: 'pages#about'
   get :dashboard, to: "users#dashboard"
   get :successfulpledge, to: 'pages#successfulpledge'

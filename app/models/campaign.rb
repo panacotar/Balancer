@@ -1,7 +1,10 @@
 class Campaign < ApplicationRecord
   belongs_to :project
   has_many :shareholders, dependent: :destroy
+  has_many :orders
   has_one_attached :photo
+
+  CHECKOUT_HOLD = 24.hours
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_description,
@@ -26,6 +29,16 @@ class Campaign < ApplicationRecord
 
   def active?
     status
+  end
+
+  def release_expired_checkouts!
+    orders.where(state: 'pending').where(created_at: ..CHECKOUT_HOLD.ago).update_all(state: 'failed', updated_at: Time.current)
+  end
+
+  def available_pledge
+    confirmed = shareholders.sum(:amount).to_d
+    held = orders.where(state: 'pending').where('created_at > ?', CHECKOUT_HOLD.ago).sum(:amount_cents).to_d / 100
+    investment_goal.to_d - confirmed - held
   end
 
   def percent
