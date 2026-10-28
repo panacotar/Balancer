@@ -15,6 +15,8 @@ class Campaign < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :description, length: { maximum: 80 }
+  validates :investment_goal, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
+  validates :equity, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 100 }, allow_blank: true
 
   with_options if: :active? do
     validates :start_date, presence: true

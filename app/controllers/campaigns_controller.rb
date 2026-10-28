@@ -47,8 +47,12 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
     authorize @campaign
-    @campaign.update(campaign_params)
-    redirect_to campaigns_path(@campaigns)
+    @project = @campaign.project
+    if @campaign.update(campaign_params)
+      redirect_to campaigns_path
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   private

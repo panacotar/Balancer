@@ -21,11 +21,6 @@
             </li>
               <% end %>
             <li class="list-inline-item">
-              <% if @project.user == current_user %> 
-              <p><%= link_to " Edit Your Campaign", edit_project_campaign_path(@project) %></p>
-            </li>
-              <% end %>
-            <li class="list-inline-item">
               <% if @project.user == current_user %>
               <p><%= link_to " Your Dashboard", dashboard_path %></p>
             </li>
@@ -36,6 +31,19 @@
         <div id="wraper-product-info">
           <div id="wraper-product-info-categories">
             <div id="wraper-product-info-categories-item">
+              <% if @project.user == current_user && @project.campaigns.any? %>
+                <h3>Campaigns</h3>
+                <ol id="project-campaign-list">
+                  <% @project.campaigns.order(:id).each do |campaign| %>
+                    <li>
+                      <span><%= campaign.name %></span>
+                      <%= link_to edit_project_campaign_path(@project, campaign), aria: { label: "Edit #{campaign.name}" } do %>
+                        <i class="fas fa-pen" aria-hidden="true"></i>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ol>
+              <% end %>
               <h3>PROJECT VISION</h3>
               <h6><%= @project.vision %><h6>
               <div id="project-photo"> 
