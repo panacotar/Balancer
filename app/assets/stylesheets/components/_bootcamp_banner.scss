@@ -1,0 +1,28 @@
+.bootcamp-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1040;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0F2E2F;
+  color: #FAFFFE;
+  font-size: 14px;
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    margin-left: 12px;
+    text-decoration: underline;
+
+    &:hover {
+      color: #FFEEEB;
+    }
+  }
+}
