@@ -7,9 +7,6 @@ Entrepreneurs can add their projects and create campaigns for raising funding.
 Investors are able to browse through campaigns and make a pledge.
 
 
-[Balancer in production](https://balancer-app.fly.dev "CTRL/CMD + click to open in a new tab")
-
-
 ## Contributors
 
 Many thanks to all the [people](https://github.com/panacotar/Balancer/graphs/contributors) that contributed to this project. 
@@ -18,49 +15,41 @@ Many thanks to all the [people](https://github.com/panacotar/Balancer/graphs/con
 
 
 ### Built using:
-- Ruby on Rails
-- Bootstrap
-- Stripe Payments
-- Cloudinary gem
-- flatpickr gem
-- slick-carousel
-- popper.js
-- **Database**:
-- - PostgreSQL.
+- Ruby 3.4 and Rails 8.1
+- PostgreSQL
+- Bootstrap 4
+- Stripe
+- Cloudinary
+- esbuild and Dart Sass
+- flatpickr, slick-carousel, and Popper.js
 
 ## Setup
 
-Create a .env file with the following environments:
-- CLOUDINARY_URL (from the Cloudinary console > Dashboard)
-- STRIPE_PUBLISHABLE_KEY
-- STRIPE_SECRET_KEY
+Install Ruby 3.4.11, Node 24, and PostgreSQL, then run:
+
+```
+bin/setup
+```
+
+That installs gems and npm packages, builds the assets, and prepares the database.
+
+## Running
+
+```
+bin/dev
+```
+
+The app is at http://localhost:3000. `bin/dev` starts Rails and rebuilds JavaScript and CSS as you edit.
+
+## Environment
+
+Create a `.env` file in the project root. These are read in development and test:
+
+- `CLOUDINARY_URL` (Cloudinary console > Dashboard). Required to upload photos and to seed projects.
+- `STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY`. Use Stripe test keys.
+- `STRIPE_WEBHOOK_SECRET`. Required for `POST /stripe/webhook`. Checkout still completes from the return URL without it.
+
+In production, set `DOMAIN` to the public hostname. `SENTRY_DSN` is optional.
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
-
-<!--  
-Notes on Fly.io:
-- The free plan allows only 3 machines tops. Here is how the default configuration looked for Balancer on fly.io
-- - There are 3 apps (balancer, db, builder - used for deploys)
-- - Each of them is on a different machine, balancer used 2 machines by default
-- - In total, 4 machines (2x balancer, 1x db, 1x builder), which is bigger than the minimum for this free tier
-- - I modified the number of machines for the main app (balancer) to 1
-- - fly scale count 1 (CLI to modify the # of machines)
-
-- An alternative to this would be to do some steps after deployment (maybe a bash script):
-- - Remove the builder app with its machine
-- - Clone one machine of the balancer app (so now you can have two machines to power it) 
-
-To remove an app
-fly apps destroy <APPNAME>
-
-To remove a machine
-fly m remove <MACHINE_ID>
-
-To clone a machine
-fly m clone <MACHINE_ID>
-
-For the CLI:
-- Run a rails command on the app's console
-fly ssh console --pty -C '/rails/bin/rails console'
--->
