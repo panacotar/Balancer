@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-    { host: ENV["DOMAIN"] || 'localhost:3000' }
+    domain = ENV['DOMAIN'].presence
+    return { host: domain, protocol: 'https' } if domain && Rails.env.production?
+
+    {}
   end
 
   private
