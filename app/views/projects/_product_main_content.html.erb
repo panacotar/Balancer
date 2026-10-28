@@ -39,7 +39,7 @@
               <h3>PROJECT VISION</h3>
               <h6><%= @project.vision %><h6>
               <div id="project-photo"> 
-              <%= cl_image_tag @project.photo.key, crop: :fill, radius: 5, class: "w-100" %>
+              <%= image_tag @project.photo, class: "w-100" %>
               </div>
               <h3>PITCH</h3>
               <h6><%= @project.pitch %><h6>

@@ -26,8 +26,8 @@ class OrdersController < ApplicationController
     end
 
     product_data = { name: order.campaign_sku }
-    if campaign.project.photo.attached?
-      product_data[:images] = [campaign.project.photo.url]
+    if campaign.project.photo.attached? && ENV['DOMAIN'].present?
+      product_data[:images] = [rails_blob_url(campaign.project.photo, host: ENV['DOMAIN'], protocol: 'https')]
     end
 
     session = Stripe::Checkout::Session.create(

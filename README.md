@@ -19,7 +19,6 @@ Many thanks to all the [people](https://github.com/panacotar/Balancer/graphs/con
 - PostgreSQL
 - Bootstrap 4
 - Stripe
-- Cloudinary
 - esbuild and Dart Sass
 - flatpickr, slick-carousel, and Popper.js
 
@@ -33,13 +32,15 @@ bin/setup
 
 That installs gems and npm packages, builds the assets, and prepares the database. On a new database it also loads the sample data.
 
-To seed an existing database, set `CLOUDINARY_URL` first, then run:
+To seed an existing database, run:
 
 ```
 bin/rails db:seed
 ```
 
 To drop the database and seed it again, run `bin/rails db:reset`.
+
+Uploaded photos, including the ones created by the seed, are saved in the `storage/` directory at the project root. That directory is not committed.
 
 ## Running
 
@@ -51,13 +52,7 @@ The app is at http://localhost:3000. `bin/dev` starts Rails and rebuilds JavaScr
 
 ## Environment
 
-Create a `.env` file in the project root. These are read in development and test:
-
-- `CLOUDINARY_URL` (Cloudinary console > Dashboard). Required to upload photos and to seed projects.
-- `STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY`. Use Stripe test keys.
-- `STRIPE_WEBHOOK_SECRET`. Required for `POST /stripe/webhook`. Checkout still completes from the return URL without it.
-
-In production, set `DOMAIN` to the public hostname. `SENTRY_DSN` is optional.
+Copy `.env.example` to `.env` and fill in the values. Development and test read that file.
 
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
