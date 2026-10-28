@@ -4,7 +4,7 @@ class ShareholdersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @owner = create_user(email: 'holder@example.com', phone: '5550002222')
+    @owner = create_user(email: 'holder@example.com')
     @campaign = create_campaign_for(@owner, name: 'Holder Round')
     sign_in @owner
   end

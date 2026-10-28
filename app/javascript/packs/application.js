@@ -47,13 +47,6 @@ document.addEventListener('turbolinks:load', () => {
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
 
-  flatpickr(".date-picker", {
-    altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
-    maxDate: `${year - 15}-${month}-${day + 1}`
-  });
-
   flatpickr(".campaign-date-picker", {
     altInput: true,
     time_24hr: true,

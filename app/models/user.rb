@@ -15,12 +15,8 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :date_of_birth, presence: true
-  validates :address, presence: true
-  validates :phone_number, presence: true
 
   validates :first_name, length: { minimum: 2 }
-  validates :phone_number, uniqueness: true
   validates :gender,
             inclusion: { in: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender
                                 others] }
@@ -35,10 +31,7 @@ end
 #     t.datetime "updated_at", precision: 6, null: false
 #     t.string "first_name"
 #     t.string "last_name"
-#     t.string "address"
-#     t.datetime "date_of_birth"
 #     t.string "gender"
-#     t.string "phone_number"
 #     t.boolean "status"
 #     t.integer "balance"
 #     t.integer "committed_balance"

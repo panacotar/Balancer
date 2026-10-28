@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StripeWebhooksControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @owner = create_user(email: 'webhook@example.com', phone: '5550007777')
+    @owner = create_user(email: 'webhook@example.com')
     @campaign = create_campaign_for(@owner, name: 'Webhook Round')
     @order = Order.new(campaign: @campaign, user: @owner, state: 'pending', campaign_sku: 'sku', checkout_session_id: 'cs_test_hook')
     @order.amount = 100

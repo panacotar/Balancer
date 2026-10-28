@@ -14,16 +14,13 @@ class ActiveSupport::TestCase
 
   fixtures :all
 
-  def create_user(email:, phone:)
+  def create_user(email:)
     User.create!(
       email: email,
       password: 'password123',
       first_name: 'Ada',
       last_name: 'Lovelace',
-      address: '1 Street',
-      date_of_birth: Date.new(1990, 1, 1),
-      gender: 'female',
-      phone_number: phone
+      gender: 'female'
     )
   end
 

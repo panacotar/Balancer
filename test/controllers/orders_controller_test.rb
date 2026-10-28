@@ -4,7 +4,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
 
   setup do
-    @owner = create_user(email: 'owner@example.com', phone: '5550001111')
+    @owner = create_user(email: 'owner@example.com')
     @campaign = create_campaign_for(@owner, name: 'Order Round')
     sign_in @owner
   end

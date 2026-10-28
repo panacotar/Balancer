@@ -15,10 +15,7 @@
               input_html: { autocomplete: "new-password" } %>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
-  <%= f.input :address %>
-  <%= f.input :date_of_birth, as: :string,  input_html: { class: "date-picker" } %>
   <%= f.input :gender, collection: %w[male female transgender gender-neutral agender pangender genderqueer two-spirit third-gender others] %>
-  <%= f.input :phone_number %>
   <%= f.input :photo, as: :file  %>
 </div>
 

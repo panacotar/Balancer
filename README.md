@@ -31,7 +31,15 @@ Install Ruby 3.4.11, Node 24, and PostgreSQL, then run:
 bin/setup
 ```
 
-That installs gems and npm packages, builds the assets, and prepares the database.
+That installs gems and npm packages, builds the assets, and prepares the database. On a new database it also loads the sample data.
+
+To seed an existing database, set `CLOUDINARY_URL` first, then run:
+
+```
+bin/rails db:seed
+```
+
+To drop the database and seed it again, run `bin/rails db:reset`.
 
 ## Running
 
