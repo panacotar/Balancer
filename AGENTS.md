@@ -46,7 +46,7 @@ Copy `.env.example` to `.env`. Do not commit `.env`.
 - Set `DOMAIN` in production only. Production refuses to boot when `DOMAIN` is blank. A blank `DOMAIN` must not become the URL host. `ApplicationController#default_url_options` ignores it outside production.
 - Production reads `.env.production`, created by `scripts/setup-production.sh`. Do not commit it.
 - SMTP settings are optional. When `SMTP_ADDRESS` is set, also set `MAIL_FROM` so Devise can send password-reset mail.
-- Production refuses to boot if `STRIPE_SECRET_KEY` or `STRIPE_PUBLISHABLE_KEY` is a live Stripe key.
+- Production refuses to boot if `STRIPE_SECRET_KEY` or `STRIPE_PUBLISHABLE_KEY` is a live Stripe key, or if `STRIPE_WEBHOOK_SECRET` is blank. Asset precompile may omit `DOMAIN` when `SECRET_KEY_BASE_DUMMY` is set.
 - `SENTRY_DSN` is optional.
 
 ## Domain rules

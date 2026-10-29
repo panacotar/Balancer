@@ -85,7 +85,9 @@ Edit `.env.production` (mode 600, not committed):
 - Set `DOMAIN=balancer.example.com`, without `https://` or a path. Replace `example.com` with your domain.
 - Set `STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY` to Stripe **test** keys
   (`pk_test_` and `sk_test_`). The app refuses to boot if either key is a live key.
-- Leave `STRIPE_WEBHOOK_SECRET` until the webhook exists (step 6).
+- Set `STRIPE_WEBHOOK_SECRET` before the first start. Create the test-mode
+  endpoint in the Stripe dashboard (step 6) and copy its signing secret.
+  Production refuses to boot while this value is blank.
 - Password reset needs SMTP. Set `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_USERNAME`,
   `SMTP_PASSWORD`, and `MAIL_FROM` together, or leave `SMTP_ADDRESS` empty.
 - `SENTRY_DSN` is optional.
@@ -173,8 +175,9 @@ In the Stripe dashboard, test mode, add an endpoint:
 https://balancer.example.com/stripe/webhook
 ```
 
-Put the signing secret in `STRIPE_WEBHOOK_SECRET` in `.env.production`, then
-restart the app:
+Copy the signing secret into `STRIPE_WEBHOOK_SECRET` in `.env.production`
+before `scripts/update-production.sh`. The app will not boot without it.
+If you change the secret later, restart the app:
 
 ```sh
 scripts/production.sh up -d --no-build --wait web

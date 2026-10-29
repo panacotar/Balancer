@@ -69,7 +69,7 @@ fi
 if port_free 80 && port_free 443; then
   set_env_value CADDY_PROFILE caddy "$root/.env.production"
   echo "Production files ready. Ports 80/443 are free, so Balancer will run its own Caddy."
-  echo "Set ACME_EMAIL and the Stripe test keys in .env.production before deploying."
+  echo "Set ACME_EMAIL, the Stripe test keys, and STRIPE_WEBHOOK_SECRET in .env.production before deploying."
 else
   set_env_value CADDY_PROFILE "" "$root/.env.production"
   cat <<'EOF'
@@ -90,6 +90,6 @@ it pointing at balancer-web:3000. For example, in Caddy:
         reverse_proxy balancer-web:3000
     }
 
-Also set the Stripe test keys in .env.production before deploying.
+Also set the Stripe test keys and STRIPE_WEBHOOK_SECRET in .env.production before deploying.
 EOF
 fi

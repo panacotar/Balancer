@@ -1,8 +1,11 @@
 Rails.application.configure do
   domain = ENV["DOMAIN"].to_s.strip
-  raise "Set DOMAIN to the public hostname before booting production." if domain.empty?
+  # Asset precompile sets SECRET_KEY_BASE_DUMMY and has no public hostname.
+  if domain.empty? && ENV["SECRET_KEY_BASE_DUMMY"].blank?
+    raise "Set DOMAIN to the public hostname before booting production."
+  end
 
-  config.action_mailer.default_url_options = { host: domain, protocol: "https" }
+  config.action_mailer.default_url_options = { host: domain, protocol: "https" } if domain.present?
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -52,7 +55,7 @@ Rails.application.configure do
   config.force_ssl = true
   config.assume_ssl = true
   config.ssl_options = { redirect: { exclude: ->(request) { request.path == '/healthcheck' } } }
-  config.hosts << domain
+  config.hosts << domain if domain.present?
   config.host_authorization = { exclude: ->(request) { request.path == '/healthcheck' } }
 
   config.log_level = :info

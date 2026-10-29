@@ -1,6 +1,7 @@
 require Rails.root.join("lib/stripe_key_guard")
 
 StripeKeyGuard.ensure_test_keys!(ENV, production: Rails.env.production?)
+StripeKeyGuard.ensure_webhook_secret!(ENV, production: Rails.env.production?)
 
 Rails.configuration.stripe = {
   publishable_key: ENV["STRIPE_PUBLISHABLE_KEY"],
