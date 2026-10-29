@@ -9,6 +9,7 @@
       <h1 class="checkout-title">Checkout summary</h1>
       <p class="checkout-text">Thank you for supporting this project!</p>
       <p class="checkout-text">Invest <strong><%= humanized_money_with_symbol @order.amount %></strong> into <strong><%= @order.campaign.name %></strong> </p>
+      <p class="checkout-text"><%= stripe_test_card_notice %></p>
       <%= link_to 'Pay', @checkout_url, id: 'pay', class: 'btn btn-primary' %>
     </div>
   </div>

@@ -47,6 +47,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_order_payment_path(order)
     assert_requested :post, 'https://api.stripe.com/v1/checkout/sessions' do |request|
       assert_match(/\{CHECKOUT_SESSION_ID\}|%7BCHECKOUT_SESSION_ID%7D/, request.body)
+      params = Rack::Utils.parse_nested_query(request.body)
+      assert_equal ApplicationHelper::STRIPE_TEST_CARD_NOTICE, params.dig('custom_text', 'submit', 'message')
     end
   end
 

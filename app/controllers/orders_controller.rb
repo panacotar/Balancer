@@ -32,7 +32,6 @@ class OrdersController < ApplicationController
 
     session = Stripe::Checkout::Session.create(
       mode: 'payment',
-      payment_method_types: ['card'],
       line_items: [{
         quantity: 1,
         price_data: {
@@ -42,7 +41,10 @@ class OrdersController < ApplicationController
         }
       }],
       success_url: "#{new_project_shareholder_url(campaign.project)}?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: order_url(order)
+      cancel_url: order_url(order),
+      custom_text: {
+        submit: { message: helpers.stripe_test_card_notice }
+      }
     )
 
     order.update!(checkout_session_id: session.id)
