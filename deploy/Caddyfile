@@ -1,0 +1,14 @@
+{
+	email {$ACME_EMAIL}
+	admin off
+}
+
+{$DOMAIN} {
+	encode zstd gzip
+	header -Server
+	header Strict-Transport-Security "max-age=31536000"
+	request_body {
+		max_size 10MB
+	}
+	reverse_proxy balancer-web:3000
+}

@@ -5,7 +5,8 @@ import { cp, mkdir, readFile, writeFile } from 'node:fs/promises';
 import { watch } from 'node:fs';
 
 const style = process.env.RAILS_ENV === 'production' ? 'compressed' : 'expanded';
-const silenceDeprecations = ['import', 'global-builtin', 'color-functions', 'legacy-js-api'];
+// Bootstrap 4 still uses the Sass syntax these warnings describe.
+const silenceDeprecations = ['import', 'global-builtin', 'color-functions', 'legacy-js-api', 'mixed-decls', 'abs-percent'];
 
 async function compile(entry, outfile, prefix = '') {
   const result = sass.compile(entry, {

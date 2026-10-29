@@ -1,7 +1,7 @@
 # Deploy to the VPS
 
-Balancer runs as two containers on the same VPS as SillyStories. SillyStories'
-Caddy is the only public listener.
+Balancer is standalone: it can run its own HTTPS proxy, or share an existing
+one, with no configuration naming either side.
 
 ```text
 Internet → Caddy (HTTPS) → Balancer (Rails) → Postgres
@@ -10,6 +10,21 @@ Internet → Caddy (HTTPS) → Balancer (Rails) → Postgres
 Postgres is on an internal network and publishes no ports. Uploaded photos live
 in the `balancer_uploads` volume. Rebuilding the app image leaves the database
 and photos in place.
+
+`scripts/setup-production.sh` checks whether ports 80 and 443 are already in
+use on the host, every time it runs:
+
+- **Free:** Balancer starts its own `caddy` container (Compose profile
+  `caddy`) and gets a certificate for `DOMAIN` directly. This is the common
+  case for a VPS dedicated to Balancer.
+- **In use:** something else already owns those ports. Balancer does not
+  start its own Caddy. Setup instead creates the external Docker network
+  `balancer-edge` and prints a site block to add to whatever already runs
+  there, so that proxy can reach `balancer-web:3000`. Balancer's own files
+  never name that other proxy or project.
+
+Re-run `scripts/setup-production.sh` any time the host's port usage changes;
+it switches modes automatically.
 
 Commands below run on the VPS unless marked otherwise. Examples use
 `~/Balancer`. Docker names the volumes `balancer_postgres_data` and
@@ -39,19 +54,22 @@ Before the site is public:
 | HTTP | 80 | Public |
 | HTTPS | 443 | Public |
 
+Open HTTP and HTTPS regardless of which mode section 4 ends up in: either
+Balancer's own Caddy uses them, or another proxy on this host already does.
 Do not publish the app port, the database port, or the Docker API.
 
 ## 2. DNS
 
-In the `organicdarius.com` zone:
+In the `example.com` zone:
 
 | Type | Name | Value |
 | --- | --- | --- |
 | A | `balancer` | The VPS IPv4 address |
 | AAAA | `balancer` | The VPS IPv6 address, only if it is configured and reachable |
 
-Use DNS-only mode if the DNS host offers a proxy. Caddy obtains the certificate
-once port 80 on this VPS answers for `balancer.organicdarius.com`.
+Use DNS-only mode if the DNS host offers a proxy. Whichever Caddy ends up
+serving Balancer (see section 4) obtains the certificate once port 80 on this
+VPS answers for `balancer.example.com`.
 
 ## 3. Configure the checkout
 
@@ -64,34 +82,63 @@ scripts/setup-production.sh
 
 Edit `.env.production` (mode 600, not committed):
 
-- Leave `DOMAIN=balancer.organicdarius.com`, without `https://` or a path.
+- Set `DOMAIN=balancer.example.com`, without `https://` or a path. Replace `example.com` with your domain.
 - Set `STRIPE_PUBLISHABLE_KEY` and `STRIPE_SECRET_KEY` to Stripe **test** keys
   (`pk_test_` and `sk_test_`). The app refuses to boot if either key is a live key.
 - Leave `STRIPE_WEBHOOK_SECRET` until the webhook exists (step 6).
 - Password reset needs SMTP. Set `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_USERNAME`,
   `SMTP_PASSWORD`, and `MAIL_FROM` together, or leave `SMTP_ADDRESS` empty.
 - `SENTRY_DSN` is optional.
+- If setup reported that ports 80/443 were free, set `ACME_EMAIL` to a real
+  contact address for certificate renewal notices.
 
 Setup generates `SECRET_KEY_BASE` and `BALANCER_DATABASE_PASSWORD`. It does not
 overwrite an existing `.env.production`. The database role is `balancer`. It is
 a Postgres superuser because it owns this private database, and it is reachable
 only from the Balancer app container.
 
-Always use `scripts/production.sh` for production Compose commands.
+Always use `scripts/production.sh` for production Compose commands. It reads
+`CADDY_PROFILE` from `.env.production` and starts the `caddy` service only
+when setup set that to `caddy`.
 
-## 4. Point Caddy at Balancer
+## 4. Reverse proxy
 
-SillyStories already listens on ports 80 and 443. From the SillyStories checkout,
-pull the Caddyfile that includes `balancer.organicdarius.com`, then:
+Setup already decided this when it ran in step 3. Check `.env.production`:
+
+**`CADDY_PROFILE=caddy`** — ports 80/443 were free. Balancer owns them and
+runs its own Caddy container from [deploy/Caddyfile](../deploy/Caddyfile). No
+further action is needed here; it starts with the rest of the stack in step 5.
+
+**`CADDY_PROFILE=` (empty)** — something else already listens on 80/443.
+Balancer stays off those ports. Attach that existing proxy to the network
+setup already created, then add a site to it:
 
 ```sh
-docker network create balancer-edge
-scripts/production.sh up -d caddy
+docker network connect balancer-edge <your-proxy-container>
 ```
 
-`scripts/setup-production.sh` in either checkout creates `balancer-edge`. Caddy
-joins that network and proxies `balancer.organicdarius.com` to the Balancer
-container. If Balancer is down, only that hostname returns an error.
+```caddyfile
+balancer.example.com {
+	encode zstd gzip
+	header -Server
+	header Strict-Transport-Security "max-age=31536000"
+	request_body {
+		max_size 10MB
+	}
+	reverse_proxy balancer-web:3000 {
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Forwarded-Proto {scheme}
+		header_up X-Forwarded-Host {host}
+	}
+}
+```
+
+That snippet is Caddy syntax, but any reverse proxy that can join the
+`balancer-edge` Docker network and point at `balancer-web:3000` works. Nothing
+here needs to know what that proxy is for, or belongs to. If Balancer is down,
+only `balancer.example.com` fails; the existing proxy's other sites are
+unaffected. Re-run `scripts/setup-production.sh` later if port usage on the
+host changes; it switches `CADDY_PROFILE` automatically.
 
 ## 5. Build and start
 
@@ -110,19 +157,20 @@ Check the containers and the public URL:
 
 ```sh
 scripts/production.sh ps
-curl -I http://balancer.organicdarius.com
-curl --fail https://balancer.organicdarius.com/healthcheck
+curl -I http://balancer.example.com
+curl --fail https://balancer.example.com/healthcheck
 ```
 
-`curl -I` should show a redirect to HTTPS. Only Caddy publishes host ports.
-`docker ps` should not show `5432` or Balancer's port `3000`.
+`curl -I` should show a redirect to HTTPS. Only a Caddy container (Balancer's
+own, or the one already on the host) publishes ports 80/443. `docker ps`
+should not show `5432` or Balancer's port `3000` published.
 
 ## 6. Stripe webhook
 
 In the Stripe dashboard, test mode, add an endpoint:
 
 ```text
-https://balancer.organicdarius.com/stripe/webhook
+https://balancer.example.com/stripe/webhook
 ```
 
 Put the signing secret in `STRIPE_WEBHOOK_SECRET` in `.env.production`, then
@@ -193,10 +241,10 @@ pruning. That removes the only on-server copy of the database and photos.
 ## 9. Memory
 
 Steady use for Balancer is about 250–450 MB: Rails often 150–300 MB, Postgres
-often 50–120 MB. The app is capped at 512 MB and Postgres at 384 MB, so a spike
-stops that container instead of the whole VPS. Together with SillyStories
-(Caddy 256 MB, Node 384 MB, MongoDB 768 MB) the caps are about 2.3 GB. Real use
-stays near 1.1–1.6 GB plus the operating system, which fits a 4 GB VPS.
+often 50–120 MB. Add roughly 20–40 MB if Balancer runs its own Caddy (capped
+at 128 MB). The app is capped at 512 MB and Postgres at 384 MB, so a spike
+stops that container instead of the whole VPS. These numbers cover Balancer
+only; add whatever else shares this VPS on top.
 
 Keep one Puma process. Do not add worker processes or a Redis container. The
 app cache is in memory.

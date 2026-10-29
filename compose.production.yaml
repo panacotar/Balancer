@@ -49,6 +49,36 @@ services:
       retries: 3
       start_period: 60s
 
+  # Only started when scripts/setup-production.sh finds ports 80/443 free on
+  # the host (Compose profile "caddy"). If something else already listens on
+  # those ports, this service stays off and that listener reaches `web`
+  # through the `edge` network instead. See doc/vps.md.
+  caddy:
+    <<: *defaults
+    image: caddy:2-alpine
+    profiles: [caddy]
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:-}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [edge]
+    depends_on:
+      web:
+        condition: service_healthy
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    mem_limit: 128m
+    pids_limit: 50
+    stop_grace_period: 15s
+
   db:
     <<: *defaults
     image: postgres:17-bookworm
@@ -73,7 +103,10 @@ services:
       start_period: 15s
 
 networks:
-  # Created by scripts/setup-production.sh and shared with SillyStories' Caddy.
+  # Created by scripts/setup-production.sh. When Balancer runs its own
+  # `caddy` service above, it joins this network. Otherwise, whatever reverse
+  # proxy already owns ports 80/443 on the host joins it instead, to reach
+  # `web` as `balancer-web`. Nothing in this file names another project.
   edge:
     external: true
     name: balancer-edge
@@ -83,3 +116,5 @@ networks:
 volumes:
   postgres_data:
   uploads:
+  caddy_data:
+  caddy_config:
