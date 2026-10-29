@@ -81,6 +81,7 @@ section 4. They are not one command.
 
 1. Join its container to the balancer-edge network:
      docker network connect balancer-edge <proxy-container>
+   If Docker says the endpoint already exists, that step is already done.
 2. Append a site for the DOMAIN hostname to that proxy's Caddyfile, then
    restart the proxy container. Pasting the site block into the shell does nothing.
 

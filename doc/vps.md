@@ -123,7 +123,9 @@ docker network connect balancer-edge <proxy-container>
 ```
 
 `<proxy-container>` is the container that publishes ports 80 and 443
-(`docker ps`).
+(`docker ps`). If Docker answers that an endpoint with that name already
+exists in `balancer-edge`, the container is already connected. Leave it and
+continue with step 2.
 
 2. Add a site to the Caddyfile that container already loads. Find the file on
    the host:
