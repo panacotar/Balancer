@@ -6,6 +6,8 @@ Entrepreneurs can add their projects and create campaigns for raising funding.
 
 Investors are able to browse through campaigns and make a pledge.
 
+<a href="https://balancer.organicdarius.com/" target="_blank" rel="noopener noreferrer">Visit the live site</a>
+
 <a href="https://docs.google.com/presentation/d/1DjPQDwVLx8C2l-xwPCXL_F9HWNSqSQDeIopRr_SeXFQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Presentation</a>
 
 ## Contributors
