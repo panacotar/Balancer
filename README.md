@@ -6,6 +6,7 @@ Entrepreneurs can add their projects and create campaigns for raising funding.
 
 Investors are able to browse through campaigns and make a pledge.
 
+[Presentation](https://docs.google.com/presentation/d/1DjPQDwVLx8C2l-xwPCXL_F9HWNSqSQDeIopRr_SeXFQ/edit?usp=sharing)
 
 ## Contributors
 

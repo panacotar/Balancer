@@ -19,8 +19,10 @@ For local development, install the [Stripe CLI](https://docs.stripe.com/stripe-c
 
 ```sh
 stripe login
-stripe listen --forward-to localhost:3000/stripe/webhook
+stripe listen --events checkout.session.completed --forward-to localhost:3000/stripe/webhook
 ```
+
+The CLI requires `--events`. This app only handles `checkout.session.completed`. Change `3000` if Rails is running on another port.
 
 The CLI prints a secret that starts with `whsec_`. Set that as `STRIPE_WEBHOOK_SECRET` and restart Rails. Leave `stripe listen` running while you pay.
 
