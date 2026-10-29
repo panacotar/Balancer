@@ -1,95 +1,62 @@
-# syntax = docker/dockerfile:1
+# syntax=docker/dockerfile:1
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=2.6.6
-FROM ruby:$RUBY_VERSION-slim as base
+ARG RUBY_VERSION=3.4.11
+ARG NODE_VERSION=24.13.0
+FROM node:${NODE_VERSION}-bookworm-slim AS node
+FROM ruby:${RUBY_VERSION}-slim-bookworm AS base
 
-LABEL fly_launch_runtime="rails"
-
-# Rails app lives here
 WORKDIR /rails
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_WITHOUT="development:test" \
-    BUNDLE_DEPLOYMENT="1"
+ENV RAILS_ENV=production \
+    BUNDLE_WITHOUT=development:test \
+    BUNDLE_DEPLOYMENT=1 \
+    BUNDLE_PATH=/usr/local/bundle \
+    BUNDLE_JOBS=2 \
+    RAILS_LOG_TO_STDOUT=1 \
+    RAILS_SERVE_STATIC_FILES=1 \
+    MALLOC_ARENA_MAX=2 \
+    BOOTSNAP_CACHE_DIR=/tmp/bootsnap \
+    HOME=/tmp
 
-# Update gems and bundler
-RUN gem update --system --no-document && \
-    gem install -N bundler
-
-# Install packages needed to install nodejs
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y libpq5 ca-certificates curl && \
+    rm -rf /var/lib/apt/lists/* && \
+    gem install bundler -v 4.1.0.beta2 --no-document
 
-# Install Node.js
-ARG NODE_VERSION=16.13.2
-ENV PATH=/usr/local/node/bin:$PATH
-RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-    rm -rf /tmp/node-build-master
+FROM base AS build
 
-
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev node-gyp pkg-config python nodejs -y
+    apt-get install --no-install-recommends -y build-essential libpq-dev pkg-config && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install yarn
-ARG YARN_VERSION=1.22.19
-RUN npm install -g yarn@$YARN_VERSION
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -sf ../lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm && \
+    ln -sf ../lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
-# Build options
-ENV PATH="/usr/local/node/bin:$PATH"
-
-# Install application gems
-COPY --link Gemfile Gemfile.lock ./
+COPY Gemfile Gemfile.lock .ruby-version ./
 RUN bundle install && \
-    bundle exec bootsnap precompile --gemfile && \
-    rm -rf ~/.bundle/ $BUNDLE_PATH/ruby/*/cache $BUNDLE_PATH/ruby/*/bundler/gems/*/.git
+    rm -rf ~/.bundle "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git
 
-# Install node modules
-COPY --link .yarnrc package.json package-lock.json yarn.lock ./
-COPY --link .yarn/releases/* .yarn/releases/
-RUN yarn install --frozen-lockfile
+COPY package.json package-lock.json ./
+RUN npm ci && npm cache clean --force
 
-# Copy application code
-COPY --link . .
+COPY . .
+RUN mkdir -p tmp/pids storage log app/assets/builds && \
+    SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile && \
+    rm -rf node_modules tmp/* log/*
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
+FROM base AS runtime
 
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
+RUN groupadd --gid 1000 rails && \
+    useradd --uid 1000 --gid rails --create-home --shell /usr/sbin/nologin rails && \
+    mkdir -p storage tmp/pids log && \
+    chown -R rails:rails storage tmp log
 
-
-# Final stage for app image
-FROM base
-
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+COPY --from=build --chown=rails:rails /rails /rails
 
-# Run and own only the runtime files as a non-root user for security
-RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
 USER rails:rails
-
-# Deployment options
-ENV RAILS_LOG_TO_STDOUT="1" \
-    RAILS_SERVE_STATIC_FILES="true"
-
-# Entrypoint sets up the container.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+CMD ["bundle", "exec", "puma", "-C", "config/puma.rb"]

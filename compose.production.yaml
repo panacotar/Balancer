@@ -1,0 +1,85 @@
+name: balancer
+
+x-defaults: &defaults
+  restart: unless-stopped
+  logging:
+    driver: json-file
+    options:
+      max-size: "10m"
+      max-file: "3"
+  security_opt: [no-new-privileges:true]
+
+services:
+  web:
+    <<: *defaults
+    image: balancer:${GIT_SHA:?Set GIT_SHA in .env.production}
+    build: .
+    init: true
+    env_file: .env.production
+    environment:
+      RAILS_ENV: production
+      RAILS_MAX_THREADS: "3"
+      BIND_HOST: 0.0.0.0
+      PGHOST: db
+      PGUSER: balancer
+      PGDATABASE: balancer_production
+      PGPORT: "5432"
+    networks:
+      edge:
+        aliases: [balancer-web]
+      database: {}
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads:/rails/storage
+    read_only: true
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+      - /rails/tmp:size=32m,uid=1000,gid=1000,mode=0700
+      - /rails/log:size=32m,uid=1000,gid=1000,mode=0700
+    cap_drop: [ALL]
+    mem_limit: 512m
+    pids_limit: 150
+    stop_grace_period: 30s
+    healthcheck:
+      test: [CMD, curl, --fail, --silent, --max-time, "5", "http://127.0.0.1:3000/healthcheck"]
+      interval: 30s
+      timeout: 6s
+      retries: 3
+      start_period: 60s
+
+  db:
+    <<: *defaults
+    image: postgres:17-bookworm
+    environment:
+      POSTGRES_USER: balancer
+      POSTGRES_PASSWORD: ${BALANCER_DATABASE_PASSWORD:?Set BALANCER_DATABASE_PASSWORD in .env.production}
+      POSTGRES_DB: balancer_production
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=scram-sha-256
+    networks: [database]
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    command: [postgres, -c, shared_buffers=64MB, -c, max_connections=20]
+    mem_limit: 384m
+    shm_size: 128m
+    pids_limit: 150
+    stop_grace_period: 60s
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U balancer -d balancer_production"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+
+networks:
+  # Created by scripts/setup-production.sh and shared with SillyStories' Caddy.
+  edge:
+    external: true
+    name: balancer-edge
+  database:
+    internal: true
+
+volumes:
+  postgres_data:
+  uploads:

@@ -36,12 +36,17 @@ bin/rails test
 
 If `bin/rails` cannot find gems, unset `BUNDLE_PATH` and run it with `RBENV_VERSION=3.4.11`.
 
+Production on the VPS uses Docker Compose. See `doc/vps.md`. The production commands are `scripts/setup-production.sh`, `scripts/production.sh`, `scripts/update-production.sh`, `scripts/rollback-production.sh`, and `scripts/backup-production.sh`.
+
 ## Environment
 
 Copy `.env.example` to `.env`. Do not commit `.env`.
 
 - Stripe keys are test keys. Local webhook setup is in `doc/stripe.md`. `STRIPE_WEBHOOK_SECRET` is required for `POST /stripe/webhook`.
-- Set `DOMAIN` in production only. A blank `DOMAIN` must not become the URL host. `ApplicationController#default_url_options` ignores it outside production.
+- Set `DOMAIN` in production only. Production refuses to boot when `DOMAIN` is blank. A blank `DOMAIN` must not become the URL host. `ApplicationController#default_url_options` ignores it outside production.
+- Production reads `.env.production`, created by `scripts/setup-production.sh`. Do not commit it.
+- SMTP settings are optional. When `SMTP_ADDRESS` is set, also set `MAIL_FROM` so Devise can send password-reset mail.
+- Production refuses to boot if `STRIPE_SECRET_KEY` or `STRIPE_PUBLISHABLE_KEY` is a live Stripe key.
 - `SENTRY_DSN` is optional.
 
 ## Domain rules

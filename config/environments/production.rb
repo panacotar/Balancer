@@ -1,5 +1,8 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: ENV['DOMAIN'], protocol: 'https' }
+  domain = ENV["DOMAIN"].to_s.strip
+  raise "Set DOMAIN to the public hostname before booting production." if domain.empty?
+
+  config.action_mailer.default_url_options = { host: domain, protocol: "https" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -49,7 +52,7 @@ Rails.application.configure do
   config.force_ssl = true
   config.assume_ssl = true
   config.ssl_options = { redirect: { exclude: ->(request) { request.path == '/healthcheck' } } }
-  config.hosts << ENV['DOMAIN'] if ENV['DOMAIN'].present?
+  config.hosts << domain
   config.host_authorization = { exclude: ->(request) { request.path == '/healthcheck' } }
 
   config.log_level = :info
@@ -66,6 +69,21 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "Balancer_production"
 
   config.action_mailer.perform_caching = false
+
+  if ENV["SMTP_ADDRESS"].present?
+    raise "Set MAIL_FROM when SMTP_ADDRESS is set." if ENV["MAIL_FROM"].blank?
+
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.smtp_settings = {
+      address: ENV["SMTP_ADDRESS"],
+      port: ENV.fetch("SMTP_PORT", "587").to_i,
+      user_name: ENV["SMTP_USERNAME"].presence,
+      password: ENV["SMTP_PASSWORD"].presence,
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
+  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

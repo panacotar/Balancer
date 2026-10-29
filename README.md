@@ -55,5 +55,7 @@ The app is at http://localhost:3000. `bin/dev` starts Rails and rebuilds JavaScr
 
 Copy `.env.example` to `.env` and fill in the values. Development and test read that file. Stripe setup, including `STRIPE_WEBHOOK_SECRET`, is in [doc/stripe.md](doc/stripe.md).
 
+Production hosting on the shared VPS is documented in [doc/vps.md](doc/vps.md).
+
 Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 
