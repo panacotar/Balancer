@@ -42,5 +42,14 @@ yarn-debug.log*
 *.swp
 .DS_Store
 .env*
+!.env.example
 
 /config/credentials/production.key
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
+/ngrok
+/public/webfonts
+/public/slick
+/public/images/bg_buswoman.jpg
+/public/images/photo-1.png

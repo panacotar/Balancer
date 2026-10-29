@@ -3,8 +3,13 @@
 }
 
 .checkout-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border: 1px solid #dee2e6;
   border-radius: 2px;
+  object-fit: cover;
 }
 
 .checkout-title {

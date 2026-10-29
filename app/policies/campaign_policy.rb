@@ -12,6 +12,6 @@ class CampaignPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    record.project.user == user
   end
 end

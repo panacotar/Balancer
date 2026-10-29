@@ -5,8 +5,6 @@
 
 require("@rails/ujs").start()
 require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
 require("slick-carousel")
 
 
@@ -28,10 +26,6 @@ require("slick-carousel")
 import "bootstrap";
 import flatpickr from "flatpickr";
 import AOS from 'aos';
-import 'aos/dist/aos.css';
-import "slick-carousel/slick/slick.scss";
-import "slick-carousel/slick/slick-theme.scss";
-import "../styles/application.scss";
 import { makeChart } from "../components/chart";
 
 // Internal imports, e.g:
@@ -52,13 +46,6 @@ document.addEventListener('turbolinks:load', () => {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
-
-  flatpickr(".date-picker", {
-    altInput: true,
-    altFormat: "F j, Y",
-    dateFormat: "Y-m-d",
-    maxDate: `${year - 15}-${month}-${day + 1}`
-  });
 
   flatpickr(".campaign-date-picker", {
     altInput: true,

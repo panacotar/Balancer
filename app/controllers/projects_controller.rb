@@ -13,13 +13,13 @@ class ProjectsController < ApplicationController
 
     @campaign = @project.campaigns.first
 
+    @campaign.release_expired_checkouts!
     @campaign.shareholders.each do |sh|
       @pledged_before += sh.amount
     end
 
-    @allow_pledges = true if @pledged_before < @campaign.investment_goal
-
-    @pledge_remaining = @campaign.investment_goal - @pledged_before
+    @pledge_remaining = @campaign.available_pledge
+    @allow_pledges = @pledge_remaining.to_d >= 1
   end
 
   def new

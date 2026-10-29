@@ -13,10 +13,7 @@ puts 'Creating Users'
              last_name: Faker::Name.last_name,
              email: Faker::Internet.email,
              password: '123123',
-             address: Faker::Address.city,
-             date_of_birth: Faker::Date.birthday(min_age: 18, max_age: 75),
-             gender: Faker::Gender.binary_type.downcase,
-             phone_number: Faker::PhoneNumber.cell_phone)
+             gender: Faker::Gender.binary_type.downcase)
 end
 
 puts "Users: #{User.all.count}"

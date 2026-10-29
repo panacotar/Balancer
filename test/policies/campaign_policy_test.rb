@@ -11,6 +11,12 @@ class CampaignPolicyTest < ActiveSupport::TestCase
   end
 
   def test_update
+    owner = create_user(email: 'campaign-owner@example.com')
+    other = create_user(email: 'campaign-other@example.com')
+    campaign = create_campaign_for(owner, name: 'Policy Round')
+
+    assert CampaignPolicy.new(owner, campaign).update?
+    assert_not CampaignPolicy.new(other, campaign).update?
   end
 
   def test_destroy

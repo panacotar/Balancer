@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+
+  &.fixed-top {
+    top: 36px;
+  }
 }
 
 .navbar-lewagon-yellow {
