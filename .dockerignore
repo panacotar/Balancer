@@ -37,3 +37,11 @@
 /app/assets/builds/*
 !/app/assets/builds/.keep
 /public/assets
+
+# Host-only files. Secrets and backups must not be copied into the image.
+/test
+/ngrok
+/backups
+/deploy/secrets
+.release
+.previous-release

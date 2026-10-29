@@ -1,0 +1,12 @@
+[Unit]
+Description=Export the Balancer database and uploaded photos
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=oneshot
+# Change User and the paths to the deployment account and checkout.
+User=deploy
+WorkingDirectory=/home/deploy/Balancer
+ExecStart=/home/deploy/Balancer/scripts/backup-production.sh
+UMask=0077

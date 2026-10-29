@@ -10,7 +10,12 @@ threads min_threads_count, max_threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 #
-port        ENV.fetch("PORT") { 3000 }
+# BIND_HOST is set in production so other containers can reach Puma.
+if ENV["BIND_HOST"]
+  port ENV.fetch("PORT") { 3000 }, ENV["BIND_HOST"]
+else
+  port ENV.fetch("PORT") { 3000 }
+end
 
 # Specifies the `environment` that Puma will run in.
 #

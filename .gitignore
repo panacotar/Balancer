@@ -43,6 +43,7 @@ yarn-debug.log*
 .DS_Store
 .env*
 !.env.example
+!.env.production.example
 
 /config/credentials/production.key
 
@@ -53,3 +54,7 @@ yarn-debug.log*
 /public/slick
 /public/images/bg_buswoman.jpg
 /public/images/photo-1.png
+
+/backups/
+.release
+.previous-release
