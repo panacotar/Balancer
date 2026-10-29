@@ -74,21 +74,15 @@ else
   set_env_value CADDY_PROFILE "" "$root/.env.production"
   cat <<'EOF'
 Production files ready. Ports 80/443 are already in use on this host, so
-Balancer will not start its own Caddy. Attach whatever reverse proxy already
-owns those ports to the "balancer-edge" Docker network, then add a site for
-it pointing at balancer-web:3000. For example, in Caddy:
+Balancer will not start its own Caddy.
 
-    docker network connect balancer-edge <your-proxy-container>
+The proxy that owns those ports needs two changes, described in doc/vps.md
+section 4. They are not one command.
 
-    balancer.organicdarius.com {
-        encode zstd gzip
-        header -Server
-        header Strict-Transport-Security "max-age=31536000"
-        request_body {
-            max_size 10MB
-        }
-        reverse_proxy balancer-web:3000
-    }
+1. Join its container to the balancer-edge network:
+     docker network connect balancer-edge <proxy-container>
+2. Append a site for the DOMAIN hostname to that proxy's Caddyfile, then
+   restart the proxy container. Pasting the site block into the shell does nothing.
 
 Also set the Stripe test keys and STRIPE_WEBHOOK_SECRET in .env.production before deploying.
 EOF

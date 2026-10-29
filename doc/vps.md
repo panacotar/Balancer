@@ -112,12 +112,28 @@ runs its own Caddy container from [deploy/Caddyfile](../deploy/Caddyfile). No
 further action is needed here; it starts with the rest of the stack in step 5.
 
 **`CADDY_PROFILE=` (empty)** — something else already listens on 80/443.
-Balancer stays off those ports. Attach that existing proxy to the network
-setup already created, then add a site to it:
+Balancer stays off those ports. That proxy needs two separate changes. The
+`docker network connect` command is not a place to paste the site block.
+
+1. Join the proxy container to Balancer's network. This lasts until that
+   container is recreated:
 
 ```sh
-docker network connect balancer-edge <your-proxy-container>
+docker network connect balancer-edge <proxy-container>
 ```
+
+`<proxy-container>` is the container that publishes ports 80 and 443
+(`docker ps`).
+
+2. Add a site to the Caddyfile that container already loads. Find the file on
+   the host:
+
+```sh
+docker inspect <proxy-container> --format '{{range .Mounts}}{{if eq .Destination "/etc/caddy/Caddyfile"}}{{.Source}}{{end}}{{end}}'
+```
+
+Open that path and append the block below. Leave every existing site in the
+file. Use the same hostname as `DOMAIN` in `.env.production`.
 
 ```caddyfile
 balancer.example.com {
@@ -135,12 +151,19 @@ balancer.example.com {
 }
 ```
 
-That snippet is Caddy syntax, but any reverse proxy that can join the
-`balancer-edge` Docker network and point at `balancer-web:3000` works. Nothing
-here needs to know what that proxy is for, or belongs to. If Balancer is down,
-only `balancer.example.com` fails; the existing proxy's other sites are
-unaffected. Re-run `scripts/setup-production.sh` later if port usage on the
-host changes; it switches `CADDY_PROFILE` automatically.
+3. Restart the proxy container so it reads the file again. A restart keeps
+   the network connection from step 1. Recreating the container drops it, and
+   step 1 has to be run again.
+
+```sh
+docker restart <proxy-container>
+```
+
+Any reverse proxy that can join `balancer-edge` and point at
+`balancer-web:3000` works the same way. If Balancer is down, only its
+hostname fails. The proxy's other sites stay up. Re-run
+`scripts/setup-production.sh` later if port usage on the host changes; it
+switches `CADDY_PROFILE` automatically.
 
 ## 5. Build and start
 
