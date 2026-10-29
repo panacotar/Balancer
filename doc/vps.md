@@ -90,6 +90,7 @@ Edit `.env.production` (mode 600, not committed):
   Production refuses to boot while this value is blank.
 - Password reset needs SMTP. Set `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_USERNAME`,
   `SMTP_PASSWORD`, and `MAIL_FROM` together, or leave `SMTP_ADDRESS` empty.
+  The SMTP server must support STARTTLS; delivery fails if TLS is unavailable.
 - `SENTRY_DSN` is optional.
 - If setup reported that ports 80/443 were free, set `ACME_EMAIL` to a real
   contact address for certificate renewal notices.
@@ -146,6 +147,7 @@ balancer.example.com {
 		max_size 10MB
 	}
 	reverse_proxy balancer-web:3000 {
+		header_up -Forwarded
 		header_up X-Forwarded-For {remote_host}
 		header_up X-Forwarded-Proto {scheme}
 		header_up X-Forwarded-Host {host}
