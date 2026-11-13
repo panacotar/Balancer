@@ -194,7 +194,7 @@ GEM
       monetize (~> 2.0)
       money (~> 7.0)
       railties (>= 7.0)
-    msgpack (1.8.6)
+    msgpack (1.8.7)
     multipart-post (2.4.1)
     net-http (0.10.0)
       net-protocol (>= 0.3.0)
@@ -474,7 +474,7 @@ CHECKSUMS
   monetize (2.0.1) sha256=7b303fb61bd6dff6acce836378fee91bcb5e3037f0f2c3e6660584b250584cf2
   money (7.1.1) sha256=8ed5cd99dfbc45e82688ea711cb59ea3c396c2608cd88876502b164c90269d4e
   money-rails (3.0.0) sha256=f4bd1c8e1c98d221e7bf452eeb52e240f41224e43da2a477a5659a87c0c95bae
-  msgpack (1.8.6) sha256=a148c24e7d9026a88baf78918f6b1c297569bb6cc0f87953f444f3069950d4e5
+  msgpack (1.8.7) sha256=dfefec761b5f9047e6e8d95d2c7f8af4b3725d984a01942adc533aa819a2df33
   multipart-post (2.4.1) sha256=9872d03a8e552020ca096adadbf5e3cb1cd1cdd6acd3c161136b8a5737cdb4a8
   net-http (0.10.0) sha256=1a2ff6e37a05724973c43f2bf7bf105f59c36a4cd0a7e9b1c021a0a566987c27
   net-imap (0.6.8) sha256=eb30bb62227b64a3af6b518b04b2375113d69f68f15de59b0193b07d98acf6d9
